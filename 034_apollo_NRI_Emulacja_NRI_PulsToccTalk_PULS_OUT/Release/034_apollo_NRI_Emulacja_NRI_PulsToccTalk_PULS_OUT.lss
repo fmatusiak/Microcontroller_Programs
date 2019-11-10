@@ -1,0 +1,1679 @@
+
+034_apollo_NRI_Emulacja_NRI_PulsToccTalk_PULS_OUT.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000e42  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000006c  00800060  00000e42  00000ed6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000036  008000cc  008000cc  00000f42  2**0
+                  ALLOC
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e2 e4       	ldi	r30, 0x42	; 66
+  3a:	fe e0       	ldi	r31, 0x0E	; 14
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <.do_copy_data_start>
+
+0000003e <.do_copy_data_loop>:
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+
+00000042 <.do_copy_data_start>:
+  42:	ac 3c       	cpi	r26, 0xCC	; 204
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <.do_copy_data_loop>
+
+00000048 <__do_clear_bss>:
+  48:	11 e0       	ldi	r17, 0x01	; 1
+  4a:	ac ec       	ldi	r26, 0xCC	; 204
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a2 30       	cpi	r26, 0x02	; 2
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	5b d3       	rcall	.+1718   	; 0x710 <main>
+  5a:	f1 c6       	rjmp	.+3554   	; 0xe3e <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <uart_clear>:
+  5e:	01 c0       	rjmp	.+2      	; 0x62 <uart_clear+0x4>
+  60:	8c b1       	in	r24, 0x0c	; 12
+  62:	5f 99       	sbic	0x0b, 7	; 11
+  64:	fd cf       	rjmp	.-6      	; 0x60 <uart_clear+0x2>
+  66:	08 95       	ret
+
+00000068 <check_money>:
+  68:	80 91 cc 00 	lds	r24, 0x00CC
+  6c:	88 23       	and	r24, r24
+  6e:	81 f1       	breq	.+96     	; 0xd0 <check_money+0x68>
+  70:	80 91 cc 00 	lds	r24, 0x00CC
+  74:	81 50       	subi	r24, 0x01	; 1
+  76:	80 93 cc 00 	sts	0x00CC, r24
+  7a:	80 91 ce 00 	lds	r24, 0x00CE
+  7e:	8f 5f       	subi	r24, 0xFF	; 255
+  80:	80 93 ce 00 	sts	0x00CE, r24
+  84:	86 e0       	ldi	r24, 0x06	; 6
+  86:	80 93 d0 00 	sts	0x00D0, r24
+  8a:	81 e0       	ldi	r24, 0x01	; 1
+  8c:	80 93 d1 00 	sts	0x00D1, r24
+  90:	80 91 d0 00 	lds	r24, 0x00D0
+  94:	80 93 d2 00 	sts	0x00D2, r24
+  98:	80 91 d1 00 	lds	r24, 0x00D1
+  9c:	80 93 d3 00 	sts	0x00D3, r24
+  a0:	80 91 d2 00 	lds	r24, 0x00D2
+  a4:	80 93 d4 00 	sts	0x00D4, r24
+  a8:	80 91 d3 00 	lds	r24, 0x00D3
+  ac:	80 93 d5 00 	sts	0x00D5, r24
+  b0:	80 91 d4 00 	lds	r24, 0x00D4
+  b4:	80 93 d6 00 	sts	0x00D6, r24
+  b8:	80 91 d5 00 	lds	r24, 0x00D5
+  bc:	80 93 d7 00 	sts	0x00D7, r24
+  c0:	80 91 d6 00 	lds	r24, 0x00D6
+  c4:	80 93 d8 00 	sts	0x00D8, r24
+  c8:	80 91 d7 00 	lds	r24, 0x00D7
+  cc:	80 93 d9 00 	sts	0x00D9, r24
+  d0:	08 95       	ret
+
+000000d2 <send_command>:
+  d2:	78 2f       	mov	r23, r24
+  d4:	5d 9b       	sbis	0x0b, 5	; 11
+  d6:	fe cf       	rjmp	.-4      	; 0xd4 <send_command+0x2>
+  d8:	81 e0       	ldi	r24, 0x01	; 1
+  da:	8c b9       	out	0x0c, r24	; 12
+  dc:	5d 9b       	sbis	0x0b, 5	; 11
+  de:	fe cf       	rjmp	.-4      	; 0xdc <send_command+0xa>
+  e0:	7c b9       	out	0x0c, r23	; 12
+  e2:	5d 9b       	sbis	0x0b, 5	; 11
+  e4:	fe cf       	rjmp	.-4      	; 0xe2 <send_command+0x10>
+  e6:	82 e0       	ldi	r24, 0x02	; 2
+  e8:	8c b9       	out	0x0c, r24	; 12
+  ea:	5d 9b       	sbis	0x0b, 5	; 11
+  ec:	fe cf       	rjmp	.-4      	; 0xea <send_command+0x18>
+  ee:	6c b9       	out	0x0c, r22	; 12
+  f0:	fa 01       	movw	r30, r20
+  f2:	20 e0       	ldi	r18, 0x00	; 0
+  f4:	90 e0       	ldi	r25, 0x00	; 0
+  f6:	07 c0       	rjmp	.+14     	; 0x106 <send_command+0x34>
+  f8:	80 81       	ld	r24, Z
+  fa:	5d 9b       	sbis	0x0b, 5	; 11
+  fc:	fe cf       	rjmp	.-4      	; 0xfa <send_command+0x28>
+  fe:	8c b9       	out	0x0c, r24	; 12
+ 100:	28 0f       	add	r18, r24
+ 102:	9f 5f       	subi	r25, 0xFF	; 255
+ 104:	31 96       	adiw	r30, 0x01	; 1
+ 106:	97 17       	cp	r25, r23
+ 108:	b8 f3       	brcs	.-18     	; 0xf8 <send_command+0x26>
+ 10a:	5d 9b       	sbis	0x0b, 5	; 11
+ 10c:	fe cf       	rjmp	.-4      	; 0x10a <send_command+0x38>
+ 10e:	7d 5f       	subi	r23, 0xFD	; 253
+ 110:	76 0f       	add	r23, r22
+ 112:	72 0f       	add	r23, r18
+ 114:	71 95       	neg	r23
+ 116:	7c b9       	out	0x0c, r23	; 12
+ 118:	08 95       	ret
+
+0000011a <Set_inhibit>:
+ 11a:	80 91 60 00 	lds	r24, 0x0060
+ 11e:	81 30       	cpi	r24, 0x01	; 1
+ 120:	11 f4       	brne	.+4      	; 0x126 <Set_inhibit+0xc>
+ 122:	c1 9a       	sbi	0x18, 1	; 24
+ 124:	08 95       	ret
+ 126:	c1 98       	cbi	0x18, 1	; 24
+ 128:	08 95       	ret
+
+0000012a <check_is_money>:
+ 12a:	f7 df       	rcall	.-18     	; 0x11a <Set_inhibit>
+ 12c:	85 9b       	sbis	0x10, 5	; 16
+ 12e:	04 c0       	rjmp	.+8      	; 0x138 <check_is_money+0xe>
+ 130:	81 e0       	ldi	r24, 0x01	; 1
+ 132:	80 93 cd 00 	sts	0x00CD, r24
+ 136:	ad 9a       	sbi	0x15, 5	; 21
+ 138:	85 99       	sbic	0x10, 5	; 16
+ 13a:	15 c0       	rjmp	.+42     	; 0x166 <check_is_money+0x3c>
+ 13c:	80 91 cd 00 	lds	r24, 0x00CD
+ 140:	88 23       	and	r24, r24
+ 142:	89 f0       	breq	.+34     	; 0x166 <check_is_money+0x3c>
+ 144:	8d e0       	ldi	r24, 0x0D	; 13
+ 146:	8a 95       	dec	r24
+ 148:	f1 f7       	brne	.-4      	; 0x146 <check_is_money+0x1c>
+ 14a:	85 99       	sbic	0x10, 5	; 16
+ 14c:	0c c0       	rjmp	.+24     	; 0x166 <check_is_money+0x3c>
+ 14e:	80 91 cf 00 	lds	r24, 0x00CF
+ 152:	81 30       	cpi	r24, 0x01	; 1
+ 154:	29 f4       	brne	.+10     	; 0x160 <check_is_money+0x36>
+ 156:	80 91 cc 00 	lds	r24, 0x00CC
+ 15a:	8f 5f       	subi	r24, 0xFF	; 255
+ 15c:	80 93 cc 00 	sts	0x00CC, r24
+ 160:	10 92 cd 00 	sts	0x00CD, r1
+ 164:	ad 98       	cbi	0x15, 5	; 21
+ 166:	85 9b       	sbis	0x10, 5	; 16
+ 168:	04 c0       	rjmp	.+8      	; 0x172 <check_is_money+0x48>
+ 16a:	81 e0       	ldi	r24, 0x01	; 1
+ 16c:	80 93 cd 00 	sts	0x00CD, r24
+ 170:	ad 9a       	sbi	0x15, 5	; 21
+ 172:	7a df       	rcall	.-268    	; 0x68 <check_money>
+ 174:	08 95       	ret
+
+00000176 <Read_buffor_credit_ans>:
+ 176:	df 93       	push	r29
+ 178:	cf 93       	push	r28
+ 17a:	cd b7       	in	r28, 0x3d	; 61
+ 17c:	de b7       	in	r29, 0x3e	; 62
+ 17e:	2b 97       	sbiw	r28, 0x0b	; 11
+ 180:	0f b6       	in	r0, 0x3f	; 63
+ 182:	f8 94       	cli
+ 184:	de bf       	out	0x3e, r29	; 62
+ 186:	0f be       	out	0x3f, r0	; 63
+ 188:	cd bf       	out	0x3d, r28	; 61
+ 18a:	80 91 ce 00 	lds	r24, 0x00CE
+ 18e:	90 91 d0 00 	lds	r25, 0x00D0
+ 192:	20 91 d1 00 	lds	r18, 0x00D1
+ 196:	30 91 d2 00 	lds	r19, 0x00D2
+ 19a:	40 91 d3 00 	lds	r20, 0x00D3
+ 19e:	50 91 d4 00 	lds	r21, 0x00D4
+ 1a2:	60 91 d5 00 	lds	r22, 0x00D5
+ 1a6:	70 91 d6 00 	lds	r23, 0x00D6
+ 1aa:	e0 91 d7 00 	lds	r30, 0x00D7
+ 1ae:	f0 91 d8 00 	lds	r31, 0x00D8
+ 1b2:	a0 91 d9 00 	lds	r26, 0x00D9
+ 1b6:	89 83       	std	Y+1, r24	; 0x01
+ 1b8:	9a 83       	std	Y+2, r25	; 0x02
+ 1ba:	2b 83       	std	Y+3, r18	; 0x03
+ 1bc:	3c 83       	std	Y+4, r19	; 0x04
+ 1be:	4d 83       	std	Y+5, r20	; 0x05
+ 1c0:	5e 83       	std	Y+6, r21	; 0x06
+ 1c2:	6f 83       	std	Y+7, r22	; 0x07
+ 1c4:	78 87       	std	Y+8, r23	; 0x08
+ 1c6:	e9 87       	std	Y+9, r30	; 0x09
+ 1c8:	fa 87       	std	Y+10, r31	; 0x0a
+ 1ca:	ab 87       	std	Y+11, r26	; 0x0b
+ 1cc:	8b e0       	ldi	r24, 0x0B	; 11
+ 1ce:	60 e0       	ldi	r22, 0x00	; 0
+ 1d0:	ae 01       	movw	r20, r28
+ 1d2:	4f 5f       	subi	r20, 0xFF	; 255
+ 1d4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 1d6:	7d df       	rcall	.-262    	; 0xd2 <send_command>
+ 1d8:	a8 df       	rcall	.-176    	; 0x12a <check_is_money>
+ 1da:	2b 96       	adiw	r28, 0x0b	; 11
+ 1dc:	0f b6       	in	r0, 0x3f	; 63
+ 1de:	f8 94       	cli
+ 1e0:	de bf       	out	0x3e, r29	; 62
+ 1e2:	0f be       	out	0x3f, r0	; 63
+ 1e4:	cd bf       	out	0x3d, r28	; 61
+ 1e6:	cf 91       	pop	r28
+ 1e8:	df 91       	pop	r29
+ 1ea:	08 95       	ret
+
+000001ec <Request_coin_id_ans_v16>:
+ 1ec:	df 93       	push	r29
+ 1ee:	cf 93       	push	r28
+ 1f0:	00 d0       	rcall	.+0      	; 0x1f2 <Request_coin_id_ans_v16+0x6>
+ 1f2:	00 d0       	rcall	.+0      	; 0x1f4 <Request_coin_id_ans_v16+0x8>
+ 1f4:	00 d0       	rcall	.+0      	; 0x1f6 <Request_coin_id_ans_v16+0xa>
+ 1f6:	cd b7       	in	r28, 0x3d	; 61
+ 1f8:	de b7       	in	r29, 0x3e	; 62
+ 1fa:	de 01       	movw	r26, r28
+ 1fc:	11 96       	adiw	r26, 0x01	; 1
+ 1fe:	e1 e6       	ldi	r30, 0x61	; 97
+ 200:	f0 e0       	ldi	r31, 0x00	; 0
+ 202:	86 e0       	ldi	r24, 0x06	; 6
+ 204:	01 90       	ld	r0, Z+
+ 206:	0d 92       	st	X+, r0
+ 208:	81 50       	subi	r24, 0x01	; 1
+ 20a:	e1 f7       	brne	.-8      	; 0x204 <Request_coin_id_ans_v16+0x18>
+ 20c:	86 e0       	ldi	r24, 0x06	; 6
+ 20e:	60 e0       	ldi	r22, 0x00	; 0
+ 210:	ae 01       	movw	r20, r28
+ 212:	4f 5f       	subi	r20, 0xFF	; 255
+ 214:	5f 4f       	sbci	r21, 0xFF	; 255
+ 216:	5d df       	rcall	.-326    	; 0xd2 <send_command>
+ 218:	88 df       	rcall	.-240    	; 0x12a <check_is_money>
+ 21a:	26 96       	adiw	r28, 0x06	; 6
+ 21c:	0f b6       	in	r0, 0x3f	; 63
+ 21e:	f8 94       	cli
+ 220:	de bf       	out	0x3e, r29	; 62
+ 222:	0f be       	out	0x3f, r0	; 63
+ 224:	cd bf       	out	0x3d, r28	; 61
+ 226:	cf 91       	pop	r28
+ 228:	df 91       	pop	r29
+ 22a:	08 95       	ret
+
+0000022c <Request_coin_id_ans_v15>:
+ 22c:	df 93       	push	r29
+ 22e:	cf 93       	push	r28
+ 230:	00 d0       	rcall	.+0      	; 0x232 <Request_coin_id_ans_v15+0x6>
+ 232:	00 d0       	rcall	.+0      	; 0x234 <Request_coin_id_ans_v15+0x8>
+ 234:	00 d0       	rcall	.+0      	; 0x236 <Request_coin_id_ans_v15+0xa>
+ 236:	cd b7       	in	r28, 0x3d	; 61
+ 238:	de b7       	in	r29, 0x3e	; 62
+ 23a:	de 01       	movw	r26, r28
+ 23c:	11 96       	adiw	r26, 0x01	; 1
+ 23e:	e7 e6       	ldi	r30, 0x67	; 103
+ 240:	f0 e0       	ldi	r31, 0x00	; 0
+ 242:	86 e0       	ldi	r24, 0x06	; 6
+ 244:	01 90       	ld	r0, Z+
+ 246:	0d 92       	st	X+, r0
+ 248:	81 50       	subi	r24, 0x01	; 1
+ 24a:	e1 f7       	brne	.-8      	; 0x244 <Request_coin_id_ans_v15+0x18>
+ 24c:	86 e0       	ldi	r24, 0x06	; 6
+ 24e:	60 e0       	ldi	r22, 0x00	; 0
+ 250:	ae 01       	movw	r20, r28
+ 252:	4f 5f       	subi	r20, 0xFF	; 255
+ 254:	5f 4f       	sbci	r21, 0xFF	; 255
+ 256:	3d df       	rcall	.-390    	; 0xd2 <send_command>
+ 258:	68 df       	rcall	.-304    	; 0x12a <check_is_money>
+ 25a:	26 96       	adiw	r28, 0x06	; 6
+ 25c:	0f b6       	in	r0, 0x3f	; 63
+ 25e:	f8 94       	cli
+ 260:	de bf       	out	0x3e, r29	; 62
+ 262:	0f be       	out	0x3f, r0	; 63
+ 264:	cd bf       	out	0x3d, r28	; 61
+ 266:	cf 91       	pop	r28
+ 268:	df 91       	pop	r29
+ 26a:	08 95       	ret
+
+0000026c <Request_coin_id_ans_v14>:
+ 26c:	df 93       	push	r29
+ 26e:	cf 93       	push	r28
+ 270:	00 d0       	rcall	.+0      	; 0x272 <Request_coin_id_ans_v14+0x6>
+ 272:	00 d0       	rcall	.+0      	; 0x274 <Request_coin_id_ans_v14+0x8>
+ 274:	00 d0       	rcall	.+0      	; 0x276 <Request_coin_id_ans_v14+0xa>
+ 276:	cd b7       	in	r28, 0x3d	; 61
+ 278:	de b7       	in	r29, 0x3e	; 62
+ 27a:	de 01       	movw	r26, r28
+ 27c:	11 96       	adiw	r26, 0x01	; 1
+ 27e:	ed e6       	ldi	r30, 0x6D	; 109
+ 280:	f0 e0       	ldi	r31, 0x00	; 0
+ 282:	86 e0       	ldi	r24, 0x06	; 6
+ 284:	01 90       	ld	r0, Z+
+ 286:	0d 92       	st	X+, r0
+ 288:	81 50       	subi	r24, 0x01	; 1
+ 28a:	e1 f7       	brne	.-8      	; 0x284 <Request_coin_id_ans_v14+0x18>
+ 28c:	86 e0       	ldi	r24, 0x06	; 6
+ 28e:	60 e0       	ldi	r22, 0x00	; 0
+ 290:	ae 01       	movw	r20, r28
+ 292:	4f 5f       	subi	r20, 0xFF	; 255
+ 294:	5f 4f       	sbci	r21, 0xFF	; 255
+ 296:	1d df       	rcall	.-454    	; 0xd2 <send_command>
+ 298:	48 df       	rcall	.-368    	; 0x12a <check_is_money>
+ 29a:	26 96       	adiw	r28, 0x06	; 6
+ 29c:	0f b6       	in	r0, 0x3f	; 63
+ 29e:	f8 94       	cli
+ 2a0:	de bf       	out	0x3e, r29	; 62
+ 2a2:	0f be       	out	0x3f, r0	; 63
+ 2a4:	cd bf       	out	0x3d, r28	; 61
+ 2a6:	cf 91       	pop	r28
+ 2a8:	df 91       	pop	r29
+ 2aa:	08 95       	ret
+
+000002ac <Request_coin_id_ans_v13>:
+ 2ac:	df 93       	push	r29
+ 2ae:	cf 93       	push	r28
+ 2b0:	00 d0       	rcall	.+0      	; 0x2b2 <Request_coin_id_ans_v13+0x6>
+ 2b2:	00 d0       	rcall	.+0      	; 0x2b4 <Request_coin_id_ans_v13+0x8>
+ 2b4:	00 d0       	rcall	.+0      	; 0x2b6 <Request_coin_id_ans_v13+0xa>
+ 2b6:	cd b7       	in	r28, 0x3d	; 61
+ 2b8:	de b7       	in	r29, 0x3e	; 62
+ 2ba:	de 01       	movw	r26, r28
+ 2bc:	11 96       	adiw	r26, 0x01	; 1
+ 2be:	e3 e7       	ldi	r30, 0x73	; 115
+ 2c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2c2:	86 e0       	ldi	r24, 0x06	; 6
+ 2c4:	01 90       	ld	r0, Z+
+ 2c6:	0d 92       	st	X+, r0
+ 2c8:	81 50       	subi	r24, 0x01	; 1
+ 2ca:	e1 f7       	brne	.-8      	; 0x2c4 <Request_coin_id_ans_v13+0x18>
+ 2cc:	86 e0       	ldi	r24, 0x06	; 6
+ 2ce:	60 e0       	ldi	r22, 0x00	; 0
+ 2d0:	ae 01       	movw	r20, r28
+ 2d2:	4f 5f       	subi	r20, 0xFF	; 255
+ 2d4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 2d6:	fd de       	rcall	.-518    	; 0xd2 <send_command>
+ 2d8:	28 df       	rcall	.-432    	; 0x12a <check_is_money>
+ 2da:	26 96       	adiw	r28, 0x06	; 6
+ 2dc:	0f b6       	in	r0, 0x3f	; 63
+ 2de:	f8 94       	cli
+ 2e0:	de bf       	out	0x3e, r29	; 62
+ 2e2:	0f be       	out	0x3f, r0	; 63
+ 2e4:	cd bf       	out	0x3d, r28	; 61
+ 2e6:	cf 91       	pop	r28
+ 2e8:	df 91       	pop	r29
+ 2ea:	08 95       	ret
+
+000002ec <Request_coin_id_ans_v12>:
+ 2ec:	df 93       	push	r29
+ 2ee:	cf 93       	push	r28
+ 2f0:	00 d0       	rcall	.+0      	; 0x2f2 <Request_coin_id_ans_v12+0x6>
+ 2f2:	00 d0       	rcall	.+0      	; 0x2f4 <Request_coin_id_ans_v12+0x8>
+ 2f4:	00 d0       	rcall	.+0      	; 0x2f6 <Request_coin_id_ans_v12+0xa>
+ 2f6:	cd b7       	in	r28, 0x3d	; 61
+ 2f8:	de b7       	in	r29, 0x3e	; 62
+ 2fa:	de 01       	movw	r26, r28
+ 2fc:	11 96       	adiw	r26, 0x01	; 1
+ 2fe:	e9 e7       	ldi	r30, 0x79	; 121
+ 300:	f0 e0       	ldi	r31, 0x00	; 0
+ 302:	86 e0       	ldi	r24, 0x06	; 6
+ 304:	01 90       	ld	r0, Z+
+ 306:	0d 92       	st	X+, r0
+ 308:	81 50       	subi	r24, 0x01	; 1
+ 30a:	e1 f7       	brne	.-8      	; 0x304 <Request_coin_id_ans_v12+0x18>
+ 30c:	86 e0       	ldi	r24, 0x06	; 6
+ 30e:	60 e0       	ldi	r22, 0x00	; 0
+ 310:	ae 01       	movw	r20, r28
+ 312:	4f 5f       	subi	r20, 0xFF	; 255
+ 314:	5f 4f       	sbci	r21, 0xFF	; 255
+ 316:	dd de       	rcall	.-582    	; 0xd2 <send_command>
+ 318:	08 df       	rcall	.-496    	; 0x12a <check_is_money>
+ 31a:	26 96       	adiw	r28, 0x06	; 6
+ 31c:	0f b6       	in	r0, 0x3f	; 63
+ 31e:	f8 94       	cli
+ 320:	de bf       	out	0x3e, r29	; 62
+ 322:	0f be       	out	0x3f, r0	; 63
+ 324:	cd bf       	out	0x3d, r28	; 61
+ 326:	cf 91       	pop	r28
+ 328:	df 91       	pop	r29
+ 32a:	08 95       	ret
+
+0000032c <Request_coin_id_ans_v11>:
+ 32c:	df 93       	push	r29
+ 32e:	cf 93       	push	r28
+ 330:	00 d0       	rcall	.+0      	; 0x332 <Request_coin_id_ans_v11+0x6>
+ 332:	00 d0       	rcall	.+0      	; 0x334 <Request_coin_id_ans_v11+0x8>
+ 334:	00 d0       	rcall	.+0      	; 0x336 <Request_coin_id_ans_v11+0xa>
+ 336:	cd b7       	in	r28, 0x3d	; 61
+ 338:	de b7       	in	r29, 0x3e	; 62
+ 33a:	de 01       	movw	r26, r28
+ 33c:	11 96       	adiw	r26, 0x01	; 1
+ 33e:	ef e7       	ldi	r30, 0x7F	; 127
+ 340:	f0 e0       	ldi	r31, 0x00	; 0
+ 342:	86 e0       	ldi	r24, 0x06	; 6
+ 344:	01 90       	ld	r0, Z+
+ 346:	0d 92       	st	X+, r0
+ 348:	81 50       	subi	r24, 0x01	; 1
+ 34a:	e1 f7       	brne	.-8      	; 0x344 <Request_coin_id_ans_v11+0x18>
+ 34c:	86 e0       	ldi	r24, 0x06	; 6
+ 34e:	60 e0       	ldi	r22, 0x00	; 0
+ 350:	ae 01       	movw	r20, r28
+ 352:	4f 5f       	subi	r20, 0xFF	; 255
+ 354:	5f 4f       	sbci	r21, 0xFF	; 255
+ 356:	bd de       	rcall	.-646    	; 0xd2 <send_command>
+ 358:	e8 de       	rcall	.-560    	; 0x12a <check_is_money>
+ 35a:	26 96       	adiw	r28, 0x06	; 6
+ 35c:	0f b6       	in	r0, 0x3f	; 63
+ 35e:	f8 94       	cli
+ 360:	de bf       	out	0x3e, r29	; 62
+ 362:	0f be       	out	0x3f, r0	; 63
+ 364:	cd bf       	out	0x3d, r28	; 61
+ 366:	cf 91       	pop	r28
+ 368:	df 91       	pop	r29
+ 36a:	08 95       	ret
+
+0000036c <Request_coin_id_ans_v10>:
+ 36c:	df 93       	push	r29
+ 36e:	cf 93       	push	r28
+ 370:	00 d0       	rcall	.+0      	; 0x372 <Request_coin_id_ans_v10+0x6>
+ 372:	00 d0       	rcall	.+0      	; 0x374 <Request_coin_id_ans_v10+0x8>
+ 374:	00 d0       	rcall	.+0      	; 0x376 <Request_coin_id_ans_v10+0xa>
+ 376:	cd b7       	in	r28, 0x3d	; 61
+ 378:	de b7       	in	r29, 0x3e	; 62
+ 37a:	de 01       	movw	r26, r28
+ 37c:	11 96       	adiw	r26, 0x01	; 1
+ 37e:	e5 e8       	ldi	r30, 0x85	; 133
+ 380:	f0 e0       	ldi	r31, 0x00	; 0
+ 382:	86 e0       	ldi	r24, 0x06	; 6
+ 384:	01 90       	ld	r0, Z+
+ 386:	0d 92       	st	X+, r0
+ 388:	81 50       	subi	r24, 0x01	; 1
+ 38a:	e1 f7       	brne	.-8      	; 0x384 <Request_coin_id_ans_v10+0x18>
+ 38c:	86 e0       	ldi	r24, 0x06	; 6
+ 38e:	60 e0       	ldi	r22, 0x00	; 0
+ 390:	ae 01       	movw	r20, r28
+ 392:	4f 5f       	subi	r20, 0xFF	; 255
+ 394:	5f 4f       	sbci	r21, 0xFF	; 255
+ 396:	9d de       	rcall	.-710    	; 0xd2 <send_command>
+ 398:	c8 de       	rcall	.-624    	; 0x12a <check_is_money>
+ 39a:	26 96       	adiw	r28, 0x06	; 6
+ 39c:	0f b6       	in	r0, 0x3f	; 63
+ 39e:	f8 94       	cli
+ 3a0:	de bf       	out	0x3e, r29	; 62
+ 3a2:	0f be       	out	0x3f, r0	; 63
+ 3a4:	cd bf       	out	0x3d, r28	; 61
+ 3a6:	cf 91       	pop	r28
+ 3a8:	df 91       	pop	r29
+ 3aa:	08 95       	ret
+
+000003ac <Request_coin_id_ans_v9>:
+ 3ac:	df 93       	push	r29
+ 3ae:	cf 93       	push	r28
+ 3b0:	00 d0       	rcall	.+0      	; 0x3b2 <Request_coin_id_ans_v9+0x6>
+ 3b2:	00 d0       	rcall	.+0      	; 0x3b4 <Request_coin_id_ans_v9+0x8>
+ 3b4:	00 d0       	rcall	.+0      	; 0x3b6 <Request_coin_id_ans_v9+0xa>
+ 3b6:	cd b7       	in	r28, 0x3d	; 61
+ 3b8:	de b7       	in	r29, 0x3e	; 62
+ 3ba:	de 01       	movw	r26, r28
+ 3bc:	11 96       	adiw	r26, 0x01	; 1
+ 3be:	eb e8       	ldi	r30, 0x8B	; 139
+ 3c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 3c2:	86 e0       	ldi	r24, 0x06	; 6
+ 3c4:	01 90       	ld	r0, Z+
+ 3c6:	0d 92       	st	X+, r0
+ 3c8:	81 50       	subi	r24, 0x01	; 1
+ 3ca:	e1 f7       	brne	.-8      	; 0x3c4 <Request_coin_id_ans_v9+0x18>
+ 3cc:	86 e0       	ldi	r24, 0x06	; 6
+ 3ce:	60 e0       	ldi	r22, 0x00	; 0
+ 3d0:	ae 01       	movw	r20, r28
+ 3d2:	4f 5f       	subi	r20, 0xFF	; 255
+ 3d4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 3d6:	7d de       	rcall	.-774    	; 0xd2 <send_command>
+ 3d8:	a8 de       	rcall	.-688    	; 0x12a <check_is_money>
+ 3da:	26 96       	adiw	r28, 0x06	; 6
+ 3dc:	0f b6       	in	r0, 0x3f	; 63
+ 3de:	f8 94       	cli
+ 3e0:	de bf       	out	0x3e, r29	; 62
+ 3e2:	0f be       	out	0x3f, r0	; 63
+ 3e4:	cd bf       	out	0x3d, r28	; 61
+ 3e6:	cf 91       	pop	r28
+ 3e8:	df 91       	pop	r29
+ 3ea:	08 95       	ret
+
+000003ec <Request_coin_id_ans_v8>:
+ 3ec:	df 93       	push	r29
+ 3ee:	cf 93       	push	r28
+ 3f0:	00 d0       	rcall	.+0      	; 0x3f2 <Request_coin_id_ans_v8+0x6>
+ 3f2:	00 d0       	rcall	.+0      	; 0x3f4 <Request_coin_id_ans_v8+0x8>
+ 3f4:	00 d0       	rcall	.+0      	; 0x3f6 <Request_coin_id_ans_v8+0xa>
+ 3f6:	cd b7       	in	r28, 0x3d	; 61
+ 3f8:	de b7       	in	r29, 0x3e	; 62
+ 3fa:	de 01       	movw	r26, r28
+ 3fc:	11 96       	adiw	r26, 0x01	; 1
+ 3fe:	e1 e9       	ldi	r30, 0x91	; 145
+ 400:	f0 e0       	ldi	r31, 0x00	; 0
+ 402:	86 e0       	ldi	r24, 0x06	; 6
+ 404:	01 90       	ld	r0, Z+
+ 406:	0d 92       	st	X+, r0
+ 408:	81 50       	subi	r24, 0x01	; 1
+ 40a:	e1 f7       	brne	.-8      	; 0x404 <Request_coin_id_ans_v8+0x18>
+ 40c:	86 e0       	ldi	r24, 0x06	; 6
+ 40e:	60 e0       	ldi	r22, 0x00	; 0
+ 410:	ae 01       	movw	r20, r28
+ 412:	4f 5f       	subi	r20, 0xFF	; 255
+ 414:	5f 4f       	sbci	r21, 0xFF	; 255
+ 416:	5d de       	rcall	.-838    	; 0xd2 <send_command>
+ 418:	88 de       	rcall	.-752    	; 0x12a <check_is_money>
+ 41a:	26 96       	adiw	r28, 0x06	; 6
+ 41c:	0f b6       	in	r0, 0x3f	; 63
+ 41e:	f8 94       	cli
+ 420:	de bf       	out	0x3e, r29	; 62
+ 422:	0f be       	out	0x3f, r0	; 63
+ 424:	cd bf       	out	0x3d, r28	; 61
+ 426:	cf 91       	pop	r28
+ 428:	df 91       	pop	r29
+ 42a:	08 95       	ret
+
+0000042c <Request_coin_id_ans_v7>:
+ 42c:	df 93       	push	r29
+ 42e:	cf 93       	push	r28
+ 430:	00 d0       	rcall	.+0      	; 0x432 <Request_coin_id_ans_v7+0x6>
+ 432:	00 d0       	rcall	.+0      	; 0x434 <Request_coin_id_ans_v7+0x8>
+ 434:	00 d0       	rcall	.+0      	; 0x436 <Request_coin_id_ans_v7+0xa>
+ 436:	cd b7       	in	r28, 0x3d	; 61
+ 438:	de b7       	in	r29, 0x3e	; 62
+ 43a:	de 01       	movw	r26, r28
+ 43c:	11 96       	adiw	r26, 0x01	; 1
+ 43e:	e7 e9       	ldi	r30, 0x97	; 151
+ 440:	f0 e0       	ldi	r31, 0x00	; 0
+ 442:	86 e0       	ldi	r24, 0x06	; 6
+ 444:	01 90       	ld	r0, Z+
+ 446:	0d 92       	st	X+, r0
+ 448:	81 50       	subi	r24, 0x01	; 1
+ 44a:	e1 f7       	brne	.-8      	; 0x444 <Request_coin_id_ans_v7+0x18>
+ 44c:	86 e0       	ldi	r24, 0x06	; 6
+ 44e:	60 e0       	ldi	r22, 0x00	; 0
+ 450:	ae 01       	movw	r20, r28
+ 452:	4f 5f       	subi	r20, 0xFF	; 255
+ 454:	5f 4f       	sbci	r21, 0xFF	; 255
+ 456:	3d de       	rcall	.-902    	; 0xd2 <send_command>
+ 458:	68 de       	rcall	.-816    	; 0x12a <check_is_money>
+ 45a:	26 96       	adiw	r28, 0x06	; 6
+ 45c:	0f b6       	in	r0, 0x3f	; 63
+ 45e:	f8 94       	cli
+ 460:	de bf       	out	0x3e, r29	; 62
+ 462:	0f be       	out	0x3f, r0	; 63
+ 464:	cd bf       	out	0x3d, r28	; 61
+ 466:	cf 91       	pop	r28
+ 468:	df 91       	pop	r29
+ 46a:	08 95       	ret
+
+0000046c <Request_coin_id_ans_v6>:
+ 46c:	df 93       	push	r29
+ 46e:	cf 93       	push	r28
+ 470:	00 d0       	rcall	.+0      	; 0x472 <Request_coin_id_ans_v6+0x6>
+ 472:	00 d0       	rcall	.+0      	; 0x474 <Request_coin_id_ans_v6+0x8>
+ 474:	00 d0       	rcall	.+0      	; 0x476 <Request_coin_id_ans_v6+0xa>
+ 476:	cd b7       	in	r28, 0x3d	; 61
+ 478:	de b7       	in	r29, 0x3e	; 62
+ 47a:	de 01       	movw	r26, r28
+ 47c:	11 96       	adiw	r26, 0x01	; 1
+ 47e:	ed e9       	ldi	r30, 0x9D	; 157
+ 480:	f0 e0       	ldi	r31, 0x00	; 0
+ 482:	86 e0       	ldi	r24, 0x06	; 6
+ 484:	01 90       	ld	r0, Z+
+ 486:	0d 92       	st	X+, r0
+ 488:	81 50       	subi	r24, 0x01	; 1
+ 48a:	e1 f7       	brne	.-8      	; 0x484 <Request_coin_id_ans_v6+0x18>
+ 48c:	86 e0       	ldi	r24, 0x06	; 6
+ 48e:	60 e0       	ldi	r22, 0x00	; 0
+ 490:	ae 01       	movw	r20, r28
+ 492:	4f 5f       	subi	r20, 0xFF	; 255
+ 494:	5f 4f       	sbci	r21, 0xFF	; 255
+ 496:	1d de       	rcall	.-966    	; 0xd2 <send_command>
+ 498:	48 de       	rcall	.-880    	; 0x12a <check_is_money>
+ 49a:	26 96       	adiw	r28, 0x06	; 6
+ 49c:	0f b6       	in	r0, 0x3f	; 63
+ 49e:	f8 94       	cli
+ 4a0:	de bf       	out	0x3e, r29	; 62
+ 4a2:	0f be       	out	0x3f, r0	; 63
+ 4a4:	cd bf       	out	0x3d, r28	; 61
+ 4a6:	cf 91       	pop	r28
+ 4a8:	df 91       	pop	r29
+ 4aa:	08 95       	ret
+
+000004ac <Request_coin_id_ans_v5>:
+ 4ac:	df 93       	push	r29
+ 4ae:	cf 93       	push	r28
+ 4b0:	00 d0       	rcall	.+0      	; 0x4b2 <Request_coin_id_ans_v5+0x6>
+ 4b2:	00 d0       	rcall	.+0      	; 0x4b4 <Request_coin_id_ans_v5+0x8>
+ 4b4:	00 d0       	rcall	.+0      	; 0x4b6 <Request_coin_id_ans_v5+0xa>
+ 4b6:	cd b7       	in	r28, 0x3d	; 61
+ 4b8:	de b7       	in	r29, 0x3e	; 62
+ 4ba:	de 01       	movw	r26, r28
+ 4bc:	11 96       	adiw	r26, 0x01	; 1
+ 4be:	e3 ea       	ldi	r30, 0xA3	; 163
+ 4c0:	f0 e0       	ldi	r31, 0x00	; 0
+ 4c2:	86 e0       	ldi	r24, 0x06	; 6
+ 4c4:	01 90       	ld	r0, Z+
+ 4c6:	0d 92       	st	X+, r0
+ 4c8:	81 50       	subi	r24, 0x01	; 1
+ 4ca:	e1 f7       	brne	.-8      	; 0x4c4 <Request_coin_id_ans_v5+0x18>
+ 4cc:	86 e0       	ldi	r24, 0x06	; 6
+ 4ce:	60 e0       	ldi	r22, 0x00	; 0
+ 4d0:	ae 01       	movw	r20, r28
+ 4d2:	4f 5f       	subi	r20, 0xFF	; 255
+ 4d4:	5f 4f       	sbci	r21, 0xFF	; 255
+ 4d6:	fd dd       	rcall	.-1030   	; 0xd2 <send_command>
+ 4d8:	28 de       	rcall	.-944    	; 0x12a <check_is_money>
+ 4da:	26 96       	adiw	r28, 0x06	; 6
+ 4dc:	0f b6       	in	r0, 0x3f	; 63
+ 4de:	f8 94       	cli
+ 4e0:	de bf       	out	0x3e, r29	; 62
+ 4e2:	0f be       	out	0x3f, r0	; 63
+ 4e4:	cd bf       	out	0x3d, r28	; 61
+ 4e6:	cf 91       	pop	r28
+ 4e8:	df 91       	pop	r29
+ 4ea:	08 95       	ret
+
+000004ec <Request_coin_id_ans_v4>:
+ 4ec:	df 93       	push	r29
+ 4ee:	cf 93       	push	r28
+ 4f0:	00 d0       	rcall	.+0      	; 0x4f2 <Request_coin_id_ans_v4+0x6>
+ 4f2:	00 d0       	rcall	.+0      	; 0x4f4 <Request_coin_id_ans_v4+0x8>
+ 4f4:	00 d0       	rcall	.+0      	; 0x4f6 <Request_coin_id_ans_v4+0xa>
+ 4f6:	cd b7       	in	r28, 0x3d	; 61
+ 4f8:	de b7       	in	r29, 0x3e	; 62
+ 4fa:	de 01       	movw	r26, r28
+ 4fc:	11 96       	adiw	r26, 0x01	; 1
+ 4fe:	e9 ea       	ldi	r30, 0xA9	; 169
+ 500:	f0 e0       	ldi	r31, 0x00	; 0
+ 502:	86 e0       	ldi	r24, 0x06	; 6
+ 504:	01 90       	ld	r0, Z+
+ 506:	0d 92       	st	X+, r0
+ 508:	81 50       	subi	r24, 0x01	; 1
+ 50a:	e1 f7       	brne	.-8      	; 0x504 <Request_coin_id_ans_v4+0x18>
+ 50c:	86 e0       	ldi	r24, 0x06	; 6
+ 50e:	60 e0       	ldi	r22, 0x00	; 0
+ 510:	ae 01       	movw	r20, r28
+ 512:	4f 5f       	subi	r20, 0xFF	; 255
+ 514:	5f 4f       	sbci	r21, 0xFF	; 255
+ 516:	dd dd       	rcall	.-1094   	; 0xd2 <send_command>
+ 518:	08 de       	rcall	.-1008   	; 0x12a <check_is_money>
+ 51a:	26 96       	adiw	r28, 0x06	; 6
+ 51c:	0f b6       	in	r0, 0x3f	; 63
+ 51e:	f8 94       	cli
+ 520:	de bf       	out	0x3e, r29	; 62
+ 522:	0f be       	out	0x3f, r0	; 63
+ 524:	cd bf       	out	0x3d, r28	; 61
+ 526:	cf 91       	pop	r28
+ 528:	df 91       	pop	r29
+ 52a:	08 95       	ret
+
+0000052c <Request_coin_id_ans_v3>:
+ 52c:	df 93       	push	r29
+ 52e:	cf 93       	push	r28
+ 530:	00 d0       	rcall	.+0      	; 0x532 <Request_coin_id_ans_v3+0x6>
+ 532:	00 d0       	rcall	.+0      	; 0x534 <Request_coin_id_ans_v3+0x8>
+ 534:	00 d0       	rcall	.+0      	; 0x536 <Request_coin_id_ans_v3+0xa>
+ 536:	cd b7       	in	r28, 0x3d	; 61
+ 538:	de b7       	in	r29, 0x3e	; 62
+ 53a:	de 01       	movw	r26, r28
+ 53c:	11 96       	adiw	r26, 0x01	; 1
+ 53e:	ef ea       	ldi	r30, 0xAF	; 175
+ 540:	f0 e0       	ldi	r31, 0x00	; 0
+ 542:	86 e0       	ldi	r24, 0x06	; 6
+ 544:	01 90       	ld	r0, Z+
+ 546:	0d 92       	st	X+, r0
+ 548:	81 50       	subi	r24, 0x01	; 1
+ 54a:	e1 f7       	brne	.-8      	; 0x544 <Request_coin_id_ans_v3+0x18>
+ 54c:	86 e0       	ldi	r24, 0x06	; 6
+ 54e:	60 e0       	ldi	r22, 0x00	; 0
+ 550:	ae 01       	movw	r20, r28
+ 552:	4f 5f       	subi	r20, 0xFF	; 255
+ 554:	5f 4f       	sbci	r21, 0xFF	; 255
+ 556:	bd dd       	rcall	.-1158   	; 0xd2 <send_command>
+ 558:	e8 dd       	rcall	.-1072   	; 0x12a <check_is_money>
+ 55a:	26 96       	adiw	r28, 0x06	; 6
+ 55c:	0f b6       	in	r0, 0x3f	; 63
+ 55e:	f8 94       	cli
+ 560:	de bf       	out	0x3e, r29	; 62
+ 562:	0f be       	out	0x3f, r0	; 63
+ 564:	cd bf       	out	0x3d, r28	; 61
+ 566:	cf 91       	pop	r28
+ 568:	df 91       	pop	r29
+ 56a:	08 95       	ret
+
+0000056c <Request_coin_id_ans_v2>:
+ 56c:	df 93       	push	r29
+ 56e:	cf 93       	push	r28
+ 570:	00 d0       	rcall	.+0      	; 0x572 <Request_coin_id_ans_v2+0x6>
+ 572:	00 d0       	rcall	.+0      	; 0x574 <Request_coin_id_ans_v2+0x8>
+ 574:	00 d0       	rcall	.+0      	; 0x576 <Request_coin_id_ans_v2+0xa>
+ 576:	cd b7       	in	r28, 0x3d	; 61
+ 578:	de b7       	in	r29, 0x3e	; 62
+ 57a:	de 01       	movw	r26, r28
+ 57c:	11 96       	adiw	r26, 0x01	; 1
+ 57e:	e5 eb       	ldi	r30, 0xB5	; 181
+ 580:	f0 e0       	ldi	r31, 0x00	; 0
+ 582:	86 e0       	ldi	r24, 0x06	; 6
+ 584:	01 90       	ld	r0, Z+
+ 586:	0d 92       	st	X+, r0
+ 588:	81 50       	subi	r24, 0x01	; 1
+ 58a:	e1 f7       	brne	.-8      	; 0x584 <Request_coin_id_ans_v2+0x18>
+ 58c:	86 e0       	ldi	r24, 0x06	; 6
+ 58e:	60 e0       	ldi	r22, 0x00	; 0
+ 590:	ae 01       	movw	r20, r28
+ 592:	4f 5f       	subi	r20, 0xFF	; 255
+ 594:	5f 4f       	sbci	r21, 0xFF	; 255
+ 596:	9d dd       	rcall	.-1222   	; 0xd2 <send_command>
+ 598:	c8 dd       	rcall	.-1136   	; 0x12a <check_is_money>
+ 59a:	26 96       	adiw	r28, 0x06	; 6
+ 59c:	0f b6       	in	r0, 0x3f	; 63
+ 59e:	f8 94       	cli
+ 5a0:	de bf       	out	0x3e, r29	; 62
+ 5a2:	0f be       	out	0x3f, r0	; 63
+ 5a4:	cd bf       	out	0x3d, r28	; 61
+ 5a6:	cf 91       	pop	r28
+ 5a8:	df 91       	pop	r29
+ 5aa:	08 95       	ret
+
+000005ac <Request_sorter_paths_ans>:
+ 5ac:	df 93       	push	r29
+ 5ae:	cf 93       	push	r28
+ 5b0:	00 d0       	rcall	.+0      	; 0x5b2 <Request_sorter_paths_ans+0x6>
+ 5b2:	00 d0       	rcall	.+0      	; 0x5b4 <Request_sorter_paths_ans+0x8>
+ 5b4:	cd b7       	in	r28, 0x3d	; 61
+ 5b6:	de b7       	in	r29, 0x3e	; 62
+ 5b8:	81 e0       	ldi	r24, 0x01	; 1
+ 5ba:	89 83       	std	Y+1, r24	; 0x01
+ 5bc:	8a 83       	std	Y+2, r24	; 0x02
+ 5be:	8b 83       	std	Y+3, r24	; 0x03
+ 5c0:	8c 83       	std	Y+4, r24	; 0x04
+ 5c2:	84 e0       	ldi	r24, 0x04	; 4
+ 5c4:	60 e0       	ldi	r22, 0x00	; 0
+ 5c6:	ae 01       	movw	r20, r28
+ 5c8:	4f 5f       	subi	r20, 0xFF	; 255
+ 5ca:	5f 4f       	sbci	r21, 0xFF	; 255
+ 5cc:	82 dd       	rcall	.-1276   	; 0xd2 <send_command>
+ 5ce:	ad dd       	rcall	.-1190   	; 0x12a <check_is_money>
+ 5d0:	0f 90       	pop	r0
+ 5d2:	0f 90       	pop	r0
+ 5d4:	0f 90       	pop	r0
+ 5d6:	0f 90       	pop	r0
+ 5d8:	cf 91       	pop	r28
+ 5da:	df 91       	pop	r29
+ 5dc:	08 95       	ret
+
+000005de <Request_coin_id_ans>:
+ 5de:	df 93       	push	r29
+ 5e0:	cf 93       	push	r28
+ 5e2:	00 d0       	rcall	.+0      	; 0x5e4 <Request_coin_id_ans+0x6>
+ 5e4:	00 d0       	rcall	.+0      	; 0x5e6 <Request_coin_id_ans+0x8>
+ 5e6:	00 d0       	rcall	.+0      	; 0x5e8 <Request_coin_id_ans+0xa>
+ 5e8:	cd b7       	in	r28, 0x3d	; 61
+ 5ea:	de b7       	in	r29, 0x3e	; 62
+ 5ec:	de 01       	movw	r26, r28
+ 5ee:	11 96       	adiw	r26, 0x01	; 1
+ 5f0:	eb eb       	ldi	r30, 0xBB	; 187
+ 5f2:	f0 e0       	ldi	r31, 0x00	; 0
+ 5f4:	86 e0       	ldi	r24, 0x06	; 6
+ 5f6:	01 90       	ld	r0, Z+
+ 5f8:	0d 92       	st	X+, r0
+ 5fa:	81 50       	subi	r24, 0x01	; 1
+ 5fc:	e1 f7       	brne	.-8      	; 0x5f6 <Request_coin_id_ans+0x18>
+ 5fe:	86 e0       	ldi	r24, 0x06	; 6
+ 600:	60 e0       	ldi	r22, 0x00	; 0
+ 602:	ae 01       	movw	r20, r28
+ 604:	4f 5f       	subi	r20, 0xFF	; 255
+ 606:	5f 4f       	sbci	r21, 0xFF	; 255
+ 608:	64 dd       	rcall	.-1336   	; 0xd2 <send_command>
+ 60a:	8f dd       	rcall	.-1250   	; 0x12a <check_is_money>
+ 60c:	26 96       	adiw	r28, 0x06	; 6
+ 60e:	0f b6       	in	r0, 0x3f	; 63
+ 610:	f8 94       	cli
+ 612:	de bf       	out	0x3e, r29	; 62
+ 614:	0f be       	out	0x3f, r0	; 63
+ 616:	cd bf       	out	0x3d, r28	; 61
+ 618:	cf 91       	pop	r28
+ 61a:	df 91       	pop	r29
+ 61c:	08 95       	ret
+
+0000061e <Request_software_version_ans>:
+ 61e:	df 93       	push	r29
+ 620:	cf 93       	push	r28
+ 622:	00 d0       	rcall	.+0      	; 0x624 <Request_software_version_ans+0x6>
+ 624:	00 d0       	rcall	.+0      	; 0x626 <Request_software_version_ans+0x8>
+ 626:	0f 92       	push	r0
+ 628:	cd b7       	in	r28, 0x3d	; 61
+ 62a:	de b7       	in	r29, 0x3e	; 62
+ 62c:	de 01       	movw	r26, r28
+ 62e:	11 96       	adiw	r26, 0x01	; 1
+ 630:	e1 ec       	ldi	r30, 0xC1	; 193
+ 632:	f0 e0       	ldi	r31, 0x00	; 0
+ 634:	85 e0       	ldi	r24, 0x05	; 5
+ 636:	01 90       	ld	r0, Z+
+ 638:	0d 92       	st	X+, r0
+ 63a:	81 50       	subi	r24, 0x01	; 1
+ 63c:	e1 f7       	brne	.-8      	; 0x636 <Request_software_version_ans+0x18>
+ 63e:	85 e0       	ldi	r24, 0x05	; 5
+ 640:	60 e0       	ldi	r22, 0x00	; 0
+ 642:	ae 01       	movw	r20, r28
+ 644:	4f 5f       	subi	r20, 0xFF	; 255
+ 646:	5f 4f       	sbci	r21, 0xFF	; 255
+ 648:	44 dd       	rcall	.-1400   	; 0xd2 <send_command>
+ 64a:	6f dd       	rcall	.-1314   	; 0x12a <check_is_money>
+ 64c:	0f 90       	pop	r0
+ 64e:	0f 90       	pop	r0
+ 650:	0f 90       	pop	r0
+ 652:	0f 90       	pop	r0
+ 654:	0f 90       	pop	r0
+ 656:	cf 91       	pop	r28
+ 658:	df 91       	pop	r29
+ 65a:	08 95       	ret
+
+0000065c <Request_serial_number_ans>:
+ 65c:	df 93       	push	r29
+ 65e:	cf 93       	push	r28
+ 660:	00 d0       	rcall	.+0      	; 0x662 <Request_serial_number_ans+0x6>
+ 662:	0f 92       	push	r0
+ 664:	cd b7       	in	r28, 0x3d	; 61
+ 666:	de b7       	in	r29, 0x3e	; 62
+ 668:	de 01       	movw	r26, r28
+ 66a:	11 96       	adiw	r26, 0x01	; 1
+ 66c:	e6 ec       	ldi	r30, 0xC6	; 198
+ 66e:	f0 e0       	ldi	r31, 0x00	; 0
+ 670:	83 e0       	ldi	r24, 0x03	; 3
+ 672:	01 90       	ld	r0, Z+
+ 674:	0d 92       	st	X+, r0
+ 676:	81 50       	subi	r24, 0x01	; 1
+ 678:	e1 f7       	brne	.-8      	; 0x672 <Request_serial_number_ans+0x16>
+ 67a:	83 e0       	ldi	r24, 0x03	; 3
+ 67c:	60 e0       	ldi	r22, 0x00	; 0
+ 67e:	ae 01       	movw	r20, r28
+ 680:	4f 5f       	subi	r20, 0xFF	; 255
+ 682:	5f 4f       	sbci	r21, 0xFF	; 255
+ 684:	26 dd       	rcall	.-1460   	; 0xd2 <send_command>
+ 686:	51 dd       	rcall	.-1374   	; 0x12a <check_is_money>
+ 688:	0f 90       	pop	r0
+ 68a:	0f 90       	pop	r0
+ 68c:	0f 90       	pop	r0
+ 68e:	cf 91       	pop	r28
+ 690:	df 91       	pop	r29
+ 692:	08 95       	ret
+
+00000694 <Reset_device_ans>:
+ 694:	80 e0       	ldi	r24, 0x00	; 0
+ 696:	60 e0       	ldi	r22, 0x00	; 0
+ 698:	40 e0       	ldi	r20, 0x00	; 0
+ 69a:	50 e0       	ldi	r21, 0x00	; 0
+ 69c:	1a dd       	rcall	.-1484   	; 0xd2 <send_command>
+ 69e:	45 dd       	rcall	.-1398   	; 0x12a <check_is_money>
+ 6a0:	08 95       	ret
+
+000006a2 <Request_manufacturer_id_ans>:
+ 6a2:	df 93       	push	r29
+ 6a4:	cf 93       	push	r28
+ 6a6:	00 d0       	rcall	.+0      	; 0x6a8 <Request_manufacturer_id_ans+0x6>
+ 6a8:	0f 92       	push	r0
+ 6aa:	cd b7       	in	r28, 0x3d	; 61
+ 6ac:	de b7       	in	r29, 0x3e	; 62
+ 6ae:	de 01       	movw	r26, r28
+ 6b0:	11 96       	adiw	r26, 0x01	; 1
+ 6b2:	e9 ec       	ldi	r30, 0xC9	; 201
+ 6b4:	f0 e0       	ldi	r31, 0x00	; 0
+ 6b6:	83 e0       	ldi	r24, 0x03	; 3
+ 6b8:	01 90       	ld	r0, Z+
+ 6ba:	0d 92       	st	X+, r0
+ 6bc:	81 50       	subi	r24, 0x01	; 1
+ 6be:	e1 f7       	brne	.-8      	; 0x6b8 <Request_manufacturer_id_ans+0x16>
+ 6c0:	83 e0       	ldi	r24, 0x03	; 3
+ 6c2:	60 e0       	ldi	r22, 0x00	; 0
+ 6c4:	ae 01       	movw	r20, r28
+ 6c6:	4f 5f       	subi	r20, 0xFF	; 255
+ 6c8:	5f 4f       	sbci	r21, 0xFF	; 255
+ 6ca:	03 dd       	rcall	.-1530   	; 0xd2 <send_command>
+ 6cc:	2e dd       	rcall	.-1444   	; 0x12a <check_is_money>
+ 6ce:	0f 90       	pop	r0
+ 6d0:	0f 90       	pop	r0
+ 6d2:	0f 90       	pop	r0
+ 6d4:	cf 91       	pop	r28
+ 6d6:	df 91       	pop	r29
+ 6d8:	08 95       	ret
+
+000006da <Simple_poll_ans>:
+ 6da:	80 e0       	ldi	r24, 0x00	; 0
+ 6dc:	62 e0       	ldi	r22, 0x02	; 2
+ 6de:	40 e0       	ldi	r20, 0x00	; 0
+ 6e0:	50 e0       	ldi	r21, 0x00	; 0
+ 6e2:	f7 dc       	rcall	.-1554   	; 0xd2 <send_command>
+ 6e4:	22 dd       	rcall	.-1468   	; 0x12a <check_is_money>
+ 6e6:	08 95       	ret
+
+000006e8 <uart_init>:
+ 6e8:	90 bd       	out	0x20, r25	; 32
+ 6ea:	89 b9       	out	0x09, r24	; 9
+ 6ec:	88 e1       	ldi	r24, 0x18	; 24
+ 6ee:	8a b9       	out	0x0a, r24	; 10
+ 6f0:	86 e8       	ldi	r24, 0x86	; 134
+ 6f2:	80 bd       	out	0x20, r24	; 32
+ 6f4:	08 95       	ret
+
+000006f6 <uart_putc>:
+ 6f6:	5d 9b       	sbis	0x0b, 5	; 11
+ 6f8:	fe cf       	rjmp	.-4      	; 0x6f6 <uart_putc>
+ 6fa:	8c b9       	out	0x0c, r24	; 12
+ 6fc:	08 95       	ret
+
+000006fe <uart_ischar>:
+ 6fe:	8b b1       	in	r24, 0x0b	; 11
+ 700:	80 78       	andi	r24, 0x80	; 128
+ 702:	08 95       	ret
+
+00000704 <uart_getc>:
+ 704:	01 c0       	rjmp	.+2      	; 0x708 <uart_getc+0x4>
+ 706:	11 dd       	rcall	.-1502   	; 0x12a <check_is_money>
+ 708:	5f 9b       	sbis	0x0b, 7	; 11
+ 70a:	fd cf       	rjmp	.-6      	; 0x706 <uart_getc+0x2>
+ 70c:	8c b1       	in	r24, 0x0c	; 12
+ 70e:	08 95       	ret
+
+00000710 <main>:
+ 710:	0f 93       	push	r16
+ 712:	1f 93       	push	r17
+ 714:	df 93       	push	r29
+ 716:	cf 93       	push	r28
+ 718:	0f 92       	push	r0
+ 71a:	cd b7       	in	r28, 0x3d	; 61
+ 71c:	de b7       	in	r29, 0x3e	; 62
+ 71e:	8d 98       	cbi	0x11, 5	; 17
+ 720:	95 9a       	sbi	0x12, 5	; 18
+ 722:	b9 9a       	sbi	0x17, 1	; 23
+ 724:	c1 98       	cbi	0x18, 1	; 24
+ 726:	a5 9a       	sbi	0x14, 5	; 20
+ 728:	ad 9a       	sbi	0x15, 5	; 21
+ 72a:	10 bc       	out	0x20, r1	; 32
+ 72c:	83 e3       	ldi	r24, 0x33	; 51
+ 72e:	89 b9       	out	0x09, r24	; 9
+ 730:	88 e1       	ldi	r24, 0x18	; 24
+ 732:	8a b9       	out	0x0a, r24	; 10
+ 734:	86 e8       	ldi	r24, 0x86	; 134
+ 736:	80 bd       	out	0x20, r24	; 32
+ 738:	80 e2       	ldi	r24, 0x20	; 32
+ 73a:	9e e4       	ldi	r25, 0x4E	; 78
+ 73c:	28 ec       	ldi	r18, 0xC8	; 200
+ 73e:	30 e0       	ldi	r19, 0x00	; 0
+ 740:	f9 01       	movw	r30, r18
+ 742:	31 97       	sbiw	r30, 0x01	; 1
+ 744:	f1 f7       	brne	.-4      	; 0x742 <main+0x32>
+ 746:	01 97       	sbiw	r24, 0x01	; 1
+ 748:	d9 f7       	brne	.-10     	; 0x740 <main+0x30>
+ 74a:	80 e0       	ldi	r24, 0x00	; 0
+ 74c:	90 e0       	ldi	r25, 0x00	; 0
+ 74e:	fc 01       	movw	r30, r24
+ 750:	e6 52       	subi	r30, 0x26	; 38
+ 752:	ff 4f       	sbci	r31, 0xFF	; 255
+ 754:	10 82       	st	Z, r1
+ 756:	01 96       	adiw	r24, 0x01	; 1
+ 758:	88 32       	cpi	r24, 0x28	; 40
+ 75a:	91 05       	cpc	r25, r1
+ 75c:	c1 f7       	brne	.-16     	; 0x74e <main+0x3e>
+ 75e:	e5 dc       	rcall	.-1590   	; 0x12a <check_is_money>
+ 760:	d1 df       	rcall	.-94     	; 0x704 <uart_getc>
+ 762:	80 93 da 00 	sts	0x00DA, r24
+ 766:	e1 dc       	rcall	.-1598   	; 0x12a <check_is_money>
+ 768:	80 91 da 00 	lds	r24, 0x00DA
+ 76c:	82 30       	cpi	r24, 0x02	; 2
+ 76e:	51 f4       	brne	.+20     	; 0x784 <main+0x74>
+ 770:	c9 df       	rcall	.-110    	; 0x704 <uart_getc>
+ 772:	80 93 db 00 	sts	0x00DB, r24
+ 776:	c6 df       	rcall	.-116    	; 0x704 <uart_getc>
+ 778:	80 93 dc 00 	sts	0x00DC, r24
+ 77c:	80 91 da 00 	lds	r24, 0x00DA
+ 780:	82 30       	cpi	r24, 0x02	; 2
+ 782:	19 f0       	breq	.+6      	; 0x78a <main+0x7a>
+ 784:	80 e0       	ldi	r24, 0x00	; 0
+ 786:	90 e0       	ldi	r25, 0x00	; 0
+ 788:	50 c3       	rjmp	.+1696   	; 0xe2a <main+0x71a>
+ 78a:	80 91 dc 00 	lds	r24, 0x00DC
+ 78e:	81 30       	cpi	r24, 0x01	; 1
+ 790:	c9 f7       	brne	.-14     	; 0x784 <main+0x74>
+ 792:	80 93 cf 00 	sts	0x00CF, r24
+ 796:	b6 df       	rcall	.-148    	; 0x704 <uart_getc>
+ 798:	80 93 dd 00 	sts	0x00DD, r24
+ 79c:	b3 df       	rcall	.-154    	; 0x704 <uart_getc>
+ 79e:	80 93 de 00 	sts	0x00DE, r24
+ 7a2:	90 e0       	ldi	r25, 0x00	; 0
+ 7a4:	0c c0       	rjmp	.+24     	; 0x7be <main+0xae>
+ 7a6:	09 2f       	mov	r16, r25
+ 7a8:	10 e0       	ldi	r17, 0x00	; 0
+ 7aa:	0b 5f       	subi	r16, 0xFB	; 251
+ 7ac:	1f 4f       	sbci	r17, 0xFF	; 255
+ 7ae:	99 83       	std	Y+1, r25	; 0x01
+ 7b0:	a9 df       	rcall	.-174    	; 0x704 <uart_getc>
+ 7b2:	06 52       	subi	r16, 0x26	; 38
+ 7b4:	1f 4f       	sbci	r17, 0xFF	; 255
+ 7b6:	f8 01       	movw	r30, r16
+ 7b8:	80 83       	st	Z, r24
+ 7ba:	99 81       	ldd	r25, Y+1	; 0x01
+ 7bc:	9f 5f       	subi	r25, 0xFF	; 255
+ 7be:	80 91 db 00 	lds	r24, 0x00DB
+ 7c2:	98 17       	cp	r25, r24
+ 7c4:	80 f3       	brcs	.-32     	; 0x7a6 <main+0x96>
+ 7c6:	b1 dc       	rcall	.-1694   	; 0x12a <check_is_money>
+ 7c8:	80 91 da 00 	lds	r24, 0x00DA
+ 7cc:	82 30       	cpi	r24, 0x02	; 2
+ 7ce:	89 f4       	brne	.+34     	; 0x7f2 <main+0xe2>
+ 7d0:	80 91 db 00 	lds	r24, 0x00DB
+ 7d4:	88 23       	and	r24, r24
+ 7d6:	69 f4       	brne	.+26     	; 0x7f2 <main+0xe2>
+ 7d8:	80 91 dc 00 	lds	r24, 0x00DC
+ 7dc:	81 30       	cpi	r24, 0x01	; 1
+ 7de:	49 f4       	brne	.+18     	; 0x7f2 <main+0xe2>
+ 7e0:	80 91 dd 00 	lds	r24, 0x00DD
+ 7e4:	8e 3f       	cpi	r24, 0xFE	; 254
+ 7e6:	29 f4       	brne	.+10     	; 0x7f2 <main+0xe2>
+ 7e8:	80 91 de 00 	lds	r24, 0x00DE
+ 7ec:	8f 3f       	cpi	r24, 0xFF	; 255
+ 7ee:	09 f4       	brne	.+2      	; 0x7f2 <main+0xe2>
+ 7f0:	74 df       	rcall	.-280    	; 0x6da <Simple_poll_ans>
+ 7f2:	80 91 da 00 	lds	r24, 0x00DA
+ 7f6:	82 30       	cpi	r24, 0x02	; 2
+ 7f8:	89 f4       	brne	.+34     	; 0x81c <main+0x10c>
+ 7fa:	80 91 db 00 	lds	r24, 0x00DB
+ 7fe:	88 23       	and	r24, r24
+ 800:	69 f4       	brne	.+26     	; 0x81c <main+0x10c>
+ 802:	80 91 dc 00 	lds	r24, 0x00DC
+ 806:	81 30       	cpi	r24, 0x01	; 1
+ 808:	49 f4       	brne	.+18     	; 0x81c <main+0x10c>
+ 80a:	80 91 dd 00 	lds	r24, 0x00DD
+ 80e:	86 3f       	cpi	r24, 0xF6	; 246
+ 810:	29 f4       	brne	.+10     	; 0x81c <main+0x10c>
+ 812:	80 91 de 00 	lds	r24, 0x00DE
+ 816:	87 30       	cpi	r24, 0x07	; 7
+ 818:	09 f4       	brne	.+2      	; 0x81c <main+0x10c>
+ 81a:	43 df       	rcall	.-378    	; 0x6a2 <Request_manufacturer_id_ans>
+ 81c:	80 91 da 00 	lds	r24, 0x00DA
+ 820:	82 30       	cpi	r24, 0x02	; 2
+ 822:	89 f4       	brne	.+34     	; 0x846 <main+0x136>
+ 824:	80 91 db 00 	lds	r24, 0x00DB
+ 828:	88 23       	and	r24, r24
+ 82a:	69 f4       	brne	.+26     	; 0x846 <main+0x136>
+ 82c:	80 91 dc 00 	lds	r24, 0x00DC
+ 830:	81 30       	cpi	r24, 0x01	; 1
+ 832:	49 f4       	brne	.+18     	; 0x846 <main+0x136>
+ 834:	80 91 dd 00 	lds	r24, 0x00DD
+ 838:	81 30       	cpi	r24, 0x01	; 1
+ 83a:	29 f4       	brne	.+10     	; 0x846 <main+0x136>
+ 83c:	80 91 de 00 	lds	r24, 0x00DE
+ 840:	8c 3f       	cpi	r24, 0xFC	; 252
+ 842:	09 f4       	brne	.+2      	; 0x846 <main+0x136>
+ 844:	27 df       	rcall	.-434    	; 0x694 <Reset_device_ans>
+ 846:	80 91 da 00 	lds	r24, 0x00DA
+ 84a:	82 30       	cpi	r24, 0x02	; 2
+ 84c:	89 f4       	brne	.+34     	; 0x870 <main+0x160>
+ 84e:	80 91 db 00 	lds	r24, 0x00DB
+ 852:	88 23       	and	r24, r24
+ 854:	69 f4       	brne	.+26     	; 0x870 <main+0x160>
+ 856:	80 91 dc 00 	lds	r24, 0x00DC
+ 85a:	81 30       	cpi	r24, 0x01	; 1
+ 85c:	49 f4       	brne	.+18     	; 0x870 <main+0x160>
+ 85e:	80 91 dd 00 	lds	r24, 0x00DD
+ 862:	82 3f       	cpi	r24, 0xF2	; 242
+ 864:	29 f4       	brne	.+10     	; 0x870 <main+0x160>
+ 866:	80 91 de 00 	lds	r24, 0x00DE
+ 86a:	8b 30       	cpi	r24, 0x0B	; 11
+ 86c:	09 f4       	brne	.+2      	; 0x870 <main+0x160>
+ 86e:	f6 de       	rcall	.-532    	; 0x65c <Request_serial_number_ans>
+ 870:	80 91 da 00 	lds	r24, 0x00DA
+ 874:	82 30       	cpi	r24, 0x02	; 2
+ 876:	89 f4       	brne	.+34     	; 0x89a <main+0x18a>
+ 878:	80 91 db 00 	lds	r24, 0x00DB
+ 87c:	88 23       	and	r24, r24
+ 87e:	69 f4       	brne	.+26     	; 0x89a <main+0x18a>
+ 880:	80 91 dc 00 	lds	r24, 0x00DC
+ 884:	81 30       	cpi	r24, 0x01	; 1
+ 886:	49 f4       	brne	.+18     	; 0x89a <main+0x18a>
+ 888:	80 91 dd 00 	lds	r24, 0x00DD
+ 88c:	81 3f       	cpi	r24, 0xF1	; 241
+ 88e:	29 f4       	brne	.+10     	; 0x89a <main+0x18a>
+ 890:	80 91 de 00 	lds	r24, 0x00DE
+ 894:	8c 30       	cpi	r24, 0x0C	; 12
+ 896:	09 f4       	brne	.+2      	; 0x89a <main+0x18a>
+ 898:	c2 de       	rcall	.-636    	; 0x61e <Request_software_version_ans>
+ 89a:	80 91 da 00 	lds	r24, 0x00DA
+ 89e:	82 30       	cpi	r24, 0x02	; 2
+ 8a0:	a9 f4       	brne	.+42     	; 0x8cc <main+0x1bc>
+ 8a2:	80 91 db 00 	lds	r24, 0x00DB
+ 8a6:	81 30       	cpi	r24, 0x01	; 1
+ 8a8:	89 f4       	brne	.+34     	; 0x8cc <main+0x1bc>
+ 8aa:	80 91 dc 00 	lds	r24, 0x00DC
+ 8ae:	81 30       	cpi	r24, 0x01	; 1
+ 8b0:	69 f4       	brne	.+26     	; 0x8cc <main+0x1bc>
+ 8b2:	80 91 dd 00 	lds	r24, 0x00DD
+ 8b6:	88 3b       	cpi	r24, 0xB8	; 184
+ 8b8:	49 f4       	brne	.+18     	; 0x8cc <main+0x1bc>
+ 8ba:	80 91 de 00 	lds	r24, 0x00DE
+ 8be:	81 30       	cpi	r24, 0x01	; 1
+ 8c0:	29 f4       	brne	.+10     	; 0x8cc <main+0x1bc>
+ 8c2:	80 91 df 00 	lds	r24, 0x00DF
+ 8c6:	83 34       	cpi	r24, 0x43	; 67
+ 8c8:	09 f4       	brne	.+2      	; 0x8cc <main+0x1bc>
+ 8ca:	89 de       	rcall	.-750    	; 0x5de <Request_coin_id_ans>
+ 8cc:	80 91 da 00 	lds	r24, 0x00DA
+ 8d0:	82 30       	cpi	r24, 0x02	; 2
+ 8d2:	a9 f4       	brne	.+42     	; 0x8fe <main+0x1ee>
+ 8d4:	80 91 db 00 	lds	r24, 0x00DB
+ 8d8:	81 30       	cpi	r24, 0x01	; 1
+ 8da:	89 f4       	brne	.+34     	; 0x8fe <main+0x1ee>
+ 8dc:	80 91 dc 00 	lds	r24, 0x00DC
+ 8e0:	81 30       	cpi	r24, 0x01	; 1
+ 8e2:	69 f4       	brne	.+26     	; 0x8fe <main+0x1ee>
+ 8e4:	80 91 dd 00 	lds	r24, 0x00DD
+ 8e8:	81 3d       	cpi	r24, 0xD1	; 209
+ 8ea:	49 f4       	brne	.+18     	; 0x8fe <main+0x1ee>
+ 8ec:	80 91 de 00 	lds	r24, 0x00DE
+ 8f0:	81 30       	cpi	r24, 0x01	; 1
+ 8f2:	29 f4       	brne	.+10     	; 0x8fe <main+0x1ee>
+ 8f4:	80 91 df 00 	lds	r24, 0x00DF
+ 8f8:	8a 32       	cpi	r24, 0x2A	; 42
+ 8fa:	09 f4       	brne	.+2      	; 0x8fe <main+0x1ee>
+ 8fc:	57 de       	rcall	.-850    	; 0x5ac <Request_sorter_paths_ans>
+ 8fe:	80 91 da 00 	lds	r24, 0x00DA
+ 902:	82 30       	cpi	r24, 0x02	; 2
+ 904:	a9 f4       	brne	.+42     	; 0x930 <main+0x220>
+ 906:	80 91 db 00 	lds	r24, 0x00DB
+ 90a:	81 30       	cpi	r24, 0x01	; 1
+ 90c:	89 f4       	brne	.+34     	; 0x930 <main+0x220>
+ 90e:	80 91 dc 00 	lds	r24, 0x00DC
+ 912:	81 30       	cpi	r24, 0x01	; 1
+ 914:	69 f4       	brne	.+26     	; 0x930 <main+0x220>
+ 916:	80 91 dd 00 	lds	r24, 0x00DD
+ 91a:	88 3b       	cpi	r24, 0xB8	; 184
+ 91c:	49 f4       	brne	.+18     	; 0x930 <main+0x220>
+ 91e:	80 91 de 00 	lds	r24, 0x00DE
+ 922:	82 30       	cpi	r24, 0x02	; 2
+ 924:	29 f4       	brne	.+10     	; 0x930 <main+0x220>
+ 926:	80 91 df 00 	lds	r24, 0x00DF
+ 92a:	82 34       	cpi	r24, 0x42	; 66
+ 92c:	09 f4       	brne	.+2      	; 0x930 <main+0x220>
+ 92e:	1e de       	rcall	.-964    	; 0x56c <Request_coin_id_ans_v2>
+ 930:	80 91 da 00 	lds	r24, 0x00DA
+ 934:	82 30       	cpi	r24, 0x02	; 2
+ 936:	a9 f4       	brne	.+42     	; 0x962 <main+0x252>
+ 938:	80 91 db 00 	lds	r24, 0x00DB
+ 93c:	81 30       	cpi	r24, 0x01	; 1
+ 93e:	89 f4       	brne	.+34     	; 0x962 <main+0x252>
+ 940:	80 91 dc 00 	lds	r24, 0x00DC
+ 944:	81 30       	cpi	r24, 0x01	; 1
+ 946:	69 f4       	brne	.+26     	; 0x962 <main+0x252>
+ 948:	80 91 dd 00 	lds	r24, 0x00DD
+ 94c:	81 3d       	cpi	r24, 0xD1	; 209
+ 94e:	49 f4       	brne	.+18     	; 0x962 <main+0x252>
+ 950:	80 91 de 00 	lds	r24, 0x00DE
+ 954:	82 30       	cpi	r24, 0x02	; 2
+ 956:	29 f4       	brne	.+10     	; 0x962 <main+0x252>
+ 958:	80 91 df 00 	lds	r24, 0x00DF
+ 95c:	89 32       	cpi	r24, 0x29	; 41
+ 95e:	09 f4       	brne	.+2      	; 0x962 <main+0x252>
+ 960:	25 de       	rcall	.-950    	; 0x5ac <Request_sorter_paths_ans>
+ 962:	80 91 da 00 	lds	r24, 0x00DA
+ 966:	82 30       	cpi	r24, 0x02	; 2
+ 968:	a9 f4       	brne	.+42     	; 0x994 <main+0x284>
+ 96a:	80 91 db 00 	lds	r24, 0x00DB
+ 96e:	81 30       	cpi	r24, 0x01	; 1
+ 970:	89 f4       	brne	.+34     	; 0x994 <main+0x284>
+ 972:	80 91 dc 00 	lds	r24, 0x00DC
+ 976:	81 30       	cpi	r24, 0x01	; 1
+ 978:	69 f4       	brne	.+26     	; 0x994 <main+0x284>
+ 97a:	80 91 dd 00 	lds	r24, 0x00DD
+ 97e:	88 3b       	cpi	r24, 0xB8	; 184
+ 980:	49 f4       	brne	.+18     	; 0x994 <main+0x284>
+ 982:	80 91 de 00 	lds	r24, 0x00DE
+ 986:	83 30       	cpi	r24, 0x03	; 3
+ 988:	29 f4       	brne	.+10     	; 0x994 <main+0x284>
+ 98a:	80 91 df 00 	lds	r24, 0x00DF
+ 98e:	81 34       	cpi	r24, 0x41	; 65
+ 990:	09 f4       	brne	.+2      	; 0x994 <main+0x284>
+ 992:	cc dd       	rcall	.-1128   	; 0x52c <Request_coin_id_ans_v3>
+ 994:	80 91 da 00 	lds	r24, 0x00DA
+ 998:	82 30       	cpi	r24, 0x02	; 2
+ 99a:	a9 f4       	brne	.+42     	; 0x9c6 <main+0x2b6>
+ 99c:	80 91 db 00 	lds	r24, 0x00DB
+ 9a0:	81 30       	cpi	r24, 0x01	; 1
+ 9a2:	89 f4       	brne	.+34     	; 0x9c6 <main+0x2b6>
+ 9a4:	80 91 dc 00 	lds	r24, 0x00DC
+ 9a8:	81 30       	cpi	r24, 0x01	; 1
+ 9aa:	69 f4       	brne	.+26     	; 0x9c6 <main+0x2b6>
+ 9ac:	80 91 dd 00 	lds	r24, 0x00DD
+ 9b0:	81 3d       	cpi	r24, 0xD1	; 209
+ 9b2:	49 f4       	brne	.+18     	; 0x9c6 <main+0x2b6>
+ 9b4:	80 91 de 00 	lds	r24, 0x00DE
+ 9b8:	83 30       	cpi	r24, 0x03	; 3
+ 9ba:	29 f4       	brne	.+10     	; 0x9c6 <main+0x2b6>
+ 9bc:	80 91 df 00 	lds	r24, 0x00DF
+ 9c0:	88 32       	cpi	r24, 0x28	; 40
+ 9c2:	09 f4       	brne	.+2      	; 0x9c6 <main+0x2b6>
+ 9c4:	f3 dd       	rcall	.-1050   	; 0x5ac <Request_sorter_paths_ans>
+ 9c6:	80 91 da 00 	lds	r24, 0x00DA
+ 9ca:	82 30       	cpi	r24, 0x02	; 2
+ 9cc:	a9 f4       	brne	.+42     	; 0x9f8 <main+0x2e8>
+ 9ce:	80 91 db 00 	lds	r24, 0x00DB
+ 9d2:	81 30       	cpi	r24, 0x01	; 1
+ 9d4:	89 f4       	brne	.+34     	; 0x9f8 <main+0x2e8>
+ 9d6:	80 91 dc 00 	lds	r24, 0x00DC
+ 9da:	81 30       	cpi	r24, 0x01	; 1
+ 9dc:	69 f4       	brne	.+26     	; 0x9f8 <main+0x2e8>
+ 9de:	80 91 dd 00 	lds	r24, 0x00DD
+ 9e2:	88 3b       	cpi	r24, 0xB8	; 184
+ 9e4:	49 f4       	brne	.+18     	; 0x9f8 <main+0x2e8>
+ 9e6:	80 91 de 00 	lds	r24, 0x00DE
+ 9ea:	84 30       	cpi	r24, 0x04	; 4
+ 9ec:	29 f4       	brne	.+10     	; 0x9f8 <main+0x2e8>
+ 9ee:	80 91 df 00 	lds	r24, 0x00DF
+ 9f2:	80 34       	cpi	r24, 0x40	; 64
+ 9f4:	09 f4       	brne	.+2      	; 0x9f8 <main+0x2e8>
+ 9f6:	7a dd       	rcall	.-1292   	; 0x4ec <Request_coin_id_ans_v4>
+ 9f8:	80 91 da 00 	lds	r24, 0x00DA
+ 9fc:	82 30       	cpi	r24, 0x02	; 2
+ 9fe:	a9 f4       	brne	.+42     	; 0xa2a <main+0x31a>
+ a00:	80 91 db 00 	lds	r24, 0x00DB
+ a04:	81 30       	cpi	r24, 0x01	; 1
+ a06:	89 f4       	brne	.+34     	; 0xa2a <main+0x31a>
+ a08:	80 91 dc 00 	lds	r24, 0x00DC
+ a0c:	81 30       	cpi	r24, 0x01	; 1
+ a0e:	69 f4       	brne	.+26     	; 0xa2a <main+0x31a>
+ a10:	80 91 dd 00 	lds	r24, 0x00DD
+ a14:	81 3d       	cpi	r24, 0xD1	; 209
+ a16:	49 f4       	brne	.+18     	; 0xa2a <main+0x31a>
+ a18:	80 91 de 00 	lds	r24, 0x00DE
+ a1c:	84 30       	cpi	r24, 0x04	; 4
+ a1e:	29 f4       	brne	.+10     	; 0xa2a <main+0x31a>
+ a20:	80 91 df 00 	lds	r24, 0x00DF
+ a24:	87 32       	cpi	r24, 0x27	; 39
+ a26:	09 f4       	brne	.+2      	; 0xa2a <main+0x31a>
+ a28:	c1 dd       	rcall	.-1150   	; 0x5ac <Request_sorter_paths_ans>
+ a2a:	80 91 da 00 	lds	r24, 0x00DA
+ a2e:	82 30       	cpi	r24, 0x02	; 2
+ a30:	a9 f4       	brne	.+42     	; 0xa5c <main+0x34c>
+ a32:	80 91 db 00 	lds	r24, 0x00DB
+ a36:	81 30       	cpi	r24, 0x01	; 1
+ a38:	89 f4       	brne	.+34     	; 0xa5c <main+0x34c>
+ a3a:	80 91 dc 00 	lds	r24, 0x00DC
+ a3e:	81 30       	cpi	r24, 0x01	; 1
+ a40:	69 f4       	brne	.+26     	; 0xa5c <main+0x34c>
+ a42:	80 91 dd 00 	lds	r24, 0x00DD
+ a46:	81 3d       	cpi	r24, 0xD1	; 209
+ a48:	49 f4       	brne	.+18     	; 0xa5c <main+0x34c>
+ a4a:	80 91 de 00 	lds	r24, 0x00DE
+ a4e:	85 30       	cpi	r24, 0x05	; 5
+ a50:	29 f4       	brne	.+10     	; 0xa5c <main+0x34c>
+ a52:	80 91 df 00 	lds	r24, 0x00DF
+ a56:	86 32       	cpi	r24, 0x26	; 38
+ a58:	09 f4       	brne	.+2      	; 0xa5c <main+0x34c>
+ a5a:	a8 dd       	rcall	.-1200   	; 0x5ac <Request_sorter_paths_ans>
+ a5c:	80 91 da 00 	lds	r24, 0x00DA
+ a60:	82 30       	cpi	r24, 0x02	; 2
+ a62:	a9 f4       	brne	.+42     	; 0xa8e <main+0x37e>
+ a64:	80 91 db 00 	lds	r24, 0x00DB
+ a68:	81 30       	cpi	r24, 0x01	; 1
+ a6a:	89 f4       	brne	.+34     	; 0xa8e <main+0x37e>
+ a6c:	80 91 dc 00 	lds	r24, 0x00DC
+ a70:	81 30       	cpi	r24, 0x01	; 1
+ a72:	69 f4       	brne	.+26     	; 0xa8e <main+0x37e>
+ a74:	80 91 dd 00 	lds	r24, 0x00DD
+ a78:	81 3d       	cpi	r24, 0xD1	; 209
+ a7a:	49 f4       	brne	.+18     	; 0xa8e <main+0x37e>
+ a7c:	80 91 de 00 	lds	r24, 0x00DE
+ a80:	86 30       	cpi	r24, 0x06	; 6
+ a82:	29 f4       	brne	.+10     	; 0xa8e <main+0x37e>
+ a84:	80 91 df 00 	lds	r24, 0x00DF
+ a88:	85 32       	cpi	r24, 0x25	; 37
+ a8a:	09 f4       	brne	.+2      	; 0xa8e <main+0x37e>
+ a8c:	8f dd       	rcall	.-1250   	; 0x5ac <Request_sorter_paths_ans>
+ a8e:	80 91 da 00 	lds	r24, 0x00DA
+ a92:	82 30       	cpi	r24, 0x02	; 2
+ a94:	a9 f4       	brne	.+42     	; 0xac0 <main+0x3b0>
+ a96:	80 91 db 00 	lds	r24, 0x00DB
+ a9a:	81 30       	cpi	r24, 0x01	; 1
+ a9c:	89 f4       	brne	.+34     	; 0xac0 <main+0x3b0>
+ a9e:	80 91 dc 00 	lds	r24, 0x00DC
+ aa2:	81 30       	cpi	r24, 0x01	; 1
+ aa4:	69 f4       	brne	.+26     	; 0xac0 <main+0x3b0>
+ aa6:	80 91 dd 00 	lds	r24, 0x00DD
+ aaa:	88 3b       	cpi	r24, 0xB8	; 184
+ aac:	49 f4       	brne	.+18     	; 0xac0 <main+0x3b0>
+ aae:	80 91 de 00 	lds	r24, 0x00DE
+ ab2:	84 30       	cpi	r24, 0x04	; 4
+ ab4:	29 f4       	brne	.+10     	; 0xac0 <main+0x3b0>
+ ab6:	80 91 df 00 	lds	r24, 0x00DF
+ aba:	80 34       	cpi	r24, 0x40	; 64
+ abc:	09 f4       	brne	.+2      	; 0xac0 <main+0x3b0>
+ abe:	16 dd       	rcall	.-1492   	; 0x4ec <Request_coin_id_ans_v4>
+ ac0:	80 91 da 00 	lds	r24, 0x00DA
+ ac4:	82 30       	cpi	r24, 0x02	; 2
+ ac6:	a9 f4       	brne	.+42     	; 0xaf2 <main+0x3e2>
+ ac8:	80 91 db 00 	lds	r24, 0x00DB
+ acc:	81 30       	cpi	r24, 0x01	; 1
+ ace:	89 f4       	brne	.+34     	; 0xaf2 <main+0x3e2>
+ ad0:	80 91 dc 00 	lds	r24, 0x00DC
+ ad4:	81 30       	cpi	r24, 0x01	; 1
+ ad6:	69 f4       	brne	.+26     	; 0xaf2 <main+0x3e2>
+ ad8:	80 91 dd 00 	lds	r24, 0x00DD
+ adc:	88 3b       	cpi	r24, 0xB8	; 184
+ ade:	49 f4       	brne	.+18     	; 0xaf2 <main+0x3e2>
+ ae0:	80 91 de 00 	lds	r24, 0x00DE
+ ae4:	85 30       	cpi	r24, 0x05	; 5
+ ae6:	29 f4       	brne	.+10     	; 0xaf2 <main+0x3e2>
+ ae8:	80 91 df 00 	lds	r24, 0x00DF
+ aec:	8f 33       	cpi	r24, 0x3F	; 63
+ aee:	09 f4       	brne	.+2      	; 0xaf2 <main+0x3e2>
+ af0:	dd dc       	rcall	.-1606   	; 0x4ac <Request_coin_id_ans_v5>
+ af2:	80 91 da 00 	lds	r24, 0x00DA
+ af6:	82 30       	cpi	r24, 0x02	; 2
+ af8:	a9 f4       	brne	.+42     	; 0xb24 <main+0x414>
+ afa:	80 91 db 00 	lds	r24, 0x00DB
+ afe:	81 30       	cpi	r24, 0x01	; 1
+ b00:	89 f4       	brne	.+34     	; 0xb24 <main+0x414>
+ b02:	80 91 dc 00 	lds	r24, 0x00DC
+ b06:	81 30       	cpi	r24, 0x01	; 1
+ b08:	69 f4       	brne	.+26     	; 0xb24 <main+0x414>
+ b0a:	80 91 dd 00 	lds	r24, 0x00DD
+ b0e:	88 3b       	cpi	r24, 0xB8	; 184
+ b10:	49 f4       	brne	.+18     	; 0xb24 <main+0x414>
+ b12:	80 91 de 00 	lds	r24, 0x00DE
+ b16:	86 30       	cpi	r24, 0x06	; 6
+ b18:	29 f4       	brne	.+10     	; 0xb24 <main+0x414>
+ b1a:	80 91 df 00 	lds	r24, 0x00DF
+ b1e:	8e 33       	cpi	r24, 0x3E	; 62
+ b20:	09 f4       	brne	.+2      	; 0xb24 <main+0x414>
+ b22:	a4 dc       	rcall	.-1720   	; 0x46c <Request_coin_id_ans_v6>
+ b24:	80 91 da 00 	lds	r24, 0x00DA
+ b28:	82 30       	cpi	r24, 0x02	; 2
+ b2a:	a9 f4       	brne	.+42     	; 0xb56 <main+0x446>
+ b2c:	80 91 db 00 	lds	r24, 0x00DB
+ b30:	81 30       	cpi	r24, 0x01	; 1
+ b32:	89 f4       	brne	.+34     	; 0xb56 <main+0x446>
+ b34:	80 91 dc 00 	lds	r24, 0x00DC
+ b38:	81 30       	cpi	r24, 0x01	; 1
+ b3a:	69 f4       	brne	.+26     	; 0xb56 <main+0x446>
+ b3c:	80 91 dd 00 	lds	r24, 0x00DD
+ b40:	88 3b       	cpi	r24, 0xB8	; 184
+ b42:	49 f4       	brne	.+18     	; 0xb56 <main+0x446>
+ b44:	80 91 de 00 	lds	r24, 0x00DE
+ b48:	87 30       	cpi	r24, 0x07	; 7
+ b4a:	29 f4       	brne	.+10     	; 0xb56 <main+0x446>
+ b4c:	80 91 df 00 	lds	r24, 0x00DF
+ b50:	8d 33       	cpi	r24, 0x3D	; 61
+ b52:	09 f4       	brne	.+2      	; 0xb56 <main+0x446>
+ b54:	6b dc       	rcall	.-1834   	; 0x42c <Request_coin_id_ans_v7>
+ b56:	80 91 da 00 	lds	r24, 0x00DA
+ b5a:	82 30       	cpi	r24, 0x02	; 2
+ b5c:	a9 f4       	brne	.+42     	; 0xb88 <main+0x478>
+ b5e:	80 91 db 00 	lds	r24, 0x00DB
+ b62:	81 30       	cpi	r24, 0x01	; 1
+ b64:	89 f4       	brne	.+34     	; 0xb88 <main+0x478>
+ b66:	80 91 dc 00 	lds	r24, 0x00DC
+ b6a:	81 30       	cpi	r24, 0x01	; 1
+ b6c:	69 f4       	brne	.+26     	; 0xb88 <main+0x478>
+ b6e:	80 91 dd 00 	lds	r24, 0x00DD
+ b72:	88 3b       	cpi	r24, 0xB8	; 184
+ b74:	49 f4       	brne	.+18     	; 0xb88 <main+0x478>
+ b76:	80 91 de 00 	lds	r24, 0x00DE
+ b7a:	88 30       	cpi	r24, 0x08	; 8
+ b7c:	29 f4       	brne	.+10     	; 0xb88 <main+0x478>
+ b7e:	80 91 df 00 	lds	r24, 0x00DF
+ b82:	8c 33       	cpi	r24, 0x3C	; 60
+ b84:	09 f4       	brne	.+2      	; 0xb88 <main+0x478>
+ b86:	32 dc       	rcall	.-1948   	; 0x3ec <Request_coin_id_ans_v8>
+ b88:	80 91 da 00 	lds	r24, 0x00DA
+ b8c:	82 30       	cpi	r24, 0x02	; 2
+ b8e:	a9 f4       	brne	.+42     	; 0xbba <main+0x4aa>
+ b90:	80 91 db 00 	lds	r24, 0x00DB
+ b94:	81 30       	cpi	r24, 0x01	; 1
+ b96:	89 f4       	brne	.+34     	; 0xbba <main+0x4aa>
+ b98:	80 91 dc 00 	lds	r24, 0x00DC
+ b9c:	81 30       	cpi	r24, 0x01	; 1
+ b9e:	69 f4       	brne	.+26     	; 0xbba <main+0x4aa>
+ ba0:	80 91 dd 00 	lds	r24, 0x00DD
+ ba4:	88 3b       	cpi	r24, 0xB8	; 184
+ ba6:	49 f4       	brne	.+18     	; 0xbba <main+0x4aa>
+ ba8:	80 91 de 00 	lds	r24, 0x00DE
+ bac:	89 30       	cpi	r24, 0x09	; 9
+ bae:	29 f4       	brne	.+10     	; 0xbba <main+0x4aa>
+ bb0:	80 91 df 00 	lds	r24, 0x00DF
+ bb4:	8b 33       	cpi	r24, 0x3B	; 59
+ bb6:	09 f4       	brne	.+2      	; 0xbba <main+0x4aa>
+ bb8:	f9 db       	rcall	.-2062   	; 0x3ac <Request_coin_id_ans_v9>
+ bba:	80 91 da 00 	lds	r24, 0x00DA
+ bbe:	82 30       	cpi	r24, 0x02	; 2
+ bc0:	a9 f4       	brne	.+42     	; 0xbec <main+0x4dc>
+ bc2:	80 91 db 00 	lds	r24, 0x00DB
+ bc6:	81 30       	cpi	r24, 0x01	; 1
+ bc8:	89 f4       	brne	.+34     	; 0xbec <main+0x4dc>
+ bca:	80 91 dc 00 	lds	r24, 0x00DC
+ bce:	81 30       	cpi	r24, 0x01	; 1
+ bd0:	69 f4       	brne	.+26     	; 0xbec <main+0x4dc>
+ bd2:	80 91 dd 00 	lds	r24, 0x00DD
+ bd6:	88 3b       	cpi	r24, 0xB8	; 184
+ bd8:	49 f4       	brne	.+18     	; 0xbec <main+0x4dc>
+ bda:	80 91 de 00 	lds	r24, 0x00DE
+ bde:	8a 30       	cpi	r24, 0x0A	; 10
+ be0:	29 f4       	brne	.+10     	; 0xbec <main+0x4dc>
+ be2:	80 91 df 00 	lds	r24, 0x00DF
+ be6:	8a 33       	cpi	r24, 0x3A	; 58
+ be8:	09 f4       	brne	.+2      	; 0xbec <main+0x4dc>
+ bea:	c0 db       	rcall	.-2176   	; 0x36c <Request_coin_id_ans_v10>
+ bec:	80 91 da 00 	lds	r24, 0x00DA
+ bf0:	82 30       	cpi	r24, 0x02	; 2
+ bf2:	a9 f4       	brne	.+42     	; 0xc1e <main+0x50e>
+ bf4:	80 91 db 00 	lds	r24, 0x00DB
+ bf8:	81 30       	cpi	r24, 0x01	; 1
+ bfa:	89 f4       	brne	.+34     	; 0xc1e <main+0x50e>
+ bfc:	80 91 dc 00 	lds	r24, 0x00DC
+ c00:	81 30       	cpi	r24, 0x01	; 1
+ c02:	69 f4       	brne	.+26     	; 0xc1e <main+0x50e>
+ c04:	80 91 dd 00 	lds	r24, 0x00DD
+ c08:	88 3b       	cpi	r24, 0xB8	; 184
+ c0a:	49 f4       	brne	.+18     	; 0xc1e <main+0x50e>
+ c0c:	80 91 de 00 	lds	r24, 0x00DE
+ c10:	8b 30       	cpi	r24, 0x0B	; 11
+ c12:	29 f4       	brne	.+10     	; 0xc1e <main+0x50e>
+ c14:	80 91 df 00 	lds	r24, 0x00DF
+ c18:	89 33       	cpi	r24, 0x39	; 57
+ c1a:	09 f4       	brne	.+2      	; 0xc1e <main+0x50e>
+ c1c:	87 db       	rcall	.-2290   	; 0x32c <Request_coin_id_ans_v11>
+ c1e:	80 91 da 00 	lds	r24, 0x00DA
+ c22:	82 30       	cpi	r24, 0x02	; 2
+ c24:	a9 f4       	brne	.+42     	; 0xc50 <main+0x540>
+ c26:	80 91 db 00 	lds	r24, 0x00DB
+ c2a:	81 30       	cpi	r24, 0x01	; 1
+ c2c:	89 f4       	brne	.+34     	; 0xc50 <main+0x540>
+ c2e:	80 91 dc 00 	lds	r24, 0x00DC
+ c32:	81 30       	cpi	r24, 0x01	; 1
+ c34:	69 f4       	brne	.+26     	; 0xc50 <main+0x540>
+ c36:	80 91 dd 00 	lds	r24, 0x00DD
+ c3a:	88 3b       	cpi	r24, 0xB8	; 184
+ c3c:	49 f4       	brne	.+18     	; 0xc50 <main+0x540>
+ c3e:	80 91 de 00 	lds	r24, 0x00DE
+ c42:	8c 30       	cpi	r24, 0x0C	; 12
+ c44:	29 f4       	brne	.+10     	; 0xc50 <main+0x540>
+ c46:	80 91 df 00 	lds	r24, 0x00DF
+ c4a:	88 33       	cpi	r24, 0x38	; 56
+ c4c:	09 f4       	brne	.+2      	; 0xc50 <main+0x540>
+ c4e:	4e db       	rcall	.-2404   	; 0x2ec <Request_coin_id_ans_v12>
+ c50:	80 91 da 00 	lds	r24, 0x00DA
+ c54:	82 30       	cpi	r24, 0x02	; 2
+ c56:	a9 f4       	brne	.+42     	; 0xc82 <main+0x572>
+ c58:	80 91 db 00 	lds	r24, 0x00DB
+ c5c:	81 30       	cpi	r24, 0x01	; 1
+ c5e:	89 f4       	brne	.+34     	; 0xc82 <main+0x572>
+ c60:	80 91 dc 00 	lds	r24, 0x00DC
+ c64:	81 30       	cpi	r24, 0x01	; 1
+ c66:	69 f4       	brne	.+26     	; 0xc82 <main+0x572>
+ c68:	80 91 dd 00 	lds	r24, 0x00DD
+ c6c:	88 3b       	cpi	r24, 0xB8	; 184
+ c6e:	49 f4       	brne	.+18     	; 0xc82 <main+0x572>
+ c70:	80 91 de 00 	lds	r24, 0x00DE
+ c74:	8d 30       	cpi	r24, 0x0D	; 13
+ c76:	29 f4       	brne	.+10     	; 0xc82 <main+0x572>
+ c78:	80 91 df 00 	lds	r24, 0x00DF
+ c7c:	87 33       	cpi	r24, 0x37	; 55
+ c7e:	09 f4       	brne	.+2      	; 0xc82 <main+0x572>
+ c80:	15 db       	rcall	.-2518   	; 0x2ac <Request_coin_id_ans_v13>
+ c82:	80 91 da 00 	lds	r24, 0x00DA
+ c86:	82 30       	cpi	r24, 0x02	; 2
+ c88:	a9 f4       	brne	.+42     	; 0xcb4 <main+0x5a4>
+ c8a:	80 91 db 00 	lds	r24, 0x00DB
+ c8e:	81 30       	cpi	r24, 0x01	; 1
+ c90:	89 f4       	brne	.+34     	; 0xcb4 <main+0x5a4>
+ c92:	80 91 dc 00 	lds	r24, 0x00DC
+ c96:	81 30       	cpi	r24, 0x01	; 1
+ c98:	69 f4       	brne	.+26     	; 0xcb4 <main+0x5a4>
+ c9a:	80 91 dd 00 	lds	r24, 0x00DD
+ c9e:	88 3b       	cpi	r24, 0xB8	; 184
+ ca0:	49 f4       	brne	.+18     	; 0xcb4 <main+0x5a4>
+ ca2:	80 91 de 00 	lds	r24, 0x00DE
+ ca6:	8e 30       	cpi	r24, 0x0E	; 14
+ ca8:	29 f4       	brne	.+10     	; 0xcb4 <main+0x5a4>
+ caa:	80 91 df 00 	lds	r24, 0x00DF
+ cae:	86 33       	cpi	r24, 0x36	; 54
+ cb0:	09 f4       	brne	.+2      	; 0xcb4 <main+0x5a4>
+ cb2:	dc da       	rcall	.-2632   	; 0x26c <Request_coin_id_ans_v14>
+ cb4:	80 91 da 00 	lds	r24, 0x00DA
+ cb8:	82 30       	cpi	r24, 0x02	; 2
+ cba:	a9 f4       	brne	.+42     	; 0xce6 <main+0x5d6>
+ cbc:	80 91 db 00 	lds	r24, 0x00DB
+ cc0:	81 30       	cpi	r24, 0x01	; 1
+ cc2:	89 f4       	brne	.+34     	; 0xce6 <main+0x5d6>
+ cc4:	80 91 dc 00 	lds	r24, 0x00DC
+ cc8:	81 30       	cpi	r24, 0x01	; 1
+ cca:	69 f4       	brne	.+26     	; 0xce6 <main+0x5d6>
+ ccc:	80 91 dd 00 	lds	r24, 0x00DD
+ cd0:	88 3b       	cpi	r24, 0xB8	; 184
+ cd2:	49 f4       	brne	.+18     	; 0xce6 <main+0x5d6>
+ cd4:	80 91 de 00 	lds	r24, 0x00DE
+ cd8:	8f 30       	cpi	r24, 0x0F	; 15
+ cda:	29 f4       	brne	.+10     	; 0xce6 <main+0x5d6>
+ cdc:	80 91 df 00 	lds	r24, 0x00DF
+ ce0:	85 33       	cpi	r24, 0x35	; 53
+ ce2:	09 f4       	brne	.+2      	; 0xce6 <main+0x5d6>
+ ce4:	a3 da       	rcall	.-2746   	; 0x22c <Request_coin_id_ans_v15>
+ ce6:	80 91 da 00 	lds	r24, 0x00DA
+ cea:	82 30       	cpi	r24, 0x02	; 2
+ cec:	a9 f4       	brne	.+42     	; 0xd18 <main+0x608>
+ cee:	80 91 db 00 	lds	r24, 0x00DB
+ cf2:	81 30       	cpi	r24, 0x01	; 1
+ cf4:	89 f4       	brne	.+34     	; 0xd18 <main+0x608>
+ cf6:	80 91 dc 00 	lds	r24, 0x00DC
+ cfa:	81 30       	cpi	r24, 0x01	; 1
+ cfc:	69 f4       	brne	.+26     	; 0xd18 <main+0x608>
+ cfe:	80 91 dd 00 	lds	r24, 0x00DD
+ d02:	88 3b       	cpi	r24, 0xB8	; 184
+ d04:	49 f4       	brne	.+18     	; 0xd18 <main+0x608>
+ d06:	80 91 de 00 	lds	r24, 0x00DE
+ d0a:	80 31       	cpi	r24, 0x10	; 16
+ d0c:	29 f4       	brne	.+10     	; 0xd18 <main+0x608>
+ d0e:	80 91 df 00 	lds	r24, 0x00DF
+ d12:	84 33       	cpi	r24, 0x34	; 52
+ d14:	09 f4       	brne	.+2      	; 0xd18 <main+0x608>
+ d16:	6a da       	rcall	.-2860   	; 0x1ec <Request_coin_id_ans_v16>
+ d18:	80 91 da 00 	lds	r24, 0x00DA
+ d1c:	82 30       	cpi	r24, 0x02	; 2
+ d1e:	a9 f4       	brne	.+42     	; 0xd4a <main+0x63a>
+ d20:	80 91 db 00 	lds	r24, 0x00DB
+ d24:	81 30       	cpi	r24, 0x01	; 1
+ d26:	89 f4       	brne	.+34     	; 0xd4a <main+0x63a>
+ d28:	80 91 dc 00 	lds	r24, 0x00DC
+ d2c:	81 30       	cpi	r24, 0x01	; 1
+ d2e:	69 f4       	brne	.+26     	; 0xd4a <main+0x63a>
+ d30:	80 91 dd 00 	lds	r24, 0x00DD
+ d34:	8e 3d       	cpi	r24, 0xDE	; 222
+ d36:	49 f4       	brne	.+18     	; 0xd4a <main+0x63a>
+ d38:	80 91 de 00 	lds	r24, 0x00DE
+ d3c:	8f 3f       	cpi	r24, 0xFF	; 255
+ d3e:	29 f4       	brne	.+10     	; 0xd4a <main+0x63a>
+ d40:	80 91 df 00 	lds	r24, 0x00DF
+ d44:	8f 31       	cpi	r24, 0x1F	; 31
+ d46:	09 f4       	brne	.+2      	; 0xd4a <main+0x63a>
+ d48:	a5 dc       	rcall	.-1718   	; 0x694 <Reset_device_ans>
+ d4a:	80 91 da 00 	lds	r24, 0x00DA
+ d4e:	82 30       	cpi	r24, 0x02	; 2
+ d50:	89 f4       	brne	.+34     	; 0xd74 <main+0x664>
+ d52:	80 91 db 00 	lds	r24, 0x00DB
+ d56:	81 30       	cpi	r24, 0x01	; 1
+ d58:	69 f4       	brne	.+26     	; 0xd74 <main+0x664>
+ d5a:	80 91 dc 00 	lds	r24, 0x00DC
+ d5e:	81 30       	cpi	r24, 0x01	; 1
+ d60:	49 f4       	brne	.+18     	; 0xd74 <main+0x664>
+ d62:	80 91 dd 00 	lds	r24, 0x00DD
+ d66:	8e 3d       	cpi	r24, 0xDE	; 222
+ d68:	29 f4       	brne	.+10     	; 0xd74 <main+0x664>
+ d6a:	80 91 de 00 	lds	r24, 0x00DE
+ d6e:	88 23       	and	r24, r24
+ d70:	09 f4       	brne	.+2      	; 0xd74 <main+0x664>
+ d72:	90 dc       	rcall	.-1760   	; 0x694 <Reset_device_ans>
+ d74:	80 91 da 00 	lds	r24, 0x00DA
+ d78:	82 30       	cpi	r24, 0x02	; 2
+ d7a:	89 f4       	brne	.+34     	; 0xd9e <main+0x68e>
+ d7c:	80 91 db 00 	lds	r24, 0x00DB
+ d80:	88 23       	and	r24, r24
+ d82:	69 f4       	brne	.+26     	; 0xd9e <main+0x68e>
+ d84:	80 91 dc 00 	lds	r24, 0x00DC
+ d88:	81 30       	cpi	r24, 0x01	; 1
+ d8a:	49 f4       	brne	.+18     	; 0xd9e <main+0x68e>
+ d8c:	80 91 dd 00 	lds	r24, 0x00DD
+ d90:	85 3e       	cpi	r24, 0xE5	; 229
+ d92:	29 f4       	brne	.+10     	; 0xd9e <main+0x68e>
+ d94:	80 91 de 00 	lds	r24, 0x00DE
+ d98:	88 31       	cpi	r24, 0x18	; 24
+ d9a:	09 f4       	brne	.+2      	; 0xd9e <main+0x68e>
+ d9c:	ec d9       	rcall	.-3112   	; 0x176 <Read_buffor_credit_ans>
+ d9e:	80 91 da 00 	lds	r24, 0x00DA
+ da2:	82 30       	cpi	r24, 0x02	; 2
+ da4:	e1 f4       	brne	.+56     	; 0xdde <main+0x6ce>
+ da6:	80 91 db 00 	lds	r24, 0x00DB
+ daa:	82 30       	cpi	r24, 0x02	; 2
+ dac:	c1 f4       	brne	.+48     	; 0xdde <main+0x6ce>
+ dae:	00 91 dc 00 	lds	r16, 0x00DC
+ db2:	01 30       	cpi	r16, 0x01	; 1
+ db4:	a1 f4       	brne	.+40     	; 0xdde <main+0x6ce>
+ db6:	80 91 dd 00 	lds	r24, 0x00DD
+ dba:	87 3e       	cpi	r24, 0xE7	; 231
+ dbc:	81 f4       	brne	.+32     	; 0xdde <main+0x6ce>
+ dbe:	80 91 de 00 	lds	r24, 0x00DE
+ dc2:	88 23       	and	r24, r24
+ dc4:	61 f4       	brne	.+24     	; 0xdde <main+0x6ce>
+ dc6:	80 91 df 00 	lds	r24, 0x00DF
+ dca:	88 23       	and	r24, r24
+ dcc:	41 f4       	brne	.+16     	; 0xdde <main+0x6ce>
+ dce:	80 91 e0 00 	lds	r24, 0x00E0
+ dd2:	84 31       	cpi	r24, 0x14	; 20
+ dd4:	21 f4       	brne	.+8      	; 0xdde <main+0x6ce>
+ dd6:	5e dc       	rcall	.-1860   	; 0x694 <Reset_device_ans>
+ dd8:	00 93 60 00 	sts	0x0060, r16
+ ddc:	9e d9       	rcall	.-3268   	; 0x11a <Set_inhibit>
+ dde:	80 91 da 00 	lds	r24, 0x00DA
+ de2:	82 30       	cpi	r24, 0x02	; 2
+ de4:	d9 f4       	brne	.+54     	; 0xe1c <main+0x70c>
+ de6:	80 91 db 00 	lds	r24, 0x00DB
+ dea:	82 30       	cpi	r24, 0x02	; 2
+ dec:	b9 f4       	brne	.+46     	; 0xe1c <main+0x70c>
+ dee:	80 91 dc 00 	lds	r24, 0x00DC
+ df2:	81 30       	cpi	r24, 0x01	; 1
+ df4:	99 f4       	brne	.+38     	; 0xe1c <main+0x70c>
+ df6:	80 91 dd 00 	lds	r24, 0x00DD
+ dfa:	87 3e       	cpi	r24, 0xE7	; 231
+ dfc:	79 f4       	brne	.+30     	; 0xe1c <main+0x70c>
+ dfe:	80 91 de 00 	lds	r24, 0x00DE
+ e02:	80 32       	cpi	r24, 0x20	; 32
+ e04:	59 f4       	brne	.+22     	; 0xe1c <main+0x70c>
+ e06:	80 91 df 00 	lds	r24, 0x00DF
+ e0a:	88 23       	and	r24, r24
+ e0c:	39 f4       	brne	.+14     	; 0xe1c <main+0x70c>
+ e0e:	80 91 e0 00 	lds	r24, 0x00E0
+ e12:	84 3f       	cpi	r24, 0xF4	; 244
+ e14:	19 f4       	brne	.+6      	; 0xe1c <main+0x70c>
+ e16:	3e dc       	rcall	.-1924   	; 0x694 <Reset_device_ans>
+ e18:	10 92 60 00 	sts	0x0060, r1
+ e1c:	7e d9       	rcall	.-3332   	; 0x11a <Set_inhibit>
+ e1e:	85 d9       	rcall	.-3318   	; 0x12a <check_is_money>
+ e20:	01 c0       	rjmp	.+2      	; 0xe24 <main+0x714>
+ e22:	8c b1       	in	r24, 0x0c	; 12
+ e24:	5f 99       	sbic	0x0b, 7	; 11
+ e26:	fd cf       	rjmp	.-6      	; 0xe22 <main+0x712>
+ e28:	ad cc       	rjmp	.-1702   	; 0x784 <main+0x74>
+ e2a:	fc 01       	movw	r30, r24
+ e2c:	e6 52       	subi	r30, 0x26	; 38
+ e2e:	ff 4f       	sbci	r31, 0xFF	; 255
+ e30:	10 82       	st	Z, r1
+ e32:	01 96       	adiw	r24, 0x01	; 1
+ e34:	88 32       	cpi	r24, 0x28	; 40
+ e36:	91 05       	cpc	r25, r1
+ e38:	09 f4       	brne	.+2      	; 0xe3c <main+0x72c>
+ e3a:	91 cc       	rjmp	.-1758   	; 0x75e <main+0x4e>
+ e3c:	f6 cf       	rjmp	.-20     	; 0xe2a <main+0x71a>
+
+00000e3e <_exit>:
+ e3e:	f8 94       	cli
+
+00000e40 <__stop_program>:
+ e40:	ff cf       	rjmp	.-2      	; 0xe40 <__stop_program>

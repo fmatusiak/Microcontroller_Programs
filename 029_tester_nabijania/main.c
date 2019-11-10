@@ -1,0 +1,88 @@
+#include "main.h"
+
+// GLOBAL VARIABLES
+
+int main(void) {
+
+	ioInit();
+	//int ziet = 48;
+
+	while (1) {
+
+		if (!(PIN_COUNTER_OUT_IN)) {
+			for (uint16_t i = 0; i < 10000; i++) {
+				COIN_ACCEPTOR_OUT_HIGH;
+				_delay_ms(30);
+				COIN_ACCEPTOR_OUT_LOW;
+				_delay_ms(30);
+			}
+			for (uint16_t i = 0; i < 15000; i++) {
+				BILL_ACCEPTOR_OUT_HIGH;
+				_delay_ms(30);
+				BILL_ACCEPTOR_OUT_LOW;
+				_delay_ms(30);
+			}
+
+		}
+
+	}
+}
+void ioInit() {
+//========== INS ========================
+	_delay_ms(500);
+	DDR_COIN_ACCEPTOR_IN;
+	DDR_BILL_ACCEPTOR_IN;
+	DDR_DISPLAY_CHANGE_BUTTON_IN;
+	DDR_PAYOUT_BUTTON_IN;
+
+	DDR_KEY_SWITCH_IN;
+	DDR_COUNTER_IN;
+	DDR_KEY_0_IN;
+	DDR_KEY_1_IN;
+	DDR_KEY_9_IN;
+	DDR_PROTECTION_IN;
+	DDR_READ_PI_IN;
+	DDR_CARD_IN;
+
+	DDR_COUNTER_OUT_IN;
+	CARD_IN_VCC;
+	COIN_ACCEPTOR_IN_VCC;
+	BILL_ACCEPTOR_IN_VCC;
+	DISPLAY_CHANGE_BUTTON_IN_VCC;
+	PAYOUT_BUTTON_IN_VCC;
+
+	KEY_SWITCH_IN_VCC;
+	COUNTER_IN_VCC;
+	KEY_0_IN_VCC;
+	KEY_1_IN_VCC;
+	KEY_9_IN_VCC;
+	READ_PI_IN_VCC;
+	PROTECTION_IN_VCC;
+	COUNTER_OUT_IN_VCC;
+	OUT_5_DDR;
+
+//========= OUTS ========================
+	COIN_ACCEPTOR_OUT_DDR;
+	BILL_ACCEPTOR_OUT_DDR;
+	PAYOUT_OUT_DDR;
+	START_OUT_DDR;
+	SCREEN_SWITCH_OUT_DDR;
+	SWITCH_ON_MACHINE_DDR;
+	SEND_PI_OUT_DDR;
+	ALARM_DDR;
+	CONTROL_DDR;
+	COIN_ACCEPTOR_OUT_LOW;
+	BILL_ACCEPTOR_OUT_LOW;
+	PAYOUT_OUT_LOW;
+	START_OUT_LOW;
+	SCREEN_SWITCH_OUT_LOW;
+	SWITCH_ON_MACHINE_LOW;
+	SEND_PI_OUT_HIGH;
+	ALARM_LOW;
+	CONTROL_LOW;
+	OUT_5_LOW;
+
+	_delay_ms(500);
+
+}
+

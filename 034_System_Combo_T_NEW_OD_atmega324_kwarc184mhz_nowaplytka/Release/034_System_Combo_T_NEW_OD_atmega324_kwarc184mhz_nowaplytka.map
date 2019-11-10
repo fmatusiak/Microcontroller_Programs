@@ -1,0 +1,764 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                              ./main.o (__mulsi3)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                              ./Hopper.o (__udivmodhi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                              ./main.o (__udivmodsi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                              ./BillAcceptor.o (__do_clear_bss)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(utoa.o)
+                              ./LCD.o (utoa)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega328.o)
+                              ./main.o (__eerd_byte_m328)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_word_atmega328.o)
+                              ./main.o (__eerd_word_m328)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_byte_atmega328.o)
+                              ./main.o (__eewr_byte_m328)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_word_atmega328.o)
+                              ./main.o (__eewr_word_m328)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(utoa.o) (strrev)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_block_atmega328.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_word_atmega328.o) (__eerd_blraw_m328)
+
+Allocating common symbols
+Common symbol       size              file
+
+FL_Button_3         0x1               ./BillAcceptor.o
+FL_Adminh           0x1               ./BillAcceptor.o
+Stan_Hopper         0x1               ./BillAcceptor.o
+Hopper_One_Opto     0x1               ./BillAcceptor.o
+FL_Serwish          0x1               ./BillAcceptor.o
+FL_Restart          0x1               ./BillAcceptor.o
+tmp_money_koszt     0x1               ./BillAcceptor.o
+tmp_money_Brak      0x1               ./BillAcceptor.o
+FL_WPBlock          0x1               ./BillAcceptor.o
+Money_In_Automat    0x2               ./BillAcceptor.o
+FL_Cena_UP          0x1               ./BillAcceptor.o
+Last_Transaction_Atmega
+                    0x2               ./BillAcceptor.o
+LSBrakuje           0x1               ./BillAcceptor.o
+SterWhile           0x1               ./BillAcceptor.o
+BillEvent           0x1               ./BillAcceptor.o
+Hopper_Three_Opto   0x1               ./BillAcceptor.o
+Last_Money_In       0x2               ./BillAcceptor.o
+Door_Two            0x1               ./BillAcceptor.o
+FL_ERROR            0x1               ./BillAcceptor.o
+LSWprowadzono       0x1               ./BillAcceptor.o
+Tmp_time_while      0x2               ./BillAcceptor.o
+Money_5zl_Atmega    0x2               ./BillAcceptor.o
+FL_Dead_Comm        0x1               ./BillAcceptor.o
+FL_Button_2         0x1               ./BillAcceptor.o
+Time_out_Money      0x1               ./BillAcceptor.o
+FL_Key_Three        0x1               ./BillAcceptor.o
+FL_KEY_SWITCH       0x1               ./BillAcceptor.o
+tmp_money_In        0x1               ./BillAcceptor.o
+Money_1zl_Atmega    0x2               ./BillAcceptor.o
+First_Run_Atmega    0x1               ./BillAcceptor.o
+Expense_Atmega      0x1               ./BillAcceptor.o
+Door_One            0x1               ./BillAcceptor.o
+Money_50gr_Atmega   0x2               ./BillAcceptor.o
+Door_Three          0x1               ./BillAcceptor.o
+Inhibit_Coin        0x1               ./BillAcceptor.o
+PSWprowadzono       0x1               ./BillAcceptor.o
+FL_Button_1         0x1               ./BillAcceptor.o
+PSBrakuje           0x1               ./BillAcceptor.o
+Hopper_Two_Opto     0x1               ./BillAcceptor.o
+First_Run           0x1               ./BillAcceptor.o
+FL_Blocked          0x1               ./BillAcceptor.o
+CoinEvent           0x1               ./BillAcceptor.o
+FL_Key_One          0x1               ./BillAcceptor.o
+Seed_RNG            0x4               ./BillAcceptor.o
+FL_Key_Two          0x1               ./BillAcceptor.o
+Time_Disp           0x1               ./BillAcceptor.o
+Tmp_Time_Door       0x1               ./BillAcceptor.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o
+LOAD ./BillAcceptor.o
+LOAD ./CoinAcceptor.o
+LOAD ./HD44780.o
+LOAD ./Hopper.o
+LOAD ./IO_Button.o
+LOAD ./IO_Combo.o
+LOAD ./LCD.o
+LOAD ./main.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x42b8
+ *(.vectors)
+ .vectors       0x00000000       0x68 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000068       0xb7 ./BillAcceptor.o
+ .progmem.data  0x0000011f       0xb2 ./CoinAcceptor.o
+ .progmem.data  0x000001d1      0x1c8 ./Hopper.o
+ .progmem.data  0x00000399       0xa8 ./IO_Button.o
+ .progmem.data  0x00000441       0xaf ./IO_Combo.o
+ .progmem.data  0x000004f0      0x6ea ./LCD.o
+ .progmem.data  0x00000bda       0x55 ./main.o
+                0x00000c30                . = ALIGN (0x2)
+ *fill*         0x00000c2f        0x1 00
+                0x00000c30                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000c30        0x0 linker stubs
+ *(.trampolines*)
+                0x00000c30                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000c30                __ctors_start = .
+ *(.ctors)
+                0x00000c30                __ctors_end = .
+                0x00000c30                __dtors_start = .
+ *(.dtors)
+                0x00000c30                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000c30        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o
+                0x00000c30                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000c30        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000c3c       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000c3c                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000c4c        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o
+ *(.init9)
+ *(.text)
+ .text          0x00000c54        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o
+                0x00000c54                __vector_22
+                0x00000c54                __vector_1
+                0x00000c54                __vector_24
+                0x00000c54                __vector_12
+                0x00000c54                __bad_interrupt
+                0x00000c54                __vector_6
+                0x00000c54                __vector_3
+                0x00000c54                __vector_23
+                0x00000c54                __vector_25
+                0x00000c54                __vector_11
+                0x00000c54                __vector_13
+                0x00000c54                __vector_17
+                0x00000c54                __vector_19
+                0x00000c54                __vector_7
+                0x00000c54                __vector_5
+                0x00000c54                __vector_4
+                0x00000c54                __vector_9
+                0x00000c54                __vector_2
+                0x00000c54                __vector_21
+                0x00000c54                __vector_15
+                0x00000c54                __vector_8
+                0x00000c54                __vector_14
+                0x00000c54                __vector_10
+                0x00000c54                __vector_16
+                0x00000c54                __vector_18
+                0x00000c54                __vector_20
+ .text          0x00000c58        0x0 ./BillAcceptor.o
+ .text          0x00000c58        0x0 ./CoinAcceptor.o
+ .text          0x00000c58        0x0 ./HD44780.o
+ .text          0x00000c58        0x0 ./Hopper.o
+ .text          0x00000c58        0x0 ./IO_Button.o
+ .text          0x00000c58        0x0 ./IO_Combo.o
+ .text          0x00000c58        0x0 ./LCD.o
+ .text          0x00000c58        0x0 ./main.o
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(utoa.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega328.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_word_atmega328.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_byte_atmega328.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_word_atmega328.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+ .text          0x00000c58        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_block_atmega328.o)
+                0x00000c58                . = ALIGN (0x2)
+ *(.text.*)
+ .text.Init_Bill_Acceptor
+                0x00000c58       0x8c ./BillAcceptor.o
+                0x00000c58                Init_Bill_Acceptor
+ .text.Bill_Check_Buffor
+                0x00000ce4      0x1e6 ./BillAcceptor.o
+                0x00000ce4                Bill_Check_Buffor
+ .text.Bill_Clear_buffor
+                0x00000eca       0x6e ./BillAcceptor.o
+                0x00000eca                Bill_Clear_buffor
+ .text.Check_Bill_Acceptor
+                0x00000f38      0x15a ./BillAcceptor.o
+                0x00000f38                Check_Bill_Acceptor
+ .text.Init_Coin_Acceptor
+                0x00001092      0x394 ./CoinAcceptor.o
+                0x00001092                Init_Coin_Acceptor
+ .text.Set_Sorter
+                0x00001426      0x13e ./CoinAcceptor.o
+                0x00001426                Set_Sorter
+ .text.Refil    0x00001564      0x11a ./CoinAcceptor.o
+                0x00001564                Refil
+ .text.Coin_check_buffor
+                0x0000167e      0x16e ./CoinAcceptor.o
+                0x0000167e                Coin_check_buffor
+ .text.Coin_Clear_buffor
+                0x000017ec       0x6e ./CoinAcceptor.o
+                0x000017ec                Coin_Clear_buffor
+ .text.Check_Coin_Acceptor
+                0x0000185a      0x144 ./CoinAcceptor.o
+                0x0000185a                Check_Coin_Acceptor
+ .text._LCD_OutNibble
+                0x0000199e       0x2a ./HD44780.o
+                0x0000199e                _LCD_OutNibble
+ .text._LCD_Write
+                0x000019c8       0x26 ./HD44780.o
+                0x000019c8                _LCD_Write
+ .text.LCD_WriteCommand
+                0x000019ee        0x8 ./HD44780.o
+                0x000019ee                LCD_WriteCommand
+ .text.LCD_WriteData
+                0x000019f6        0x8 ./HD44780.o
+                0x000019f6                LCD_WriteData
+ .text.LCD_WriteText_FLASH
+                0x000019fe       0x22 ./HD44780.o
+                0x000019fe                LCD_WriteText_FLASH
+ .text.LCD_WriteText_RAM
+                0x00001a20       0x1a ./HD44780.o
+                0x00001a20                LCD_WriteText_RAM
+ .text.LCD_GoTo
+                0x00001a3a       0x2a ./HD44780.o
+                0x00001a3a                LCD_GoTo
+ .text.LCD_Clear
+                0x00001a64       0x10 ./HD44780.o
+                0x00001a64                LCD_Clear
+ .text.LCD_Home
+                0x00001a74       0x10 ./HD44780.o
+                0x00001a74                LCD_Home
+ .text.LCD_Initalize
+                0x00001a84       0x84 ./HD44780.o
+                0x00001a84                LCD_Initalize
+ .text.Set_Expense_Hopper
+                0x00001b08       0x5c ./Hopper.o
+                0x00001b08                Set_Expense_Hopper
+ .text.Check_Hopper_Opto
+                0x00001b64       0x68 ./Hopper.o
+                0x00001b64                Check_Hopper_Opto
+ .text.Set_Hopper_Opto
+                0x00001bcc       0x20 ./Hopper.o
+                0x00001bcc                Set_Hopper_Opto
+ .text.Hopper_PayOut
+                0x00001bec       0xbc ./Hopper.o
+                0x00001bec                Hopper_PayOut
+ .text.Hopper_Dump
+                0x00001ca8       0xba ./Hopper.o
+                0x00001ca8                Hopper_Dump
+ .text.Dumpowanie
+                0x00001d62       0xec ./Hopper.o
+                0x00001d62                Dumpowanie
+ .text.Hopper_LastPayOut
+                0x00001e4e       0x62 ./Hopper.o
+                0x00001e4e                Hopper_LastPayOut
+ .text.Hopper_STOPPayOut
+                0x00001eb0       0x62 ./Hopper.o
+                0x00001eb0                Hopper_STOPPayOut
+ .text.Chcek_Hopper_Last_PayOut
+                0x00001f12      0x320 ./Hopper.o
+                0x00001f12                Chcek_Hopper_Last_PayOut
+ .text.PayOut   0x00002232      0x1f0 ./Hopper.o
+                0x00002232                PayOut
+ .text.Check_Hopper
+                0x00002422      0x2fc ./Hopper.o
+                0x00002422                Check_Hopper
+ .text.checkPin
+                0x0000271e        0xc ./IO_Button.o
+                0x0000271e                checkPin
+ .text.Check_IO
+                0x0000272a       0x30 ./IO_Button.o
+                0x0000272a                Check_IO
+ .text.Check_Button_Machine
+                0x0000275a       0x94 ./IO_Button.o
+                0x0000275a                Check_Button_Machine
+ .text.IO_Combo_Claer_Acceptor
+                0x000027ee       0x4e ./IO_Combo.o
+                0x000027ee                IO_Combo_Claer_Acceptor
+ .text.IO_Combo_Clear_Escrow
+                0x0000283c       0x5e ./IO_Combo.o
+                0x0000283c                IO_Combo_Clear_Escrow
+ .text.Check_IO_Combo
+                0x0000289a      0x140 ./IO_Combo.o
+                0x0000289a                Check_IO_Combo
+ .text.convert_m
+                0x000029da       0x44 ./LCD.o
+                0x000029da                convert_m
+ .text.Write_LCD_String_RAM
+                0x00002a1e       0x1a ./LCD.o
+                0x00002a1e                Write_LCD_String_RAM
+ .text.Write_LCD_String_FLASH
+                0x00002a38       0x1a ./LCD.o
+                0x00002a38                Write_LCD_String_FLASH
+ .text.Write_LCD
+                0x00002a52      0x7e0 ./LCD.o
+                0x00002a52                Write_LCD
+ .text.uart_init
+                0x00003232       0x16 ./main.o
+                0x00003232                uart_init
+ .text.uart_putc
+                0x00003248       0x10 ./main.o
+                0x00003248                uart_putc
+ .text.uart_ischar
+                0x00003258        0x8 ./main.o
+                0x00003258                uart_ischar
+ .text.uart_clear
+                0x00003260       0x10 ./main.o
+                0x00003260                uart_clear
+ .text.ccTalk_send
+                0x00003270       0x78 ./main.o
+                0x00003270                ccTalk_send
+ .text.Check_inhbit
+                0x000032e8       0xf2 ./main.o
+                0x000032e8                Check_inhbit
+ .text.uart_getc_no_timeout
+                0x000033da       0x26 ./main.o
+                0x000033da                uart_getc_no_timeout
+ .text.ccTalk_recive_no_timeout
+                0x00003400      0x194 ./main.o
+                0x00003400                ccTalk_recive_no_timeout
+ .text.uart_getc
+                0x00003594       0x1e ./main.o
+                0x00003594                uart_getc
+ .text.ccTalk_recive
+                0x000035b2      0x194 ./main.o
+                0x000035b2                ccTalk_recive
+ .text.gpioInit
+                0x00003746       0x34 ./main.o
+                0x00003746                gpioInit
+ .text.RNG      0x0000377a       0x54 ./main.o
+                0x0000377a                RNG
+ .text.StanVar  0x000037ce       0xb4 ./main.o
+                0x000037ce                StanVar
+ .text.Check_Admin
+                0x00003882       0xaa ./main.o
+                0x00003882                Check_Admin
+ .text.Disp_Menu
+                0x0000392c       0xa4 ./main.o
+                0x0000392c                Disp_Menu
+ .text.error_payout
+                0x000039d0       0x62 ./main.o
+                0x000039d0                error_payout
+ .text.Set_Open_Door
+                0x00003a32       0x92 ./main.o
+                0x00003a32                Set_Open_Door
+ .text.Check_Admin_Start
+                0x00003ac4      0x148 ./main.o
+                0x00003ac4                Check_Admin_Start
+ .text.Save_Money_Hopper
+                0x00003c0c       0x32 ./main.o
+                0x00003c0c                Save_Money_Hopper
+ .text.Init_EEProm
+                0x00003c3e      0x14a ./main.o
+                0x00003c3e                Init_EEProm
+ .text.Check_Connections
+                0x00003d88       0x16 ./main.o
+                0x00003d88                Check_Connections
+ .text.Check_Time_Out_Money
+                0x00003d9e       0x34 ./main.o
+                0x00003d9e                Check_Time_Out_Money
+ .text.Init_Dev
+                0x00003dd2       0x1e ./main.o
+                0x00003dd2                Init_Dev
+ .text.Init_Automat
+                0x00003df0       0x4e ./main.o
+                0x00003df0                Init_Automat
+ .text.Check_Money
+                0x00003e3e       0x2a ./main.o
+                0x00003e3e                Check_Money
+ .text.Check_Button_Door
+                0x00003e68      0x1be ./main.o
+                0x00003e68                Check_Button_Door
+ .text.main     0x00004026      0x136 ./main.o
+                0x00004026                main
+ .text.libgcc   0x0000415c       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+                0x0000415c                __mulsi3
+ .text.libgcc   0x0000419a       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+                0x0000419a                __udivmodhi4
+ .text.libgcc   0x000041c2       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+                0x000041c2                __udivmodsi4
+ .text.libgcc   0x00004206        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x00004206        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .text.avr-libc
+                0x00004206       0x2c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(utoa.o)
+                0x00004206                utoa
+ .text.avr-libc
+                0x00004232       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega328.o)
+                0x00004232                __eerd_byte_m328
+ .text.avr-libc
+                0x00004242        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_word_atmega328.o)
+                0x00004242                __eerd_word_m328
+ .text.avr-libc
+                0x0000424e       0x1c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_byte_atmega328.o)
+                0x00004250                __eewr_r18_m328
+                0x0000424e                __eewr_byte_m328
+ .text.avr-libc
+                0x0000426a        0xa c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_word_atmega328.o)
+                0x0000426a                __eewr_word_m328
+ .text.avr-libc
+                0x00004274       0x20 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+                0x00004274                strrev
+ .text.avr-libc
+                0x00004294       0x20 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_block_atmega328.o)
+                0x00004294                __eerd_block_m328
+                0x00004298                __eerd_blraw_m328
+                0x000042b4                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000042b4        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000042b4                exit
+                0x000042b4                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000042b4        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ *(.fini0)
+                0x000042b8                _etext = .
+
+.data           0x00800100        0x0 load address 0x000042b8
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o
+ .data          0x00800100        0x0 ./BillAcceptor.o
+ .data          0x00800100        0x0 ./CoinAcceptor.o
+ .data          0x00800100        0x0 ./HD44780.o
+ .data          0x00800100        0x0 ./Hopper.o
+ .data          0x00800100        0x0 ./IO_Button.o
+ .data          0x00800100        0x0 ./IO_Combo.o
+ .data          0x00800100        0x0 ./LCD.o
+ .data          0x00800100        0x0 ./main.o
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(utoa.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega328.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_word_atmega328.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_byte_atmega328.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_word_atmega328.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+ .data          0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_block_atmega328.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800100                . = ALIGN (0x2)
+                0x00800100                _edata = .
+                0x00800100                PROVIDE (__data_end, .)
+
+.bss            0x00800100       0x39
+                0x00800100                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm328.o
+ .bss           0x00800100        0x0 ./BillAcceptor.o
+ .bss           0x00800100        0x0 ./CoinAcceptor.o
+ .bss           0x00800100        0x0 ./HD44780.o
+ .bss           0x00800100        0x0 ./Hopper.o
+ .bss           0x00800100        0x0 ./IO_Button.o
+ .bss           0x00800100        0x0 ./IO_Combo.o
+ .bss           0x00800100        0x0 ./LCD.o
+ .bss           0x00800100        0x0 ./main.o
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_mulsi3.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodhi4.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_udivmodsi4.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(utoa.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_byte_atmega328.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_word_atmega328.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_byte_atmega328.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eewr_word_atmega328.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(strrev.o)
+ .bss           0x00800100        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a(eerd_block_atmega328.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800100       0x39 ./BillAcceptor.o
+                0x00800100                FL_Button_3
+                0x00800101                FL_Adminh
+                0x00800102                Stan_Hopper
+                0x00800103                Hopper_One_Opto
+                0x00800104                FL_Serwish
+                0x00800105                FL_Restart
+                0x00800106                tmp_money_koszt
+                0x00800107                tmp_money_Brak
+                0x00800108                FL_WPBlock
+                0x00800109                Money_In_Automat
+                0x0080010b                FL_Cena_UP
+                0x0080010c                Last_Transaction_Atmega
+                0x0080010e                LSBrakuje
+                0x0080010f                SterWhile
+                0x00800110                BillEvent
+                0x00800111                Hopper_Three_Opto
+                0x00800112                Last_Money_In
+                0x00800114                Door_Two
+                0x00800115                FL_ERROR
+                0x00800116                LSWprowadzono
+                0x00800117                Tmp_time_while
+                0x00800119                Money_5zl_Atmega
+                0x0080011b                FL_Dead_Comm
+                0x0080011c                FL_Button_2
+                0x0080011d                Time_out_Money
+                0x0080011e                FL_Key_Three
+                0x0080011f                FL_KEY_SWITCH
+                0x00800120                tmp_money_In
+                0x00800121                Money_1zl_Atmega
+                0x00800123                First_Run_Atmega
+                0x00800124                Expense_Atmega
+                0x00800125                Door_One
+                0x00800126                Money_50gr_Atmega
+                0x00800128                Door_Three
+                0x00800129                Inhibit_Coin
+                0x0080012a                PSWprowadzono
+                0x0080012b                FL_Button_1
+                0x0080012c                PSBrakuje
+                0x0080012d                Hopper_Two_Opto
+                0x0080012e                First_Run
+                0x0080012f                FL_Blocked
+                0x00800130                CoinEvent
+                0x00800131                FL_Key_One
+                0x00800132                Seed_RNG
+                0x00800136                FL_Key_Two
+                0x00800137                Time_Disp
+                0x00800138                Tmp_Time_Door
+                0x00800139                PROVIDE (__bss_end, .)
+                0x000042b8                __data_load_start = LOADADDR (.data)
+                0x000042b8                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800139        0x0
+                0x00800139                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800139                PROVIDE (__noinit_end, .)
+                0x00800139                _end = .
+                0x00800139                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x8
+ *(.eeprom*)
+ .eeprom        0x00810000        0x8 ./main.o
+                0x00810000                First_Run_EEPROM
+                0x00810001                Expense_EEPROM
+                0x00810006                Money_50gr_EEPROM
+                0x00810002                Money_5zl_EEPROM
+                0x00810004                Money_1zl_EEPROM
+                0x00810008                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(034_System_Combo_T_NEW_OD_atmega324_kwarc184mhz_nowaplytka.elf elf32-avr)
+LOAD linker stubs

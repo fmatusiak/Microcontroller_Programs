@@ -1,0 +1,16 @@
+Opis wyprowadzeñ quizomat + tetris APEX czeski.
+Program: 029_quiztetris_1_0.
+
+IN1 - wejœcie wrzutnika
+OUT1 - wyjœcie wrzutnika
+IN3 - przycisk quiz(zmiana ekranu)
+IN4 - wejœcie wyp³ata
+OUT4 - wyjscie wyp³ata
+IN5 - dowolny nieu¿ywany kana³ pulsowy do zabezpieczenia
+
+WE1 - stacyjka
+WE2 - licznik in
+
+
+
+START - przycisk (klocek w prawo)

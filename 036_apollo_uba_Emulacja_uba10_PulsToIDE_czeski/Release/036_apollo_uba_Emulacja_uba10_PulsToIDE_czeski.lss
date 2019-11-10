@@ -1,0 +1,1253 @@
+
+036_apollo_uba_Emulacja_uba10_PulsToIDE_czeski.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000bb0  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000054  00800060  00000bb0  00000c44  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000002f  008000b4  008000b4  00000c98  2**0
+                  ALLOC
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e0 eb       	ldi	r30, 0xB0	; 176
+  3a:	fb e0       	ldi	r31, 0x0B	; 11
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <.do_copy_data_start>
+
+0000003e <.do_copy_data_loop>:
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+
+00000042 <.do_copy_data_start>:
+  42:	a4 3b       	cpi	r26, 0xB4	; 180
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <.do_copy_data_loop>
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a4 eb       	ldi	r26, 0xB4	; 180
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a3 3e       	cpi	r26, 0xE3	; 227
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	48 d0       	rcall	.+144    	; 0xea <main>
+  5a:	a8 c5       	rjmp	.+2896   	; 0xbac <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <check_is_money>:
+  5e:	80 91 60 00 	lds	r24, 0x0060
+  62:	88 23       	and	r24, r24
+  64:	39 f5       	brne	.+78     	; 0xb4 <check_is_money+0x56>
+  66:	84 9b       	sbis	0x10, 4	; 16
+  68:	04 c0       	rjmp	.+8      	; 0x72 <check_is_money+0x14>
+  6a:	81 e0       	ldi	r24, 0x01	; 1
+  6c:	80 93 b7 00 	sts	0x00B7, r24
+  70:	ab 98       	cbi	0x15, 3	; 21
+  72:	84 99       	sbic	0x10, 4	; 16
+  74:	19 c0       	rjmp	.+50     	; 0xa8 <check_is_money+0x4a>
+  76:	80 91 b7 00 	lds	r24, 0x00B7
+  7a:	88 23       	and	r24, r24
+  7c:	a9 f0       	breq	.+42     	; 0xa8 <check_is_money+0x4a>
+  7e:	88 e0       	ldi	r24, 0x08	; 8
+  80:	8a 95       	dec	r24
+  82:	f1 f7       	brne	.-4      	; 0x80 <check_is_money+0x22>
+  84:	84 99       	sbic	0x10, 4	; 16
+  86:	10 c0       	rjmp	.+32     	; 0xa8 <check_is_money+0x4a>
+  88:	ab 9a       	sbi	0x15, 3	; 21
+  8a:	10 92 b9 00 	sts	0x00B9, r1
+  8e:	10 92 b8 00 	sts	0x00B8, r1
+  92:	80 91 b4 00 	lds	r24, 0x00B4
+  96:	8f 5f       	subi	r24, 0xFF	; 255
+  98:	80 93 b4 00 	sts	0x00B4, r24
+  9c:	10 92 b7 00 	sts	0x00B7, r1
+  a0:	10 92 b6 00 	sts	0x00B6, r1
+  a4:	95 9a       	sbi	0x12, 5	; 18
+  a6:	aa 98       	cbi	0x15, 2	; 21
+  a8:	84 9b       	sbis	0x10, 4	; 16
+  aa:	04 c0       	rjmp	.+8      	; 0xb4 <check_is_money+0x56>
+  ac:	81 e0       	ldi	r24, 0x01	; 1
+  ae:	80 93 b7 00 	sts	0x00B7, r24
+  b2:	ab 98       	cbi	0x15, 3	; 21
+  b4:	08 95       	ret
+
+000000b6 <uart_init>:
+  b6:	90 bd       	out	0x20, r25	; 32
+  b8:	89 b9       	out	0x09, r24	; 9
+  ba:	88 e1       	ldi	r24, 0x18	; 24
+  bc:	8a b9       	out	0x0a, r24	; 10
+  be:	86 ea       	ldi	r24, 0xA6	; 166
+  c0:	80 bd       	out	0x20, r24	; 32
+  c2:	08 95       	ret
+
+000000c4 <uart_putc>:
+  c4:	1f 93       	push	r17
+  c6:	18 2f       	mov	r17, r24
+  c8:	ca df       	rcall	.-108    	; 0x5e <check_is_money>
+  ca:	5d 9b       	sbis	0x0b, 5	; 11
+  cc:	fe cf       	rjmp	.-4      	; 0xca <uart_putc+0x6>
+  ce:	1c b9       	out	0x0c, r17	; 12
+  d0:	1f 91       	pop	r17
+  d2:	08 95       	ret
+
+000000d4 <uart_ischar>:
+  d4:	c4 df       	rcall	.-120    	; 0x5e <check_is_money>
+  d6:	8b b1       	in	r24, 0x0b	; 11
+  d8:	80 78       	andi	r24, 0x80	; 128
+  da:	08 95       	ret
+
+000000dc <uart_getc>:
+  dc:	c0 df       	rcall	.-128    	; 0x5e <check_is_money>
+  de:	fa df       	rcall	.-12     	; 0xd4 <uart_ischar>
+  e0:	88 23       	and	r24, r24
+  e2:	e1 f3       	breq	.-8      	; 0xdc <uart_getc>
+  e4:	bc df       	rcall	.-136    	; 0x5e <check_is_money>
+  e6:	8c b1       	in	r24, 0x0c	; 12
+  e8:	08 95       	ret
+
+000000ea <main>:
+  ea:	ff 92       	push	r15
+  ec:	0f 93       	push	r16
+  ee:	1f 93       	push	r17
+  f0:	cf 93       	push	r28
+  f2:	df 93       	push	r29
+  f4:	8c 98       	cbi	0x11, 4	; 17
+  f6:	94 9a       	sbi	0x12, 4	; 18
+  f8:	8d 9a       	sbi	0x11, 5	; 17
+  fa:	95 9a       	sbi	0x12, 5	; 18
+  fc:	a2 9a       	sbi	0x14, 2	; 20
+  fe:	aa 98       	cbi	0x15, 2	; 21
+ 100:	a3 9a       	sbi	0x14, 3	; 20
+ 102:	ab 98       	cbi	0x15, 3	; 21
+ 104:	10 bc       	out	0x20, r1	; 32
+ 106:	83 e3       	ldi	r24, 0x33	; 51
+ 108:	89 b9       	out	0x09, r24	; 9
+ 10a:	88 e1       	ldi	r24, 0x18	; 24
+ 10c:	8a b9       	out	0x0a, r24	; 10
+ 10e:	86 ea       	ldi	r24, 0xA6	; 166
+ 110:	80 bd       	out	0x20, r24	; 32
+ 112:	80 e2       	ldi	r24, 0x20	; 32
+ 114:	9e e4       	ldi	r25, 0x4E	; 78
+ 116:	28 ec       	ldi	r18, 0xC8	; 200
+ 118:	30 e0       	ldi	r19, 0x00	; 0
+ 11a:	f9 01       	movw	r30, r18
+ 11c:	31 97       	sbiw	r30, 0x01	; 1
+ 11e:	f1 f7       	brne	.-4      	; 0x11c <main+0x32>
+ 120:	01 97       	sbiw	r24, 0x01	; 1
+ 122:	d9 f7       	brne	.-10     	; 0x11a <main+0x30>
+ 124:	26 c2       	rjmp	.+1100   	; 0x572 <__stack+0x113>
+ 126:	da df       	rcall	.-76     	; 0xdc <uart_getc>
+ 128:	80 93 bb 00 	sts	0x00BB, r24
+ 12c:	80 91 bb 00 	lds	r24, 0x00BB
+ 130:	8c 3f       	cpi	r24, 0xFC	; 252
+ 132:	09 f0       	breq	.+2      	; 0x136 <main+0x4c>
+ 134:	20 c2       	rjmp	.+1088   	; 0x576 <__stack+0x117>
+ 136:	d2 df       	rcall	.-92     	; 0xdc <uart_getc>
+ 138:	80 93 bc 00 	sts	0x00BC, r24
+ 13c:	10 93 ba 00 	sts	0x00BA, r17
+ 140:	0d c0       	rjmp	.+26     	; 0x15c <main+0x72>
+ 142:	80 91 ba 00 	lds	r24, 0x00BA
+ 146:	c8 2f       	mov	r28, r24
+ 148:	d0 e0       	ldi	r29, 0x00	; 0
+ 14a:	c8 df       	rcall	.-112    	; 0xdc <uart_getc>
+ 14c:	c5 54       	subi	r28, 0x45	; 69
+ 14e:	df 4f       	sbci	r29, 0xFF	; 255
+ 150:	88 83       	st	Y, r24
+ 152:	80 91 ba 00 	lds	r24, 0x00BA
+ 156:	8f 5f       	subi	r24, 0xFF	; 255
+ 158:	80 93 ba 00 	sts	0x00BA, r24
+ 15c:	90 91 ba 00 	lds	r25, 0x00BA
+ 160:	80 91 bc 00 	lds	r24, 0x00BC
+ 164:	98 17       	cp	r25, r24
+ 166:	68 f3       	brcs	.-38     	; 0x142 <main+0x58>
+ 168:	80 91 bc 00 	lds	r24, 0x00BC
+ 16c:	85 30       	cpi	r24, 0x05	; 5
+ 16e:	b1 f4       	brne	.+44     	; 0x19c <main+0xb2>
+ 170:	80 91 bd 00 	lds	r24, 0x00BD
+ 174:	80 34       	cpi	r24, 0x40	; 64
+ 176:	91 f4       	brne	.+36     	; 0x19c <main+0xb2>
+ 178:	80 91 be 00 	lds	r24, 0x00BE
+ 17c:	8b 32       	cpi	r24, 0x2B	; 43
+ 17e:	71 f4       	brne	.+28     	; 0x19c <main+0xb2>
+ 180:	80 91 bf 00 	lds	r24, 0x00BF
+ 184:	85 31       	cpi	r24, 0x15	; 21
+ 186:	51 f4       	brne	.+20     	; 0x19c <main+0xb2>
+ 188:	8c ef       	ldi	r24, 0xFC	; 252
+ 18a:	9c df       	rcall	.-200    	; 0xc4 <uart_putc>
+ 18c:	85 e0       	ldi	r24, 0x05	; 5
+ 18e:	9a df       	rcall	.-204    	; 0xc4 <uart_putc>
+ 190:	80 e5       	ldi	r24, 0x50	; 80
+ 192:	98 df       	rcall	.-208    	; 0xc4 <uart_putc>
+ 194:	8a ea       	ldi	r24, 0xAA	; 170
+ 196:	96 df       	rcall	.-212    	; 0xc4 <uart_putc>
+ 198:	85 e0       	ldi	r24, 0x05	; 5
+ 19a:	94 df       	rcall	.-216    	; 0xc4 <uart_putc>
+ 19c:	80 91 bc 00 	lds	r24, 0x00BC
+ 1a0:	85 30       	cpi	r24, 0x05	; 5
+ 1a2:	f1 f5       	brne	.+124    	; 0x220 <main+0x136>
+ 1a4:	80 91 bd 00 	lds	r24, 0x00BD
+ 1a8:	81 31       	cpi	r24, 0x11	; 17
+ 1aa:	d1 f5       	brne	.+116    	; 0x220 <main+0x136>
+ 1ac:	80 91 be 00 	lds	r24, 0x00BE
+ 1b0:	87 32       	cpi	r24, 0x27	; 39
+ 1b2:	b1 f5       	brne	.+108    	; 0x220 <main+0x136>
+ 1b4:	80 91 bf 00 	lds	r24, 0x00BF
+ 1b8:	86 35       	cpi	r24, 0x56	; 86
+ 1ba:	91 f5       	brne	.+100    	; 0x220 <main+0x136>
+ 1bc:	80 91 b5 00 	lds	r24, 0x00B5
+ 1c0:	88 23       	and	r24, r24
+ 1c2:	f9 f0       	breq	.+62     	; 0x202 <main+0x118>
+ 1c4:	10 92 ba 00 	sts	0x00BA, r1
+ 1c8:	0c c0       	rjmp	.+24     	; 0x1e2 <main+0xf8>
+ 1ca:	e0 91 ba 00 	lds	r30, 0x00BA
+ 1ce:	f0 e0       	ldi	r31, 0x00	; 0
+ 1d0:	e5 54       	subi	r30, 0x45	; 69
+ 1d2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1d4:	80 81       	ld	r24, Z
+ 1d6:	76 df       	rcall	.-276    	; 0xc4 <uart_putc>
+ 1d8:	80 91 ba 00 	lds	r24, 0x00BA
+ 1dc:	8f 5f       	subi	r24, 0xFF	; 255
+ 1de:	80 93 ba 00 	sts	0x00BA, r24
+ 1e2:	80 91 ba 00 	lds	r24, 0x00BA
+ 1e6:	85 30       	cpi	r24, 0x05	; 5
+ 1e8:	80 f3       	brcs	.-32     	; 0x1ca <main+0xe0>
+ 1ea:	80 91 b5 00 	lds	r24, 0x00B5
+ 1ee:	83 30       	cpi	r24, 0x03	; 3
+ 1f0:	11 f4       	brne	.+4      	; 0x1f6 <main+0x10c>
+ 1f2:	10 92 60 00 	sts	0x0060, r1
+ 1f6:	80 91 b5 00 	lds	r24, 0x00B5
+ 1fa:	8f 5f       	subi	r24, 0xFF	; 255
+ 1fc:	80 93 b5 00 	sts	0x00B5, r24
+ 200:	0f c0       	rjmp	.+30     	; 0x220 <main+0x136>
+ 202:	80 91 b5 00 	lds	r24, 0x00B5
+ 206:	8f 5f       	subi	r24, 0xFF	; 255
+ 208:	80 93 b5 00 	sts	0x00B5, r24
+ 20c:	8c ef       	ldi	r24, 0xFC	; 252
+ 20e:	5a df       	rcall	.-332    	; 0xc4 <uart_putc>
+ 210:	85 e0       	ldi	r24, 0x05	; 5
+ 212:	58 df       	rcall	.-336    	; 0xc4 <uart_putc>
+ 214:	8b e1       	ldi	r24, 0x1B	; 27
+ 216:	56 df       	rcall	.-340    	; 0xc4 <uart_putc>
+ 218:	8d e7       	ldi	r24, 0x7D	; 125
+ 21a:	54 df       	rcall	.-344    	; 0xc4 <uart_putc>
+ 21c:	89 ef       	ldi	r24, 0xF9	; 249
+ 21e:	52 df       	rcall	.-348    	; 0xc4 <uart_putc>
+ 220:	80 91 bc 00 	lds	r24, 0x00BC
+ 224:	85 30       	cpi	r24, 0x05	; 5
+ 226:	f9 f4       	brne	.+62     	; 0x266 <main+0x17c>
+ 228:	80 91 bd 00 	lds	r24, 0x00BD
+ 22c:	88 38       	cpi	r24, 0x88	; 136
+ 22e:	d9 f4       	brne	.+54     	; 0x266 <main+0x17c>
+ 230:	80 91 be 00 	lds	r24, 0x00BE
+ 234:	8f 36       	cpi	r24, 0x6F	; 111
+ 236:	b9 f4       	brne	.+46     	; 0x266 <main+0x17c>
+ 238:	80 91 bf 00 	lds	r24, 0x00BF
+ 23c:	8f 35       	cpi	r24, 0x5F	; 95
+ 23e:	99 f4       	brne	.+38     	; 0x266 <main+0x17c>
+ 240:	10 92 ba 00 	sts	0x00BA, r1
+ 244:	0c c0       	rjmp	.+24     	; 0x25e <main+0x174>
+ 246:	e0 91 ba 00 	lds	r30, 0x00BA
+ 24a:	f0 e0       	ldi	r31, 0x00	; 0
+ 24c:	ef 59       	subi	r30, 0x9F	; 159
+ 24e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 250:	80 81       	ld	r24, Z
+ 252:	38 df       	rcall	.-400    	; 0xc4 <uart_putc>
+ 254:	80 91 ba 00 	lds	r24, 0x00BA
+ 258:	8f 5f       	subi	r24, 0xFF	; 255
+ 25a:	80 93 ba 00 	sts	0x00BA, r24
+ 25e:	80 91 ba 00 	lds	r24, 0x00BA
+ 262:	8e 32       	cpi	r24, 0x2E	; 46
+ 264:	80 f3       	brcs	.-32     	; 0x246 <main+0x15c>
+ 266:	80 91 bc 00 	lds	r24, 0x00BC
+ 26a:	85 30       	cpi	r24, 0x05	; 5
+ 26c:	f9 f4       	brne	.+62     	; 0x2ac <main+0x1c2>
+ 26e:	80 91 bd 00 	lds	r24, 0x00BD
+ 272:	8a 38       	cpi	r24, 0x8A	; 138
+ 274:	d9 f4       	brne	.+54     	; 0x2ac <main+0x1c2>
+ 276:	80 91 be 00 	lds	r24, 0x00BE
+ 27a:	8d 37       	cpi	r24, 0x7D	; 125
+ 27c:	b9 f4       	brne	.+46     	; 0x2ac <main+0x1c2>
+ 27e:	80 91 bf 00 	lds	r24, 0x00BF
+ 282:	8c 37       	cpi	r24, 0x7C	; 124
+ 284:	99 f4       	brne	.+38     	; 0x2ac <main+0x1c2>
+ 286:	10 92 ba 00 	sts	0x00BA, r1
+ 28a:	0c c0       	rjmp	.+24     	; 0x2a4 <main+0x1ba>
+ 28c:	e0 91 ba 00 	lds	r30, 0x00BA
+ 290:	f0 e0       	ldi	r31, 0x00	; 0
+ 292:	e1 57       	subi	r30, 0x71	; 113
+ 294:	ff 4f       	sbci	r31, 0xFF	; 255
+ 296:	80 81       	ld	r24, Z
+ 298:	15 df       	rcall	.-470    	; 0xc4 <uart_putc>
+ 29a:	80 91 ba 00 	lds	r24, 0x00BA
+ 29e:	8f 5f       	subi	r24, 0xFF	; 255
+ 2a0:	80 93 ba 00 	sts	0x00BA, r24
+ 2a4:	80 91 ba 00 	lds	r24, 0x00BA
+ 2a8:	85 32       	cpi	r24, 0x25	; 37
+ 2aa:	80 f3       	brcs	.-32     	; 0x28c <main+0x1a2>
+ 2ac:	80 91 bc 00 	lds	r24, 0x00BC
+ 2b0:	87 30       	cpi	r24, 0x07	; 7
+ 2b2:	39 f5       	brne	.+78     	; 0x302 <main+0x218>
+ 2b4:	80 91 bd 00 	lds	r24, 0x00BD
+ 2b8:	80 3c       	cpi	r24, 0xC0	; 192
+ 2ba:	19 f5       	brne	.+70     	; 0x302 <main+0x218>
+ 2bc:	80 91 be 00 	lds	r24, 0x00BE
+ 2c0:	80 3e       	cpi	r24, 0xE0	; 224
+ 2c2:	f9 f4       	brne	.+62     	; 0x302 <main+0x218>
+ 2c4:	80 91 bf 00 	lds	r24, 0x00BF
+ 2c8:	8f 3f       	cpi	r24, 0xFF	; 255
+ 2ca:	d9 f4       	brne	.+54     	; 0x302 <main+0x218>
+ 2cc:	80 91 c0 00 	lds	r24, 0x00C0
+ 2d0:	8c 3c       	cpi	r24, 0xCC	; 204
+ 2d2:	b9 f4       	brne	.+46     	; 0x302 <main+0x218>
+ 2d4:	80 91 c1 00 	lds	r24, 0x00C1
+ 2d8:	83 35       	cpi	r24, 0x53	; 83
+ 2da:	99 f4       	brne	.+38     	; 0x302 <main+0x218>
+ 2dc:	10 92 ba 00 	sts	0x00BA, r1
+ 2e0:	0c c0       	rjmp	.+24     	; 0x2fa <main+0x210>
+ 2e2:	e0 91 ba 00 	lds	r30, 0x00BA
+ 2e6:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e8:	e5 54       	subi	r30, 0x45	; 69
+ 2ea:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2ec:	80 81       	ld	r24, Z
+ 2ee:	ea de       	rcall	.-556    	; 0xc4 <uart_putc>
+ 2f0:	80 91 ba 00 	lds	r24, 0x00BA
+ 2f4:	8f 5f       	subi	r24, 0xFF	; 255
+ 2f6:	80 93 ba 00 	sts	0x00BA, r24
+ 2fa:	80 91 ba 00 	lds	r24, 0x00BA
+ 2fe:	87 30       	cpi	r24, 0x07	; 7
+ 300:	80 f3       	brcs	.-32     	; 0x2e2 <main+0x1f8>
+ 302:	80 91 bc 00 	lds	r24, 0x00BC
+ 306:	87 30       	cpi	r24, 0x07	; 7
+ 308:	39 f5       	brne	.+78     	; 0x358 <main+0x26e>
+ 30a:	80 91 bd 00 	lds	r24, 0x00BD
+ 30e:	81 3c       	cpi	r24, 0xC1	; 193
+ 310:	19 f5       	brne	.+70     	; 0x358 <main+0x26e>
+ 312:	80 91 be 00 	lds	r24, 0x00BE
+ 316:	88 23       	and	r24, r24
+ 318:	f9 f4       	brne	.+62     	; 0x358 <main+0x26e>
+ 31a:	80 91 bf 00 	lds	r24, 0x00BF
+ 31e:	88 23       	and	r24, r24
+ 320:	d9 f4       	brne	.+54     	; 0x358 <main+0x26e>
+ 322:	80 91 c0 00 	lds	r24, 0x00C0
+ 326:	81 3f       	cpi	r24, 0xF1	; 241
+ 328:	b9 f4       	brne	.+46     	; 0x358 <main+0x26e>
+ 32a:	80 91 c1 00 	lds	r24, 0x00C1
+ 32e:	8f 3e       	cpi	r24, 0xEF	; 239
+ 330:	99 f4       	brne	.+38     	; 0x358 <main+0x26e>
+ 332:	10 92 ba 00 	sts	0x00BA, r1
+ 336:	0c c0       	rjmp	.+24     	; 0x350 <main+0x266>
+ 338:	e0 91 ba 00 	lds	r30, 0x00BA
+ 33c:	f0 e0       	ldi	r31, 0x00	; 0
+ 33e:	e5 54       	subi	r30, 0x45	; 69
+ 340:	ff 4f       	sbci	r31, 0xFF	; 255
+ 342:	80 81       	ld	r24, Z
+ 344:	bf de       	rcall	.-642    	; 0xc4 <uart_putc>
+ 346:	80 91 ba 00 	lds	r24, 0x00BA
+ 34a:	8f 5f       	subi	r24, 0xFF	; 255
+ 34c:	80 93 ba 00 	sts	0x00BA, r24
+ 350:	80 91 ba 00 	lds	r24, 0x00BA
+ 354:	87 30       	cpi	r24, 0x07	; 7
+ 356:	80 f3       	brcs	.-32     	; 0x338 <main+0x24e>
+ 358:	80 91 bc 00 	lds	r24, 0x00BC
+ 35c:	87 30       	cpi	r24, 0x07	; 7
+ 35e:	39 f5       	brne	.+78     	; 0x3ae <main+0x2c4>
+ 360:	80 91 bd 00 	lds	r24, 0x00BD
+ 364:	85 3c       	cpi	r24, 0xC5	; 197
+ 366:	19 f5       	brne	.+70     	; 0x3ae <main+0x2c4>
+ 368:	80 91 be 00 	lds	r24, 0x00BE
+ 36c:	83 30       	cpi	r24, 0x03	; 3
+ 36e:	f9 f4       	brne	.+62     	; 0x3ae <main+0x2c4>
+ 370:	80 91 bf 00 	lds	r24, 0x00BF
+ 374:	88 23       	and	r24, r24
+ 376:	d9 f4       	brne	.+54     	; 0x3ae <main+0x2c4>
+ 378:	80 91 c0 00 	lds	r24, 0x00C0
+ 37c:	88 3f       	cpi	r24, 0xF8	; 248
+ 37e:	b9 f4       	brne	.+46     	; 0x3ae <main+0x2c4>
+ 380:	80 91 c1 00 	lds	r24, 0x00C1
+ 384:	86 3a       	cpi	r24, 0xA6	; 166
+ 386:	99 f4       	brne	.+38     	; 0x3ae <main+0x2c4>
+ 388:	10 92 ba 00 	sts	0x00BA, r1
+ 38c:	0c c0       	rjmp	.+24     	; 0x3a6 <main+0x2bc>
+ 38e:	e0 91 ba 00 	lds	r30, 0x00BA
+ 392:	f0 e0       	ldi	r31, 0x00	; 0
+ 394:	e5 54       	subi	r30, 0x45	; 69
+ 396:	ff 4f       	sbci	r31, 0xFF	; 255
+ 398:	80 81       	ld	r24, Z
+ 39a:	94 de       	rcall	.-728    	; 0xc4 <uart_putc>
+ 39c:	80 91 ba 00 	lds	r24, 0x00BA
+ 3a0:	8f 5f       	subi	r24, 0xFF	; 255
+ 3a2:	80 93 ba 00 	sts	0x00BA, r24
+ 3a6:	80 91 ba 00 	lds	r24, 0x00BA
+ 3aa:	87 30       	cpi	r24, 0x07	; 7
+ 3ac:	80 f3       	brcs	.-32     	; 0x38e <main+0x2a4>
+ 3ae:	80 91 bc 00 	lds	r24, 0x00BC
+ 3b2:	86 30       	cpi	r24, 0x06	; 6
+ 3b4:	19 f5       	brne	.+70     	; 0x3fc <main+0x312>
+ 3b6:	80 91 bd 00 	lds	r24, 0x00BD
+ 3ba:	82 3c       	cpi	r24, 0xC2	; 194
+ 3bc:	f9 f4       	brne	.+62     	; 0x3fc <main+0x312>
+ 3be:	80 91 be 00 	lds	r24, 0x00BE
+ 3c2:	88 23       	and	r24, r24
+ 3c4:	d9 f4       	brne	.+54     	; 0x3fc <main+0x312>
+ 3c6:	80 91 bf 00 	lds	r24, 0x00BF
+ 3ca:	8c 3d       	cpi	r24, 0xDC	; 220
+ 3cc:	b9 f4       	brne	.+46     	; 0x3fc <main+0x312>
+ 3ce:	80 91 c0 00 	lds	r24, 0x00C0
+ 3d2:	8f 3c       	cpi	r24, 0xCF	; 207
+ 3d4:	99 f4       	brne	.+38     	; 0x3fc <main+0x312>
+ 3d6:	10 92 ba 00 	sts	0x00BA, r1
+ 3da:	0c c0       	rjmp	.+24     	; 0x3f4 <main+0x30a>
+ 3dc:	e0 91 ba 00 	lds	r30, 0x00BA
+ 3e0:	f0 e0       	ldi	r31, 0x00	; 0
+ 3e2:	e5 54       	subi	r30, 0x45	; 69
+ 3e4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 3e6:	80 81       	ld	r24, Z
+ 3e8:	6d de       	rcall	.-806    	; 0xc4 <uart_putc>
+ 3ea:	80 91 ba 00 	lds	r24, 0x00BA
+ 3ee:	8f 5f       	subi	r24, 0xFF	; 255
+ 3f0:	80 93 ba 00 	sts	0x00BA, r24
+ 3f4:	80 91 ba 00 	lds	r24, 0x00BA
+ 3f8:	86 30       	cpi	r24, 0x06	; 6
+ 3fa:	80 f3       	brcs	.-32     	; 0x3dc <main+0x2f2>
+ 3fc:	80 91 bc 00 	lds	r24, 0x00BC
+ 400:	87 30       	cpi	r24, 0x07	; 7
+ 402:	39 f5       	brne	.+78     	; 0x452 <main+0x368>
+ 404:	80 91 bd 00 	lds	r24, 0x00BD
+ 408:	86 3c       	cpi	r24, 0xC6	; 198
+ 40a:	19 f5       	brne	.+70     	; 0x452 <main+0x368>
+ 40c:	80 91 be 00 	lds	r24, 0x00BE
+ 410:	81 30       	cpi	r24, 0x01	; 1
+ 412:	f9 f4       	brne	.+62     	; 0x452 <main+0x368>
+ 414:	80 91 bf 00 	lds	r24, 0x00BF
+ 418:	82 31       	cpi	r24, 0x12	; 18
+ 41a:	d9 f4       	brne	.+54     	; 0x452 <main+0x368>
+ 41c:	80 91 c0 00 	lds	r24, 0x00C0
+ 420:	8f 3b       	cpi	r24, 0xBF	; 191
+ 422:	b9 f4       	brne	.+46     	; 0x452 <main+0x368>
+ 424:	80 91 c1 00 	lds	r24, 0x00C1
+ 428:	89 34       	cpi	r24, 0x49	; 73
+ 42a:	99 f4       	brne	.+38     	; 0x452 <main+0x368>
+ 42c:	10 92 ba 00 	sts	0x00BA, r1
+ 430:	0c c0       	rjmp	.+24     	; 0x44a <main+0x360>
+ 432:	e0 91 ba 00 	lds	r30, 0x00BA
+ 436:	f0 e0       	ldi	r31, 0x00	; 0
+ 438:	e5 54       	subi	r30, 0x45	; 69
+ 43a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 43c:	80 81       	ld	r24, Z
+ 43e:	42 de       	rcall	.-892    	; 0xc4 <uart_putc>
+ 440:	80 91 ba 00 	lds	r24, 0x00BA
+ 444:	8f 5f       	subi	r24, 0xFF	; 255
+ 446:	80 93 ba 00 	sts	0x00BA, r24
+ 44a:	80 91 ba 00 	lds	r24, 0x00BA
+ 44e:	87 30       	cpi	r24, 0x07	; 7
+ 450:	80 f3       	brcs	.-32     	; 0x432 <main+0x348>
+ 452:	80 91 bc 00 	lds	r24, 0x00BC
+ 456:	86 30       	cpi	r24, 0x06	; 6
+ 458:	19 f5       	brne	.+70     	; 0x4a0 <__stack+0x41>
+ 45a:	80 91 bd 00 	lds	r24, 0x00BD
+ 45e:	87 3c       	cpi	r24, 0xC7	; 199
+ 460:	f9 f4       	brne	.+62     	; 0x4a0 <__stack+0x41>
+ 462:	80 91 be 00 	lds	r24, 0x00BE
+ 466:	8c 3f       	cpi	r24, 0xFC	; 252
+ 468:	d9 f4       	brne	.+54     	; 0x4a0 <__stack+0x41>
+ 46a:	80 91 bf 00 	lds	r24, 0x00BF
+ 46e:	87 38       	cpi	r24, 0x87	; 135
+ 470:	b9 f4       	brne	.+46     	; 0x4a0 <__stack+0x41>
+ 472:	80 91 c0 00 	lds	r24, 0x00C0
+ 476:	8c 38       	cpi	r24, 0x8C	; 140
+ 478:	99 f4       	brne	.+38     	; 0x4a0 <__stack+0x41>
+ 47a:	10 92 ba 00 	sts	0x00BA, r1
+ 47e:	0c c0       	rjmp	.+24     	; 0x498 <__stack+0x39>
+ 480:	e0 91 ba 00 	lds	r30, 0x00BA
+ 484:	f0 e0       	ldi	r31, 0x00	; 0
+ 486:	e5 54       	subi	r30, 0x45	; 69
+ 488:	ff 4f       	sbci	r31, 0xFF	; 255
+ 48a:	80 81       	ld	r24, Z
+ 48c:	1b de       	rcall	.-970    	; 0xc4 <uart_putc>
+ 48e:	80 91 ba 00 	lds	r24, 0x00BA
+ 492:	8f 5f       	subi	r24, 0xFF	; 255
+ 494:	80 93 ba 00 	sts	0x00BA, r24
+ 498:	80 91 ba 00 	lds	r24, 0x00BA
+ 49c:	86 30       	cpi	r24, 0x06	; 6
+ 49e:	80 f3       	brcs	.-32     	; 0x480 <__stack+0x21>
+ 4a0:	80 91 bc 00 	lds	r24, 0x00BC
+ 4a4:	86 30       	cpi	r24, 0x06	; 6
+ 4a6:	39 f5       	brne	.+78     	; 0x4f6 <__stack+0x97>
+ 4a8:	80 91 bd 00 	lds	r24, 0x00BD
+ 4ac:	83 3c       	cpi	r24, 0xC3	; 195
+ 4ae:	19 f5       	brne	.+70     	; 0x4f6 <__stack+0x97>
+ 4b0:	80 91 be 00 	lds	r24, 0x00BE
+ 4b4:	81 30       	cpi	r24, 0x01	; 1
+ 4b6:	f9 f4       	brne	.+62     	; 0x4f6 <__stack+0x97>
+ 4b8:	80 91 bf 00 	lds	r24, 0x00BF
+ 4bc:	8d 38       	cpi	r24, 0x8D	; 141
+ 4be:	d9 f4       	brne	.+54     	; 0x4f6 <__stack+0x97>
+ 4c0:	80 91 c0 00 	lds	r24, 0x00C0
+ 4c4:	87 3c       	cpi	r24, 0xC7	; 199
+ 4c6:	b9 f4       	brne	.+46     	; 0x4f6 <__stack+0x97>
+ 4c8:	10 92 ba 00 	sts	0x00BA, r1
+ 4cc:	0c c0       	rjmp	.+24     	; 0x4e6 <__stack+0x87>
+ 4ce:	e0 91 ba 00 	lds	r30, 0x00BA
+ 4d2:	f0 e0       	ldi	r31, 0x00	; 0
+ 4d4:	e5 54       	subi	r30, 0x45	; 69
+ 4d6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4d8:	80 81       	ld	r24, Z
+ 4da:	f4 dd       	rcall	.-1048   	; 0xc4 <uart_putc>
+ 4dc:	80 91 ba 00 	lds	r24, 0x00BA
+ 4e0:	8f 5f       	subi	r24, 0xFF	; 255
+ 4e2:	80 93 ba 00 	sts	0x00BA, r24
+ 4e6:	80 91 ba 00 	lds	r24, 0x00BA
+ 4ea:	86 30       	cpi	r24, 0x06	; 6
+ 4ec:	80 f3       	brcs	.-32     	; 0x4ce <__stack+0x6f>
+ 4ee:	10 92 b6 00 	sts	0x00B6, r1
+ 4f2:	95 9a       	sbi	0x12, 5	; 18
+ 4f4:	aa 98       	cbi	0x15, 2	; 21
+ 4f6:	80 91 bc 00 	lds	r24, 0x00BC
+ 4fa:	86 30       	cpi	r24, 0x06	; 6
+ 4fc:	39 f5       	brne	.+78     	; 0x54c <__stack+0xed>
+ 4fe:	80 91 bd 00 	lds	r24, 0x00BD
+ 502:	83 3c       	cpi	r24, 0xC3	; 195
+ 504:	19 f5       	brne	.+70     	; 0x54c <__stack+0xed>
+ 506:	80 91 be 00 	lds	r24, 0x00BE
+ 50a:	88 23       	and	r24, r24
+ 50c:	f9 f4       	brne	.+62     	; 0x54c <__stack+0xed>
+ 50e:	80 91 bf 00 	lds	r24, 0x00BF
+ 512:	84 30       	cpi	r24, 0x04	; 4
+ 514:	d9 f4       	brne	.+54     	; 0x54c <__stack+0xed>
+ 516:	80 91 c0 00 	lds	r24, 0x00C0
+ 51a:	86 3d       	cpi	r24, 0xD6	; 214
+ 51c:	b9 f4       	brne	.+46     	; 0x54c <__stack+0xed>
+ 51e:	10 92 ba 00 	sts	0x00BA, r1
+ 522:	0c c0       	rjmp	.+24     	; 0x53c <__stack+0xdd>
+ 524:	e0 91 ba 00 	lds	r30, 0x00BA
+ 528:	f0 e0       	ldi	r31, 0x00	; 0
+ 52a:	e5 54       	subi	r30, 0x45	; 69
+ 52c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 52e:	80 81       	ld	r24, Z
+ 530:	c9 dd       	rcall	.-1134   	; 0xc4 <uart_putc>
+ 532:	80 91 ba 00 	lds	r24, 0x00BA
+ 536:	8f 5f       	subi	r24, 0xFF	; 255
+ 538:	80 93 ba 00 	sts	0x00BA, r24
+ 53c:	80 91 ba 00 	lds	r24, 0x00BA
+ 540:	86 30       	cpi	r24, 0x06	; 6
+ 542:	80 f3       	brcs	.-32     	; 0x524 <__stack+0xc5>
+ 544:	00 93 b6 00 	sts	0x00B6, r16
+ 548:	95 98       	cbi	0x12, 5	; 18
+ 54a:	aa 9a       	sbi	0x15, 2	; 21
+ 54c:	10 92 ba 00 	sts	0x00BA, r1
+ 550:	0b c0       	rjmp	.+22     	; 0x568 <__stack+0x109>
+ 552:	e0 91 ba 00 	lds	r30, 0x00BA
+ 556:	f0 e0       	ldi	r31, 0x00	; 0
+ 558:	e5 54       	subi	r30, 0x45	; 69
+ 55a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 55c:	10 82       	st	Z, r1
+ 55e:	80 91 ba 00 	lds	r24, 0x00BA
+ 562:	8f 5f       	subi	r24, 0xFF	; 255
+ 564:	80 93 ba 00 	sts	0x00BA, r24
+ 568:	80 91 ba 00 	lds	r24, 0x00BA
+ 56c:	88 32       	cpi	r24, 0x28	; 40
+ 56e:	18 f4       	brcc	.+6      	; 0x576 <__stack+0x117>
+ 570:	f0 cf       	rjmp	.-32     	; 0x552 <__stack+0xf3>
+ 572:	12 e0       	ldi	r17, 0x02	; 2
+ 574:	01 e0       	ldi	r16, 0x01	; 1
+ 576:	80 91 60 00 	lds	r24, 0x0060
+ 57a:	88 23       	and	r24, r24
+ 57c:	09 f0       	breq	.+2      	; 0x580 <__stack+0x121>
+ 57e:	d3 cd       	rjmp	.-1114   	; 0x126 <main+0x3c>
+ 580:	82 e0       	ldi	r24, 0x02	; 2
+ 582:	f8 2e       	mov	r15, r24
+ 584:	01 e0       	ldi	r16, 0x01	; 1
+ 586:	6b dd       	rcall	.-1322   	; 0x5e <check_is_money>
+ 588:	a9 dd       	rcall	.-1198   	; 0xdc <uart_getc>
+ 58a:	80 93 bb 00 	sts	0x00BB, r24
+ 58e:	67 dd       	rcall	.-1330   	; 0x5e <check_is_money>
+ 590:	80 91 bb 00 	lds	r24, 0x00BB
+ 594:	8c 3f       	cpi	r24, 0xFC	; 252
+ 596:	09 f0       	breq	.+2      	; 0x59a <__stack+0x13b>
+ 598:	07 c3       	rjmp	.+1550   	; 0xba8 <__stack+0x749>
+ 59a:	a0 dd       	rcall	.-1216   	; 0xdc <uart_getc>
+ 59c:	80 93 bc 00 	sts	0x00BC, r24
+ 5a0:	f0 92 ba 00 	sts	0x00BA, r15
+ 5a4:	0d c0       	rjmp	.+26     	; 0x5c0 <__stack+0x161>
+ 5a6:	80 91 ba 00 	lds	r24, 0x00BA
+ 5aa:	c8 2f       	mov	r28, r24
+ 5ac:	d0 e0       	ldi	r29, 0x00	; 0
+ 5ae:	96 dd       	rcall	.-1236   	; 0xdc <uart_getc>
+ 5b0:	c5 54       	subi	r28, 0x45	; 69
+ 5b2:	df 4f       	sbci	r29, 0xFF	; 255
+ 5b4:	88 83       	st	Y, r24
+ 5b6:	80 91 ba 00 	lds	r24, 0x00BA
+ 5ba:	8f 5f       	subi	r24, 0xFF	; 255
+ 5bc:	80 93 ba 00 	sts	0x00BA, r24
+ 5c0:	90 91 ba 00 	lds	r25, 0x00BA
+ 5c4:	80 91 bc 00 	lds	r24, 0x00BC
+ 5c8:	98 17       	cp	r25, r24
+ 5ca:	68 f3       	brcs	.-38     	; 0x5a6 <__stack+0x147>
+ 5cc:	80 91 bc 00 	lds	r24, 0x00BC
+ 5d0:	86 30       	cpi	r24, 0x06	; 6
+ 5d2:	41 f5       	brne	.+80     	; 0x624 <__stack+0x1c5>
+ 5d4:	80 91 bd 00 	lds	r24, 0x00BD
+ 5d8:	83 3c       	cpi	r24, 0xC3	; 195
+ 5da:	21 f5       	brne	.+72     	; 0x624 <__stack+0x1c5>
+ 5dc:	80 91 be 00 	lds	r24, 0x00BE
+ 5e0:	81 30       	cpi	r24, 0x01	; 1
+ 5e2:	01 f5       	brne	.+64     	; 0x624 <__stack+0x1c5>
+ 5e4:	80 91 bf 00 	lds	r24, 0x00BF
+ 5e8:	8d 38       	cpi	r24, 0x8D	; 141
+ 5ea:	e1 f4       	brne	.+56     	; 0x624 <__stack+0x1c5>
+ 5ec:	80 91 c0 00 	lds	r24, 0x00C0
+ 5f0:	87 3c       	cpi	r24, 0xC7	; 199
+ 5f2:	c1 f4       	brne	.+48     	; 0x624 <__stack+0x1c5>
+ 5f4:	10 92 ba 00 	sts	0x00BA, r1
+ 5f8:	0c c0       	rjmp	.+24     	; 0x612 <__stack+0x1b3>
+ 5fa:	e0 91 ba 00 	lds	r30, 0x00BA
+ 5fe:	f0 e0       	ldi	r31, 0x00	; 0
+ 600:	e5 54       	subi	r30, 0x45	; 69
+ 602:	ff 4f       	sbci	r31, 0xFF	; 255
+ 604:	80 81       	ld	r24, Z
+ 606:	5e dd       	rcall	.-1348   	; 0xc4 <uart_putc>
+ 608:	80 91 ba 00 	lds	r24, 0x00BA
+ 60c:	8f 5f       	subi	r24, 0xFF	; 255
+ 60e:	80 93 ba 00 	sts	0x00BA, r24
+ 612:	80 91 ba 00 	lds	r24, 0x00BA
+ 616:	86 30       	cpi	r24, 0x06	; 6
+ 618:	80 f3       	brcs	.-32     	; 0x5fa <__stack+0x19b>
+ 61a:	21 dd       	rcall	.-1470   	; 0x5e <check_is_money>
+ 61c:	10 92 b6 00 	sts	0x00B6, r1
+ 620:	95 9a       	sbi	0x12, 5	; 18
+ 622:	aa 98       	cbi	0x15, 2	; 21
+ 624:	1c dd       	rcall	.-1480   	; 0x5e <check_is_money>
+ 626:	80 91 bc 00 	lds	r24, 0x00BC
+ 62a:	86 30       	cpi	r24, 0x06	; 6
+ 62c:	41 f5       	brne	.+80     	; 0x67e <__stack+0x21f>
+ 62e:	80 91 bd 00 	lds	r24, 0x00BD
+ 632:	83 3c       	cpi	r24, 0xC3	; 195
+ 634:	21 f5       	brne	.+72     	; 0x67e <__stack+0x21f>
+ 636:	80 91 be 00 	lds	r24, 0x00BE
+ 63a:	88 23       	and	r24, r24
+ 63c:	01 f5       	brne	.+64     	; 0x67e <__stack+0x21f>
+ 63e:	80 91 bf 00 	lds	r24, 0x00BF
+ 642:	84 30       	cpi	r24, 0x04	; 4
+ 644:	e1 f4       	brne	.+56     	; 0x67e <__stack+0x21f>
+ 646:	80 91 c0 00 	lds	r24, 0x00C0
+ 64a:	86 3d       	cpi	r24, 0xD6	; 214
+ 64c:	c1 f4       	brne	.+48     	; 0x67e <__stack+0x21f>
+ 64e:	10 92 ba 00 	sts	0x00BA, r1
+ 652:	0c c0       	rjmp	.+24     	; 0x66c <__stack+0x20d>
+ 654:	e0 91 ba 00 	lds	r30, 0x00BA
+ 658:	f0 e0       	ldi	r31, 0x00	; 0
+ 65a:	e5 54       	subi	r30, 0x45	; 69
+ 65c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 65e:	80 81       	ld	r24, Z
+ 660:	31 dd       	rcall	.-1438   	; 0xc4 <uart_putc>
+ 662:	80 91 ba 00 	lds	r24, 0x00BA
+ 666:	8f 5f       	subi	r24, 0xFF	; 255
+ 668:	80 93 ba 00 	sts	0x00BA, r24
+ 66c:	80 91 ba 00 	lds	r24, 0x00BA
+ 670:	86 30       	cpi	r24, 0x06	; 6
+ 672:	80 f3       	brcs	.-32     	; 0x654 <__stack+0x1f5>
+ 674:	f4 dc       	rcall	.-1560   	; 0x5e <check_is_money>
+ 676:	00 93 b6 00 	sts	0x00B6, r16
+ 67a:	95 98       	cbi	0x12, 5	; 18
+ 67c:	aa 9a       	sbi	0x15, 2	; 21
+ 67e:	ef dc       	rcall	.-1570   	; 0x5e <check_is_money>
+ 680:	80 91 bc 00 	lds	r24, 0x00BC
+ 684:	85 30       	cpi	r24, 0x05	; 5
+ 686:	c9 f5       	brne	.+114    	; 0x6fa <__stack+0x29b>
+ 688:	80 91 bd 00 	lds	r24, 0x00BD
+ 68c:	81 31       	cpi	r24, 0x11	; 17
+ 68e:	a9 f5       	brne	.+106    	; 0x6fa <__stack+0x29b>
+ 690:	80 91 be 00 	lds	r24, 0x00BE
+ 694:	87 32       	cpi	r24, 0x27	; 39
+ 696:	89 f5       	brne	.+98     	; 0x6fa <__stack+0x29b>
+ 698:	80 91 bf 00 	lds	r24, 0x00BF
+ 69c:	86 35       	cpi	r24, 0x56	; 86
+ 69e:	69 f5       	brne	.+90     	; 0x6fa <__stack+0x29b>
+ 6a0:	de dc       	rcall	.-1604   	; 0x5e <check_is_money>
+ 6a2:	80 91 b4 00 	lds	r24, 0x00B4
+ 6a6:	88 23       	and	r24, r24
+ 6a8:	39 f5       	brne	.+78     	; 0x6f8 <__stack+0x299>
+ 6aa:	d9 dc       	rcall	.-1614   	; 0x5e <check_is_money>
+ 6ac:	80 91 b6 00 	lds	r24, 0x00B6
+ 6b0:	88 23       	and	r24, r24
+ 6b2:	61 f0       	breq	.+24     	; 0x6cc <__stack+0x26d>
+ 6b4:	d4 dc       	rcall	.-1624   	; 0x5e <check_is_money>
+ 6b6:	8c ef       	ldi	r24, 0xFC	; 252
+ 6b8:	05 dd       	rcall	.-1526   	; 0xc4 <uart_putc>
+ 6ba:	85 e0       	ldi	r24, 0x05	; 5
+ 6bc:	03 dd       	rcall	.-1530   	; 0xc4 <uart_putc>
+ 6be:	8a e1       	ldi	r24, 0x1A	; 26
+ 6c0:	01 dd       	rcall	.-1534   	; 0xc4 <uart_putc>
+ 6c2:	84 ef       	ldi	r24, 0xF4	; 244
+ 6c4:	ff dc       	rcall	.-1538   	; 0xc4 <uart_putc>
+ 6c6:	88 ee       	ldi	r24, 0xE8	; 232
+ 6c8:	fd dc       	rcall	.-1542   	; 0xc4 <uart_putc>
+ 6ca:	14 c0       	rjmp	.+40     	; 0x6f4 <__stack+0x295>
+ 6cc:	c8 dc       	rcall	.-1648   	; 0x5e <check_is_money>
+ 6ce:	10 92 ba 00 	sts	0x00BA, r1
+ 6d2:	0c c0       	rjmp	.+24     	; 0x6ec <__stack+0x28d>
+ 6d4:	e0 91 ba 00 	lds	r30, 0x00BA
+ 6d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 6da:	e5 54       	subi	r30, 0x45	; 69
+ 6dc:	ff 4f       	sbci	r31, 0xFF	; 255
+ 6de:	80 81       	ld	r24, Z
+ 6e0:	f1 dc       	rcall	.-1566   	; 0xc4 <uart_putc>
+ 6e2:	80 91 ba 00 	lds	r24, 0x00BA
+ 6e6:	8f 5f       	subi	r24, 0xFF	; 255
+ 6e8:	80 93 ba 00 	sts	0x00BA, r24
+ 6ec:	80 91 ba 00 	lds	r24, 0x00BA
+ 6f0:	85 30       	cpi	r24, 0x05	; 5
+ 6f2:	80 f3       	brcs	.-32     	; 0x6d4 <__stack+0x275>
+ 6f4:	b4 dc       	rcall	.-1688   	; 0x5e <check_is_money>
+ 6f6:	b3 dc       	rcall	.-1690   	; 0x5e <check_is_money>
+ 6f8:	b2 dc       	rcall	.-1692   	; 0x5e <check_is_money>
+ 6fa:	b1 dc       	rcall	.-1694   	; 0x5e <check_is_money>
+ 6fc:	80 91 b8 00 	lds	r24, 0x00B8
+ 700:	90 91 b9 00 	lds	r25, 0x00B9
+ 704:	01 96       	adiw	r24, 0x01	; 1
+ 706:	90 93 b9 00 	sts	0x00B9, r25
+ 70a:	80 93 b8 00 	sts	0x00B8, r24
+ 70e:	80 91 b4 00 	lds	r24, 0x00B4
+ 712:	88 23       	and	r24, r24
+ 714:	09 f4       	brne	.+2      	; 0x718 <__stack+0x2b9>
+ 716:	47 c2       	rjmp	.+1166   	; 0xba6 <__stack+0x747>
+ 718:	80 91 b8 00 	lds	r24, 0x00B8
+ 71c:	90 91 b9 00 	lds	r25, 0x00B9
+ 720:	06 97       	sbiw	r24, 0x06	; 6
+ 722:	40 f5       	brcc	.+80     	; 0x774 <__stack+0x315>
+ 724:	9c dc       	rcall	.-1736   	; 0x5e <check_is_money>
+ 726:	80 91 b6 00 	lds	r24, 0x00B6
+ 72a:	88 23       	and	r24, r24
+ 72c:	61 f0       	breq	.+24     	; 0x746 <__stack+0x2e7>
+ 72e:	97 dc       	rcall	.-1746   	; 0x5e <check_is_money>
+ 730:	8c ef       	ldi	r24, 0xFC	; 252
+ 732:	c8 dc       	rcall	.-1648   	; 0xc4 <uart_putc>
+ 734:	85 e0       	ldi	r24, 0x05	; 5
+ 736:	c6 dc       	rcall	.-1652   	; 0xc4 <uart_putc>
+ 738:	8a e1       	ldi	r24, 0x1A	; 26
+ 73a:	c4 dc       	rcall	.-1656   	; 0xc4 <uart_putc>
+ 73c:	84 ef       	ldi	r24, 0xF4	; 244
+ 73e:	c2 dc       	rcall	.-1660   	; 0xc4 <uart_putc>
+ 740:	88 ee       	ldi	r24, 0xE8	; 232
+ 742:	c0 dc       	rcall	.-1664   	; 0xc4 <uart_putc>
+ 744:	14 c0       	rjmp	.+40     	; 0x76e <__stack+0x30f>
+ 746:	8b dc       	rcall	.-1770   	; 0x5e <check_is_money>
+ 748:	10 92 ba 00 	sts	0x00BA, r1
+ 74c:	0c c0       	rjmp	.+24     	; 0x766 <__stack+0x307>
+ 74e:	e0 91 ba 00 	lds	r30, 0x00BA
+ 752:	f0 e0       	ldi	r31, 0x00	; 0
+ 754:	e5 54       	subi	r30, 0x45	; 69
+ 756:	ff 4f       	sbci	r31, 0xFF	; 255
+ 758:	80 81       	ld	r24, Z
+ 75a:	b4 dc       	rcall	.-1688   	; 0xc4 <uart_putc>
+ 75c:	80 91 ba 00 	lds	r24, 0x00BA
+ 760:	8f 5f       	subi	r24, 0xFF	; 255
+ 762:	80 93 ba 00 	sts	0x00BA, r24
+ 766:	80 91 ba 00 	lds	r24, 0x00BA
+ 76a:	85 30       	cpi	r24, 0x05	; 5
+ 76c:	80 f3       	brcs	.-32     	; 0x74e <__stack+0x2ef>
+ 76e:	77 dc       	rcall	.-1810   	; 0x5e <check_is_money>
+ 770:	76 dc       	rcall	.-1812   	; 0x5e <check_is_money>
+ 772:	19 c2       	rjmp	.+1074   	; 0xba6 <__stack+0x747>
+ 774:	10 92 b9 00 	sts	0x00B9, r1
+ 778:	10 92 b8 00 	sts	0x00B8, r1
+ 77c:	70 dc       	rcall	.-1824   	; 0x5e <check_is_money>
+ 77e:	80 91 bc 00 	lds	r24, 0x00BC
+ 782:	85 30       	cpi	r24, 0x05	; 5
+ 784:	09 f0       	breq	.+2      	; 0x788 <__stack+0x329>
+ 786:	0a c2       	rjmp	.+1044   	; 0xb9c <__stack+0x73d>
+ 788:	80 91 bd 00 	lds	r24, 0x00BD
+ 78c:	81 31       	cpi	r24, 0x11	; 17
+ 78e:	09 f0       	breq	.+2      	; 0x792 <__stack+0x333>
+ 790:	05 c2       	rjmp	.+1034   	; 0xb9c <__stack+0x73d>
+ 792:	80 91 be 00 	lds	r24, 0x00BE
+ 796:	87 32       	cpi	r24, 0x27	; 39
+ 798:	09 f0       	breq	.+2      	; 0x79c <__stack+0x33d>
+ 79a:	00 c2       	rjmp	.+1024   	; 0xb9c <__stack+0x73d>
+ 79c:	80 91 bf 00 	lds	r24, 0x00BF
+ 7a0:	86 35       	cpi	r24, 0x56	; 86
+ 7a2:	09 f0       	breq	.+2      	; 0x7a6 <__stack+0x347>
+ 7a4:	fb c1       	rjmp	.+1014   	; 0xb9c <__stack+0x73d>
+ 7a6:	5b dc       	rcall	.-1866   	; 0x5e <check_is_money>
+ 7a8:	8c ef       	ldi	r24, 0xFC	; 252
+ 7aa:	8c dc       	rcall	.-1768   	; 0xc4 <uart_putc>
+ 7ac:	85 e0       	ldi	r24, 0x05	; 5
+ 7ae:	8a dc       	rcall	.-1772   	; 0xc4 <uart_putc>
+ 7b0:	82 e1       	ldi	r24, 0x12	; 18
+ 7b2:	88 dc       	rcall	.-1776   	; 0xc4 <uart_putc>
+ 7b4:	8c eb       	ldi	r24, 0xBC	; 188
+ 7b6:	86 dc       	rcall	.-1780   	; 0xc4 <uart_putc>
+ 7b8:	84 e6       	ldi	r24, 0x64	; 100
+ 7ba:	84 dc       	rcall	.-1784   	; 0xc4 <uart_putc>
+ 7bc:	50 dc       	rcall	.-1888   	; 0x5e <check_is_money>
+ 7be:	10 e0       	ldi	r17, 0x00	; 0
+ 7c0:	10 92 ba 00 	sts	0x00BA, r1
+ 7c4:	0e c0       	rjmp	.+28     	; 0x7e2 <__stack+0x383>
+ 7c6:	80 91 ba 00 	lds	r24, 0x00BA
+ 7ca:	c8 2f       	mov	r28, r24
+ 7cc:	d0 e0       	ldi	r29, 0x00	; 0
+ 7ce:	86 dc       	rcall	.-1780   	; 0xdc <uart_getc>
+ 7d0:	c5 54       	subi	r28, 0x45	; 69
+ 7d2:	df 4f       	sbci	r29, 0xFF	; 255
+ 7d4:	88 83       	st	Y, r24
+ 7d6:	43 dc       	rcall	.-1914   	; 0x5e <check_is_money>
+ 7d8:	80 91 ba 00 	lds	r24, 0x00BA
+ 7dc:	8f 5f       	subi	r24, 0xFF	; 255
+ 7de:	80 93 ba 00 	sts	0x00BA, r24
+ 7e2:	80 91 ba 00 	lds	r24, 0x00BA
+ 7e6:	85 30       	cpi	r24, 0x05	; 5
+ 7e8:	70 f3       	brcs	.-36     	; 0x7c6 <__stack+0x367>
+ 7ea:	39 dc       	rcall	.-1934   	; 0x5e <check_is_money>
+ 7ec:	8c ef       	ldi	r24, 0xFC	; 252
+ 7ee:	6a dc       	rcall	.-1836   	; 0xc4 <uart_putc>
+ 7f0:	85 e0       	ldi	r24, 0x05	; 5
+ 7f2:	68 dc       	rcall	.-1840   	; 0xc4 <uart_putc>
+ 7f4:	82 e1       	ldi	r24, 0x12	; 18
+ 7f6:	66 dc       	rcall	.-1844   	; 0xc4 <uart_putc>
+ 7f8:	8c eb       	ldi	r24, 0xBC	; 188
+ 7fa:	64 dc       	rcall	.-1848   	; 0xc4 <uart_putc>
+ 7fc:	84 e6       	ldi	r24, 0x64	; 100
+ 7fe:	62 dc       	rcall	.-1852   	; 0xc4 <uart_putc>
+ 800:	2e dc       	rcall	.-1956   	; 0x5e <check_is_money>
+ 802:	1f 5f       	subi	r17, 0xFF	; 255
+ 804:	14 30       	cpi	r17, 0x04	; 4
+ 806:	e1 f6       	brne	.-72     	; 0x7c0 <__stack+0x361>
+ 808:	2a dc       	rcall	.-1964   	; 0x5e <check_is_money>
+ 80a:	10 92 ba 00 	sts	0x00BA, r1
+ 80e:	0e c0       	rjmp	.+28     	; 0x82c <__stack+0x3cd>
+ 810:	80 91 ba 00 	lds	r24, 0x00BA
+ 814:	c8 2f       	mov	r28, r24
+ 816:	d0 e0       	ldi	r29, 0x00	; 0
+ 818:	61 dc       	rcall	.-1854   	; 0xdc <uart_getc>
+ 81a:	c5 54       	subi	r28, 0x45	; 69
+ 81c:	df 4f       	sbci	r29, 0xFF	; 255
+ 81e:	88 83       	st	Y, r24
+ 820:	1e dc       	rcall	.-1988   	; 0x5e <check_is_money>
+ 822:	80 91 ba 00 	lds	r24, 0x00BA
+ 826:	8f 5f       	subi	r24, 0xFF	; 255
+ 828:	80 93 ba 00 	sts	0x00BA, r24
+ 82c:	80 91 ba 00 	lds	r24, 0x00BA
+ 830:	85 30       	cpi	r24, 0x05	; 5
+ 832:	70 f3       	brcs	.-36     	; 0x810 <__stack+0x3b1>
+ 834:	14 dc       	rcall	.-2008   	; 0x5e <check_is_money>
+ 836:	80 91 b4 00 	lds	r24, 0x00B4
+ 83a:	88 23       	and	r24, r24
+ 83c:	91 f0       	breq	.+36     	; 0x862 <__stack+0x403>
+ 83e:	8c ef       	ldi	r24, 0xFC	; 252
+ 840:	41 dc       	rcall	.-1918   	; 0xc4 <uart_putc>
+ 842:	86 e0       	ldi	r24, 0x06	; 6
+ 844:	3f dc       	rcall	.-1922   	; 0xc4 <uart_putc>
+ 846:	83 e1       	ldi	r24, 0x13	; 19
+ 848:	3d dc       	rcall	.-1926   	; 0xc4 <uart_putc>
+ 84a:	84 e6       	ldi	r24, 0x64	; 100
+ 84c:	3b dc       	rcall	.-1930   	; 0xc4 <uart_putc>
+ 84e:	8d e1       	ldi	r24, 0x1D	; 29
+ 850:	39 dc       	rcall	.-1934   	; 0xc4 <uart_putc>
+ 852:	8c ea       	ldi	r24, 0xAC	; 172
+ 854:	37 dc       	rcall	.-1938   	; 0xc4 <uart_putc>
+ 856:	03 dc       	rcall	.-2042   	; 0x5e <check_is_money>
+ 858:	80 91 b4 00 	lds	r24, 0x00B4
+ 85c:	81 50       	subi	r24, 0x01	; 1
+ 85e:	80 93 b4 00 	sts	0x00B4, r24
+ 862:	10 92 ba 00 	sts	0x00BA, r1
+ 866:	0e c0       	rjmp	.+28     	; 0x884 <__stack+0x425>
+ 868:	80 91 ba 00 	lds	r24, 0x00BA
+ 86c:	c8 2f       	mov	r28, r24
+ 86e:	d0 e0       	ldi	r29, 0x00	; 0
+ 870:	35 dc       	rcall	.-1942   	; 0xdc <uart_getc>
+ 872:	c5 54       	subi	r28, 0x45	; 69
+ 874:	df 4f       	sbci	r29, 0xFF	; 255
+ 876:	88 83       	st	Y, r24
+ 878:	f2 db       	rcall	.-2076   	; 0x5e <check_is_money>
+ 87a:	80 91 ba 00 	lds	r24, 0x00BA
+ 87e:	8f 5f       	subi	r24, 0xFF	; 255
+ 880:	80 93 ba 00 	sts	0x00BA, r24
+ 884:	80 91 ba 00 	lds	r24, 0x00BA
+ 888:	85 30       	cpi	r24, 0x05	; 5
+ 88a:	70 f3       	brcs	.-36     	; 0x868 <__stack+0x409>
+ 88c:	e8 db       	rcall	.-2096   	; 0x5e <check_is_money>
+ 88e:	8c ef       	ldi	r24, 0xFC	; 252
+ 890:	19 dc       	rcall	.-1998   	; 0xc4 <uart_putc>
+ 892:	85 e0       	ldi	r24, 0x05	; 5
+ 894:	17 dc       	rcall	.-2002   	; 0xc4 <uart_putc>
+ 896:	80 e5       	ldi	r24, 0x50	; 80
+ 898:	15 dc       	rcall	.-2006   	; 0xc4 <uart_putc>
+ 89a:	8a ea       	ldi	r24, 0xAA	; 170
+ 89c:	13 dc       	rcall	.-2010   	; 0xc4 <uart_putc>
+ 89e:	85 e0       	ldi	r24, 0x05	; 5
+ 8a0:	11 dc       	rcall	.-2014   	; 0xc4 <uart_putc>
+ 8a2:	dd db       	rcall	.-2118   	; 0x5e <check_is_money>
+ 8a4:	10 92 ba 00 	sts	0x00BA, r1
+ 8a8:	0e c0       	rjmp	.+28     	; 0x8c6 <__stack+0x467>
+ 8aa:	80 91 ba 00 	lds	r24, 0x00BA
+ 8ae:	c8 2f       	mov	r28, r24
+ 8b0:	d0 e0       	ldi	r29, 0x00	; 0
+ 8b2:	14 dc       	rcall	.-2008   	; 0xdc <uart_getc>
+ 8b4:	c5 54       	subi	r28, 0x45	; 69
+ 8b6:	df 4f       	sbci	r29, 0xFF	; 255
+ 8b8:	88 83       	st	Y, r24
+ 8ba:	d1 db       	rcall	.-2142   	; 0x5e <check_is_money>
+ 8bc:	80 91 ba 00 	lds	r24, 0x00BA
+ 8c0:	8f 5f       	subi	r24, 0xFF	; 255
+ 8c2:	80 93 ba 00 	sts	0x00BA, r24
+ 8c6:	80 91 ba 00 	lds	r24, 0x00BA
+ 8ca:	85 30       	cpi	r24, 0x05	; 5
+ 8cc:	70 f3       	brcs	.-36     	; 0x8aa <__stack+0x44b>
+ 8ce:	c7 db       	rcall	.-2162   	; 0x5e <check_is_money>
+ 8d0:	8c ef       	ldi	r24, 0xFC	; 252
+ 8d2:	f8 db       	rcall	.-2064   	; 0xc4 <uart_putc>
+ 8d4:	85 e0       	ldi	r24, 0x05	; 5
+ 8d6:	f6 db       	rcall	.-2068   	; 0xc4 <uart_putc>
+ 8d8:	84 e1       	ldi	r24, 0x14	; 20
+ 8da:	f4 db       	rcall	.-2072   	; 0xc4 <uart_putc>
+ 8dc:	8a e8       	ldi	r24, 0x8A	; 138
+ 8de:	f2 db       	rcall	.-2076   	; 0xc4 <uart_putc>
+ 8e0:	81 e0       	ldi	r24, 0x01	; 1
+ 8e2:	f0 db       	rcall	.-2080   	; 0xc4 <uart_putc>
+ 8e4:	bc db       	rcall	.-2184   	; 0x5e <check_is_money>
+ 8e6:	10 92 ba 00 	sts	0x00BA, r1
+ 8ea:	0e c0       	rjmp	.+28     	; 0x908 <__stack+0x4a9>
+ 8ec:	80 91 ba 00 	lds	r24, 0x00BA
+ 8f0:	c8 2f       	mov	r28, r24
+ 8f2:	d0 e0       	ldi	r29, 0x00	; 0
+ 8f4:	f3 db       	rcall	.-2074   	; 0xdc <uart_getc>
+ 8f6:	c5 54       	subi	r28, 0x45	; 69
+ 8f8:	df 4f       	sbci	r29, 0xFF	; 255
+ 8fa:	88 83       	st	Y, r24
+ 8fc:	b0 db       	rcall	.-2208   	; 0x5e <check_is_money>
+ 8fe:	80 91 ba 00 	lds	r24, 0x00BA
+ 902:	8f 5f       	subi	r24, 0xFF	; 255
+ 904:	80 93 ba 00 	sts	0x00BA, r24
+ 908:	80 91 ba 00 	lds	r24, 0x00BA
+ 90c:	85 30       	cpi	r24, 0x05	; 5
+ 90e:	70 f3       	brcs	.-36     	; 0x8ec <__stack+0x48d>
+ 910:	a6 db       	rcall	.-2228   	; 0x5e <check_is_money>
+ 912:	8c ef       	ldi	r24, 0xFC	; 252
+ 914:	d7 db       	rcall	.-2130   	; 0xc4 <uart_putc>
+ 916:	85 e0       	ldi	r24, 0x05	; 5
+ 918:	d5 db       	rcall	.-2134   	; 0xc4 <uart_putc>
+ 91a:	84 e1       	ldi	r24, 0x14	; 20
+ 91c:	d3 db       	rcall	.-2138   	; 0xc4 <uart_putc>
+ 91e:	8a e8       	ldi	r24, 0x8A	; 138
+ 920:	d1 db       	rcall	.-2142   	; 0xc4 <uart_putc>
+ 922:	81 e0       	ldi	r24, 0x01	; 1
+ 924:	cf db       	rcall	.-2146   	; 0xc4 <uart_putc>
+ 926:	9b db       	rcall	.-2250   	; 0x5e <check_is_money>
+ 928:	10 92 ba 00 	sts	0x00BA, r1
+ 92c:	0e c0       	rjmp	.+28     	; 0x94a <__stack+0x4eb>
+ 92e:	80 91 ba 00 	lds	r24, 0x00BA
+ 932:	c8 2f       	mov	r28, r24
+ 934:	d0 e0       	ldi	r29, 0x00	; 0
+ 936:	d2 db       	rcall	.-2140   	; 0xdc <uart_getc>
+ 938:	c5 54       	subi	r28, 0x45	; 69
+ 93a:	df 4f       	sbci	r29, 0xFF	; 255
+ 93c:	88 83       	st	Y, r24
+ 93e:	8f db       	rcall	.-2274   	; 0x5e <check_is_money>
+ 940:	80 91 ba 00 	lds	r24, 0x00BA
+ 944:	8f 5f       	subi	r24, 0xFF	; 255
+ 946:	80 93 ba 00 	sts	0x00BA, r24
+ 94a:	80 91 ba 00 	lds	r24, 0x00BA
+ 94e:	85 30       	cpi	r24, 0x05	; 5
+ 950:	70 f3       	brcs	.-36     	; 0x92e <__stack+0x4cf>
+ 952:	85 db       	rcall	.-2294   	; 0x5e <check_is_money>
+ 954:	8c ef       	ldi	r24, 0xFC	; 252
+ 956:	b6 db       	rcall	.-2196   	; 0xc4 <uart_putc>
+ 958:	85 e0       	ldi	r24, 0x05	; 5
+ 95a:	b4 db       	rcall	.-2200   	; 0xc4 <uart_putc>
+ 95c:	84 e1       	ldi	r24, 0x14	; 20
+ 95e:	b2 db       	rcall	.-2204   	; 0xc4 <uart_putc>
+ 960:	8a e8       	ldi	r24, 0x8A	; 138
+ 962:	b0 db       	rcall	.-2208   	; 0xc4 <uart_putc>
+ 964:	81 e0       	ldi	r24, 0x01	; 1
+ 966:	ae db       	rcall	.-2212   	; 0xc4 <uart_putc>
+ 968:	7a db       	rcall	.-2316   	; 0x5e <check_is_money>
+ 96a:	10 92 ba 00 	sts	0x00BA, r1
+ 96e:	0e c0       	rjmp	.+28     	; 0x98c <__stack+0x52d>
+ 970:	80 91 ba 00 	lds	r24, 0x00BA
+ 974:	c8 2f       	mov	r28, r24
+ 976:	d0 e0       	ldi	r29, 0x00	; 0
+ 978:	b1 db       	rcall	.-2206   	; 0xdc <uart_getc>
+ 97a:	c5 54       	subi	r28, 0x45	; 69
+ 97c:	df 4f       	sbci	r29, 0xFF	; 255
+ 97e:	88 83       	st	Y, r24
+ 980:	6e db       	rcall	.-2340   	; 0x5e <check_is_money>
+ 982:	80 91 ba 00 	lds	r24, 0x00BA
+ 986:	8f 5f       	subi	r24, 0xFF	; 255
+ 988:	80 93 ba 00 	sts	0x00BA, r24
+ 98c:	80 91 ba 00 	lds	r24, 0x00BA
+ 990:	85 30       	cpi	r24, 0x05	; 5
+ 992:	70 f3       	brcs	.-36     	; 0x970 <__stack+0x511>
+ 994:	64 db       	rcall	.-2360   	; 0x5e <check_is_money>
+ 996:	8c ef       	ldi	r24, 0xFC	; 252
+ 998:	95 db       	rcall	.-2262   	; 0xc4 <uart_putc>
+ 99a:	85 e0       	ldi	r24, 0x05	; 5
+ 99c:	93 db       	rcall	.-2266   	; 0xc4 <uart_putc>
+ 99e:	84 e1       	ldi	r24, 0x14	; 20
+ 9a0:	91 db       	rcall	.-2270   	; 0xc4 <uart_putc>
+ 9a2:	8a e8       	ldi	r24, 0x8A	; 138
+ 9a4:	8f db       	rcall	.-2274   	; 0xc4 <uart_putc>
+ 9a6:	81 e0       	ldi	r24, 0x01	; 1
+ 9a8:	8d db       	rcall	.-2278   	; 0xc4 <uart_putc>
+ 9aa:	59 db       	rcall	.-2382   	; 0x5e <check_is_money>
+ 9ac:	10 92 ba 00 	sts	0x00BA, r1
+ 9b0:	0e c0       	rjmp	.+28     	; 0x9ce <__stack+0x56f>
+ 9b2:	80 91 ba 00 	lds	r24, 0x00BA
+ 9b6:	c8 2f       	mov	r28, r24
+ 9b8:	d0 e0       	ldi	r29, 0x00	; 0
+ 9ba:	90 db       	rcall	.-2272   	; 0xdc <uart_getc>
+ 9bc:	c5 54       	subi	r28, 0x45	; 69
+ 9be:	df 4f       	sbci	r29, 0xFF	; 255
+ 9c0:	88 83       	st	Y, r24
+ 9c2:	4d db       	rcall	.-2406   	; 0x5e <check_is_money>
+ 9c4:	80 91 ba 00 	lds	r24, 0x00BA
+ 9c8:	8f 5f       	subi	r24, 0xFF	; 255
+ 9ca:	80 93 ba 00 	sts	0x00BA, r24
+ 9ce:	80 91 ba 00 	lds	r24, 0x00BA
+ 9d2:	85 30       	cpi	r24, 0x05	; 5
+ 9d4:	70 f3       	brcs	.-36     	; 0x9b2 <__stack+0x553>
+ 9d6:	43 db       	rcall	.-2426   	; 0x5e <check_is_money>
+ 9d8:	8c ef       	ldi	r24, 0xFC	; 252
+ 9da:	74 db       	rcall	.-2328   	; 0xc4 <uart_putc>
+ 9dc:	85 e0       	ldi	r24, 0x05	; 5
+ 9de:	72 db       	rcall	.-2332   	; 0xc4 <uart_putc>
+ 9e0:	84 e1       	ldi	r24, 0x14	; 20
+ 9e2:	70 db       	rcall	.-2336   	; 0xc4 <uart_putc>
+ 9e4:	8a e8       	ldi	r24, 0x8A	; 138
+ 9e6:	6e db       	rcall	.-2340   	; 0xc4 <uart_putc>
+ 9e8:	81 e0       	ldi	r24, 0x01	; 1
+ 9ea:	6c db       	rcall	.-2344   	; 0xc4 <uart_putc>
+ 9ec:	38 db       	rcall	.-2448   	; 0x5e <check_is_money>
+ 9ee:	10 92 ba 00 	sts	0x00BA, r1
+ 9f2:	0e c0       	rjmp	.+28     	; 0xa10 <__stack+0x5b1>
+ 9f4:	80 91 ba 00 	lds	r24, 0x00BA
+ 9f8:	c8 2f       	mov	r28, r24
+ 9fa:	d0 e0       	ldi	r29, 0x00	; 0
+ 9fc:	6f db       	rcall	.-2338   	; 0xdc <uart_getc>
+ 9fe:	c5 54       	subi	r28, 0x45	; 69
+ a00:	df 4f       	sbci	r29, 0xFF	; 255
+ a02:	88 83       	st	Y, r24
+ a04:	2c db       	rcall	.-2472   	; 0x5e <check_is_money>
+ a06:	80 91 ba 00 	lds	r24, 0x00BA
+ a0a:	8f 5f       	subi	r24, 0xFF	; 255
+ a0c:	80 93 ba 00 	sts	0x00BA, r24
+ a10:	80 91 ba 00 	lds	r24, 0x00BA
+ a14:	85 30       	cpi	r24, 0x05	; 5
+ a16:	70 f3       	brcs	.-36     	; 0x9f4 <__stack+0x595>
+ a18:	22 db       	rcall	.-2492   	; 0x5e <check_is_money>
+ a1a:	8c ef       	ldi	r24, 0xFC	; 252
+ a1c:	53 db       	rcall	.-2394   	; 0xc4 <uart_putc>
+ a1e:	85 e0       	ldi	r24, 0x05	; 5
+ a20:	51 db       	rcall	.-2398   	; 0xc4 <uart_putc>
+ a22:	84 e1       	ldi	r24, 0x14	; 20
+ a24:	4f db       	rcall	.-2402   	; 0xc4 <uart_putc>
+ a26:	8a e8       	ldi	r24, 0x8A	; 138
+ a28:	4d db       	rcall	.-2406   	; 0xc4 <uart_putc>
+ a2a:	81 e0       	ldi	r24, 0x01	; 1
+ a2c:	4b db       	rcall	.-2410   	; 0xc4 <uart_putc>
+ a2e:	17 db       	rcall	.-2514   	; 0x5e <check_is_money>
+ a30:	10 92 ba 00 	sts	0x00BA, r1
+ a34:	0e c0       	rjmp	.+28     	; 0xa52 <__stack+0x5f3>
+ a36:	80 91 ba 00 	lds	r24, 0x00BA
+ a3a:	c8 2f       	mov	r28, r24
+ a3c:	d0 e0       	ldi	r29, 0x00	; 0
+ a3e:	4e db       	rcall	.-2404   	; 0xdc <uart_getc>
+ a40:	c5 54       	subi	r28, 0x45	; 69
+ a42:	df 4f       	sbci	r29, 0xFF	; 255
+ a44:	88 83       	st	Y, r24
+ a46:	0b db       	rcall	.-2538   	; 0x5e <check_is_money>
+ a48:	80 91 ba 00 	lds	r24, 0x00BA
+ a4c:	8f 5f       	subi	r24, 0xFF	; 255
+ a4e:	80 93 ba 00 	sts	0x00BA, r24
+ a52:	80 91 ba 00 	lds	r24, 0x00BA
+ a56:	85 30       	cpi	r24, 0x05	; 5
+ a58:	70 f3       	brcs	.-36     	; 0xa36 <__stack+0x5d7>
+ a5a:	01 db       	rcall	.-2558   	; 0x5e <check_is_money>
+ a5c:	8c ef       	ldi	r24, 0xFC	; 252
+ a5e:	32 db       	rcall	.-2460   	; 0xc4 <uart_putc>
+ a60:	85 e0       	ldi	r24, 0x05	; 5
+ a62:	30 db       	rcall	.-2464   	; 0xc4 <uart_putc>
+ a64:	85 e1       	ldi	r24, 0x15	; 21
+ a66:	2e db       	rcall	.-2468   	; 0xc4 <uart_putc>
+ a68:	83 e0       	ldi	r24, 0x03	; 3
+ a6a:	2c db       	rcall	.-2472   	; 0xc4 <uart_putc>
+ a6c:	80 e1       	ldi	r24, 0x10	; 16
+ a6e:	2a db       	rcall	.-2476   	; 0xc4 <uart_putc>
+ a70:	f6 da       	rcall	.-2580   	; 0x5e <check_is_money>
+ a72:	10 92 ba 00 	sts	0x00BA, r1
+ a76:	0e c0       	rjmp	.+28     	; 0xa94 <__stack+0x635>
+ a78:	80 91 ba 00 	lds	r24, 0x00BA
+ a7c:	c8 2f       	mov	r28, r24
+ a7e:	d0 e0       	ldi	r29, 0x00	; 0
+ a80:	2d db       	rcall	.-2470   	; 0xdc <uart_getc>
+ a82:	c5 54       	subi	r28, 0x45	; 69
+ a84:	df 4f       	sbci	r29, 0xFF	; 255
+ a86:	88 83       	st	Y, r24
+ a88:	ea da       	rcall	.-2604   	; 0x5e <check_is_money>
+ a8a:	80 91 ba 00 	lds	r24, 0x00BA
+ a8e:	8f 5f       	subi	r24, 0xFF	; 255
+ a90:	80 93 ba 00 	sts	0x00BA, r24
+ a94:	80 91 ba 00 	lds	r24, 0x00BA
+ a98:	85 30       	cpi	r24, 0x05	; 5
+ a9a:	70 f3       	brcs	.-36     	; 0xa78 <__stack+0x619>
+ a9c:	e0 da       	rcall	.-2624   	; 0x5e <check_is_money>
+ a9e:	8c ef       	ldi	r24, 0xFC	; 252
+ aa0:	11 db       	rcall	.-2526   	; 0xc4 <uart_putc>
+ aa2:	85 e0       	ldi	r24, 0x05	; 5
+ aa4:	0f db       	rcall	.-2530   	; 0xc4 <uart_putc>
+ aa6:	86 e1       	ldi	r24, 0x16	; 22
+ aa8:	0d db       	rcall	.-2534   	; 0xc4 <uart_putc>
+ aaa:	88 e9       	ldi	r24, 0x98	; 152
+ aac:	0b db       	rcall	.-2538   	; 0xc4 <uart_putc>
+ aae:	82 e2       	ldi	r24, 0x22	; 34
+ ab0:	09 db       	rcall	.-2542   	; 0xc4 <uart_putc>
+ ab2:	d5 da       	rcall	.-2646   	; 0x5e <check_is_money>
+ ab4:	10 92 ba 00 	sts	0x00BA, r1
+ ab8:	0e c0       	rjmp	.+28     	; 0xad6 <__stack+0x677>
+ aba:	80 91 ba 00 	lds	r24, 0x00BA
+ abe:	c8 2f       	mov	r28, r24
+ ac0:	d0 e0       	ldi	r29, 0x00	; 0
+ ac2:	0c db       	rcall	.-2536   	; 0xdc <uart_getc>
+ ac4:	c5 54       	subi	r28, 0x45	; 69
+ ac6:	df 4f       	sbci	r29, 0xFF	; 255
+ ac8:	88 83       	st	Y, r24
+ aca:	c9 da       	rcall	.-2670   	; 0x5e <check_is_money>
+ acc:	80 91 ba 00 	lds	r24, 0x00BA
+ ad0:	8f 5f       	subi	r24, 0xFF	; 255
+ ad2:	80 93 ba 00 	sts	0x00BA, r24
+ ad6:	80 91 ba 00 	lds	r24, 0x00BA
+ ada:	85 30       	cpi	r24, 0x05	; 5
+ adc:	70 f3       	brcs	.-36     	; 0xaba <__stack+0x65b>
+ ade:	bf da       	rcall	.-2690   	; 0x5e <check_is_money>
+ ae0:	8c ef       	ldi	r24, 0xFC	; 252
+ ae2:	f0 da       	rcall	.-2592   	; 0xc4 <uart_putc>
+ ae4:	85 e0       	ldi	r24, 0x05	; 5
+ ae6:	ee da       	rcall	.-2596   	; 0xc4 <uart_putc>
+ ae8:	86 e1       	ldi	r24, 0x16	; 22
+ aea:	ec da       	rcall	.-2600   	; 0xc4 <uart_putc>
+ aec:	88 e9       	ldi	r24, 0x98	; 152
+ aee:	ea da       	rcall	.-2604   	; 0xc4 <uart_putc>
+ af0:	82 e2       	ldi	r24, 0x22	; 34
+ af2:	e8 da       	rcall	.-2608   	; 0xc4 <uart_putc>
+ af4:	b4 da       	rcall	.-2712   	; 0x5e <check_is_money>
+ af6:	10 92 ba 00 	sts	0x00BA, r1
+ afa:	0e c0       	rjmp	.+28     	; 0xb18 <__stack+0x6b9>
+ afc:	80 91 ba 00 	lds	r24, 0x00BA
+ b00:	c8 2f       	mov	r28, r24
+ b02:	d0 e0       	ldi	r29, 0x00	; 0
+ b04:	eb da       	rcall	.-2602   	; 0xdc <uart_getc>
+ b06:	c5 54       	subi	r28, 0x45	; 69
+ b08:	df 4f       	sbci	r29, 0xFF	; 255
+ b0a:	88 83       	st	Y, r24
+ b0c:	a8 da       	rcall	.-2736   	; 0x5e <check_is_money>
+ b0e:	80 91 ba 00 	lds	r24, 0x00BA
+ b12:	8f 5f       	subi	r24, 0xFF	; 255
+ b14:	80 93 ba 00 	sts	0x00BA, r24
+ b18:	80 91 ba 00 	lds	r24, 0x00BA
+ b1c:	85 30       	cpi	r24, 0x05	; 5
+ b1e:	70 f3       	brcs	.-36     	; 0xafc <__stack+0x69d>
+ b20:	80 91 bc 00 	lds	r24, 0x00BC
+ b24:	85 30       	cpi	r24, 0x05	; 5
+ b26:	c9 f5       	brne	.+114    	; 0xb9a <__stack+0x73b>
+ b28:	80 91 bd 00 	lds	r24, 0x00BD
+ b2c:	81 31       	cpi	r24, 0x11	; 17
+ b2e:	a9 f5       	brne	.+106    	; 0xb9a <__stack+0x73b>
+ b30:	80 91 be 00 	lds	r24, 0x00BE
+ b34:	87 32       	cpi	r24, 0x27	; 39
+ b36:	89 f5       	brne	.+98     	; 0xb9a <__stack+0x73b>
+ b38:	80 91 bf 00 	lds	r24, 0x00BF
+ b3c:	86 35       	cpi	r24, 0x56	; 86
+ b3e:	69 f5       	brne	.+90     	; 0xb9a <__stack+0x73b>
+ b40:	8e da       	rcall	.-2788   	; 0x5e <check_is_money>
+ b42:	80 91 b4 00 	lds	r24, 0x00B4
+ b46:	88 23       	and	r24, r24
+ b48:	39 f5       	brne	.+78     	; 0xb98 <__stack+0x739>
+ b4a:	89 da       	rcall	.-2798   	; 0x5e <check_is_money>
+ b4c:	80 91 b6 00 	lds	r24, 0x00B6
+ b50:	88 23       	and	r24, r24
+ b52:	61 f0       	breq	.+24     	; 0xb6c <__stack+0x70d>
+ b54:	84 da       	rcall	.-2808   	; 0x5e <check_is_money>
+ b56:	8c ef       	ldi	r24, 0xFC	; 252
+ b58:	b5 da       	rcall	.-2710   	; 0xc4 <uart_putc>
+ b5a:	85 e0       	ldi	r24, 0x05	; 5
+ b5c:	b3 da       	rcall	.-2714   	; 0xc4 <uart_putc>
+ b5e:	8a e1       	ldi	r24, 0x1A	; 26
+ b60:	b1 da       	rcall	.-2718   	; 0xc4 <uart_putc>
+ b62:	84 ef       	ldi	r24, 0xF4	; 244
+ b64:	af da       	rcall	.-2722   	; 0xc4 <uart_putc>
+ b66:	88 ee       	ldi	r24, 0xE8	; 232
+ b68:	ad da       	rcall	.-2726   	; 0xc4 <uart_putc>
+ b6a:	14 c0       	rjmp	.+40     	; 0xb94 <__stack+0x735>
+ b6c:	78 da       	rcall	.-2832   	; 0x5e <check_is_money>
+ b6e:	10 92 ba 00 	sts	0x00BA, r1
+ b72:	0c c0       	rjmp	.+24     	; 0xb8c <__stack+0x72d>
+ b74:	e0 91 ba 00 	lds	r30, 0x00BA
+ b78:	f0 e0       	ldi	r31, 0x00	; 0
+ b7a:	e5 54       	subi	r30, 0x45	; 69
+ b7c:	ff 4f       	sbci	r31, 0xFF	; 255
+ b7e:	80 81       	ld	r24, Z
+ b80:	a1 da       	rcall	.-2750   	; 0xc4 <uart_putc>
+ b82:	80 91 ba 00 	lds	r24, 0x00BA
+ b86:	8f 5f       	subi	r24, 0xFF	; 255
+ b88:	80 93 ba 00 	sts	0x00BA, r24
+ b8c:	80 91 ba 00 	lds	r24, 0x00BA
+ b90:	85 30       	cpi	r24, 0x05	; 5
+ b92:	80 f3       	brcs	.-32     	; 0xb74 <__stack+0x715>
+ b94:	64 da       	rcall	.-2872   	; 0x5e <check_is_money>
+ b96:	63 da       	rcall	.-2874   	; 0x5e <check_is_money>
+ b98:	62 da       	rcall	.-2876   	; 0x5e <check_is_money>
+ b9a:	61 da       	rcall	.-2878   	; 0x5e <check_is_money>
+ b9c:	60 da       	rcall	.-2880   	; 0x5e <check_is_money>
+ b9e:	00 93 b6 00 	sts	0x00B6, r16
+ ba2:	95 98       	cbi	0x12, 5	; 18
+ ba4:	aa 9a       	sbi	0x15, 2	; 21
+ ba6:	5b da       	rcall	.-2890   	; 0x5e <check_is_money>
+ ba8:	5a da       	rcall	.-2892   	; 0x5e <check_is_money>
+ baa:	ed cc       	rjmp	.-1574   	; 0x586 <__stack+0x127>
+
+00000bac <_exit>:
+ bac:	f8 94       	cli
+
+00000bae <__stop_program>:
+ bae:	ff cf       	rjmp	.-2      	; 0xbae <__stop_program>

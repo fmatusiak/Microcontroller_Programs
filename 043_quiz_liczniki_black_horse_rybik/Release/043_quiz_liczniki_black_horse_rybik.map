@@ -1,0 +1,457 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                              ./Quizomat.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+FL_protection       0x1               ./Quizomat.o
+FL_counter_pulses   0x1               ./Quizomat.o
+FLAGA_Send          0x1               ./Quizomat.o
+counter_pulses      0x2               ./Quizomat.o
+commandBuffer       0x28              ./Quizomat.o
+FL_QUIZ_ON          0x1               ./Quizomat.o
+FL_start_rules_counter
+                    0x1               ./Quizomat.o
+command             0x1               ./Quizomat.o
+sended              0x1               ./Quizomat.o
+Counter_IN_2        0x1               ./Quizomat.o
+FL_pilot            0x1               ./Quizomat.o
+Counter_IN_10       0x1               ./Quizomat.o
+QUIZ_ON             0x1               ./Quizomat.o
+Counter_IN_1        0x1               ./Quizomat.o
+FL_keySwitch        0x1               ./Quizomat.o
+FL_TETRIS_ON        0x1               ./Quizomat.o
+FL_automatOn        0x1               ./Quizomat.o
+com_quiz_start_rules
+                    0x1               ./Quizomat.o
+Counter_IN_5        0x1               ./Quizomat.o
+com_round           0x1               ./Quizomat.o
+com_attack          0x1               ./Quizomat.o
+receive             0x1               ./Quizomat.o
+buffer_size         0x1               ./Quizomat.o
+Counter_IN_25       0x1               ./Quizomat.o
+com_quiz_on         0x1               ./Quizomat.o
+counterTimeout      0x2               ./Quizomat.o
+com_switch_on_tetris
+                    0x1               ./Quizomat.o
+TETRIS_ON           0x1               ./Quizomat.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
+LOAD ./Quizomat.o
+LOAD ./main.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5\libc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x8c4
+ *(.vectors)
+ .vectors       0x00000000       0x54 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000054                . = ALIGN (0x2)
+                0x00000054                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000054        0x0 linker stubs
+ *(.trampolines*)
+                0x00000054                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000054                __ctors_start = .
+ *(.ctors)
+                0x00000054                __ctors_end = .
+                0x00000054                __dtors_start = .
+ *(.dtors)
+                0x00000054                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000054        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
+                0x00000054                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000054        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000060       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x00000060                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000070        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
+ *(.init9)
+ *(.text)
+ .text          0x00000078        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
+                0x00000078                __vector_1
+                0x00000078                __vector_12
+                0x00000078                __bad_interrupt
+                0x00000078                __vector_6
+                0x00000078                __vector_3
+                0x00000078                __vector_11
+                0x00000078                __vector_13
+                0x00000078                __vector_17
+                0x00000078                __vector_19
+                0x00000078                __vector_7
+                0x00000078                __vector_5
+                0x00000078                __vector_4
+                0x00000078                __vector_9
+                0x00000078                __vector_2
+                0x00000078                __vector_15
+                0x00000078                __vector_8
+                0x00000078                __vector_14
+                0x00000078                __vector_10
+                0x00000078                __vector_16
+                0x00000078                __vector_18
+                0x00000078                __vector_20
+ .text          0x0000007c        0x0 ./Quizomat.o
+ .text          0x0000007c        0x0 ./main.o
+ .text          0x0000007c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text          0x0000007c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x0000007c                . = ALIGN (0x2)
+ *(.text.*)
+ .text.sendTimeCounter
+                0x0000007c      0x17e ./Quizomat.o
+                0x0000007c                sendTimeCounter
+ .text.addAttack
+                0x000001fa       0x32 ./Quizomat.o
+                0x000001fa                addAttack
+ .text.creditsCoinAcceptorQuizomat
+                0x0000022c       0x50 ./Quizomat.o
+                0x0000022c                creditsCoinAcceptorQuizomat
+ .text.creditsBillAcceptorQuizomat
+                0x0000027c       0x50 ./Quizomat.o
+                0x0000027c                creditsBillAcceptorQuizomat
+ .text.checkQuizPayout
+                0x000002cc       0x1a ./Quizomat.o
+                0x000002cc                checkQuizPayout
+ .text.sendStart
+                0x000002e6       0x40 ./Quizomat.o
+                0x000002e6                sendStart
+ .text.sendKeySwitch
+                0x00000326       0x4c ./Quizomat.o
+                0x00000326                sendKeySwitch
+ .text.quizomat
+                0x00000372       0x1a ./Quizomat.o
+                0x00000372                quizomat
+ .text.ioInit   0x0000038c       0x5e ./main.o
+                0x0000038c                ioInit
+ .text.switchOnCard
+                0x000003ea       0x66 ./main.o
+                0x000003ea                switchOnCard
+ .text.switchOn
+                0x00000450       0x6a ./main.o
+                0x00000450                switchOn
+ .text.sendCommand
+                0x000004ba       0xbc ./main.o
+                0x000004ba                sendCommand
+ .text.endTime  0x00000576       0x3c ./main.o
+                0x00000576                endTime
+ .text.receiveCommand
+                0x000005b2       0xd6 ./main.o
+                0x000005b2                receiveCommand
+ .text.settings
+                0x00000688       0x4e ./main.o
+                0x00000688                settings
+ .text.initSettings
+                0x000006d6       0x52 ./main.o
+                0x000006d6                initSettings
+ .text.configurationInit
+                0x00000728       0xac ./main.o
+                0x00000728                configurationInit
+ .text.main     0x000007d4       0xec ./main.o
+                0x000007d4                main
+ .text.libgcc   0x000008c0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x000008c0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+                0x000008c0                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000008c0        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+                0x000008c0                exit
+                0x000008c0                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000008c0        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ *(.fini0)
+                0x000008c4                _etext = .
+
+.data           0x00800060        0x0 load address 0x000008c4
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
+ .data          0x00800060        0x0 ./Quizomat.o
+ .data          0x00800060        0x0 ./main.o
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
+
+.bss            0x00800060       0x45
+                0x00800060                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr5/crtm16.o
+ .bss           0x00800060        0x0 ./Quizomat.o
+ .bss           0x00800060        0x0 ./main.o
+ .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_exit.o)
+ .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr5\libgcc.a(_clear_bss.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800060       0x45 ./Quizomat.o
+                0x00800060                FL_protection
+                0x00800061                FL_counter_pulses
+                0x00800062                FLAGA_Send
+                0x00800063                counter_pulses
+                0x00800065                commandBuffer
+                0x0080008d                FL_QUIZ_ON
+                0x0080008e                FL_start_rules_counter
+                0x0080008f                command
+                0x00800090                sended
+                0x00800091                Counter_IN_2
+                0x00800092                FL_pilot
+                0x00800093                Counter_IN_10
+                0x00800094                QUIZ_ON
+                0x00800095                Counter_IN_1
+                0x00800096                FL_keySwitch
+                0x00800097                FL_TETRIS_ON
+                0x00800098                FL_automatOn
+                0x00800099                com_quiz_start_rules
+                0x0080009a                Counter_IN_5
+                0x0080009b                com_round
+                0x0080009c                com_attack
+                0x0080009d                receive
+                0x0080009e                buffer_size
+                0x0080009f                Counter_IN_25
+                0x008000a0                com_quiz_on
+                0x008000a1                counterTimeout
+                0x008000a3                com_switch_on_tetris
+                0x008000a4                TETRIS_ON
+                0x008000a5                PROVIDE (__bss_end, .)
+                0x000008c4                __data_load_start = LOADADDR (.data)
+                0x000008c4                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008000a5        0x0
+                0x008000a5                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008000a5                PROVIDE (__noinit_end, .)
+                0x008000a5                _end = .
+                0x008000a5                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(043_quiz_liczniki_black_horse_rybik.elf elf32-avr)
+LOAD linker stubs

@@ -1,0 +1,453 @@
+Archive member included because of file (symbol)
+
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_divmodhi4.o)
+                              ./hopper/hopper.o (__divmodhi4)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o (exit)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+                              ./operator/operator.o (__do_clear_bss)
+c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_udivmodhi4.o)
+                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_divmodhi4.o) (__udivmodhi4)
+
+Allocating common symbols
+Common symbol       size              file
+
+b                   0x2               ./hopper/hopper.o
+d1                  0x2               ./hopper/hopper.o
+b1                  0x2               ./hopper/hopper.o
+credits             0x2               ./hopper/hopper.o
+a1                  0x2               ./hopper/hopper.o
+tot_overflow        0x2               ./operator/operator.o
+c1                  0x2               ./hopper/hopper.o
+c                   0x2               ./hopper/hopper.o
+d                   0x2               ./hopper/hopper.o
+coins_to_pay        0x2               ./operator/operator.o
+a                   0x2               ./hopper/hopper.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+LOAD ./operator/operator.o
+LOAD ./meters/meters.o
+LOAD ./init/init.o
+LOAD ./hopper/hopper.o
+LOAD ./bnc/bnc.o
+LOAD ./main.o
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4\libc.a
+LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000      0x64c
+ *(.vectors)
+ .vectors       0x00000000       0x26 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000026                . = ALIGN (0x2)
+                0x00000026                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000026        0x0 linker stubs
+ *(.trampolines*)
+                0x00000026                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000026                __ctors_start = .
+ *(.ctors)
+                0x00000026                __ctors_end = .
+                0x00000026                __dtors_start = .
+ *(.dtors)
+                0x00000026                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000026        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+                0x00000026                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000026        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000032       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+                0x00000032                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000042        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+ *(.init9)
+ *(.text)
+ .text          0x00000046        0x2 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+                0x00000046                __vector_1
+                0x00000046                __vector_12
+                0x00000046                __bad_interrupt
+                0x00000046                __vector_6
+                0x00000046                __vector_3
+                0x00000046                __vector_11
+                0x00000046                __vector_13
+                0x00000046                __vector_17
+                0x00000046                __vector_7
+                0x00000046                __vector_5
+                0x00000046                __vector_4
+                0x00000046                __vector_2
+                0x00000046                __vector_15
+                0x00000046                __vector_8
+                0x00000046                __vector_14
+                0x00000046                __vector_10
+                0x00000046                __vector_16
+                0x00000046                __vector_18
+ .text          0x00000048        0x0 ./operator/operator.o
+ .text          0x00000048        0x0 ./meters/meters.o
+ .text          0x00000048        0x0 ./init/init.o
+ .text          0x00000048        0x0 ./hopper/hopper.o
+ .text          0x00000048        0x0 ./bnc/bnc.o
+ .text          0x00000048        0x0 ./main.o
+ .text          0x00000048        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_divmodhi4.o)
+ .text          0x00000048        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ .text          0x00000048        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+ .text          0x00000048        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_udivmodhi4.o)
+                0x00000048                . = ALIGN (0x2)
+ *(.text.*)
+ .text.operator_check
+                0x00000048       0x1e ./operator/operator.o
+                0x00000048                operator_check
+ .text.meter_out
+                0x00000066        0xe ./meters/meters.o
+                0x00000066                meter_out
+ .text.meter_in
+                0x00000074       0x14 ./meters/meters.o
+                0x00000074                meter_in
+ .text.check_ports
+                0x00000088       0x36 ./init/init.o
+                0x00000088                check_ports
+ .text.set_ports
+                0x000000be       0x2c ./init/init.o
+                0x000000be                set_ports
+ .text.init     0x000000ea       0x20 ./init/init.o
+                0x000000ea                init
+ .text.power_on
+                0x0000010a        0x6 ./hopper/hopper.o
+                0x0000010a                power_on
+ .text.power_off
+                0x00000110        0x6 ./hopper/hopper.o
+                0x00000110                power_off
+ .text.timer0_init
+                0x00000116       0x1a ./hopper/hopper.o
+                0x00000116                timer0_init
+ .text.timer0_reboot
+                0x00000130        0xc ./hopper/hopper.o
+                0x00000130                timer0_reboot
+ .text.__vector_9
+                0x0000013c       0x2e ./hopper/hopper.o
+                0x0000013c                __vector_9
+ .text.dump_off
+                0x0000016a       0x1a ./hopper/hopper.o
+                0x0000016a                dump_off
+ .text.dump_on  0x00000184       0x22 ./hopper/hopper.o
+                0x00000184                dump_on
+ .text.pay      0x000001a6       0x90 ./hopper/hopper.o
+                0x000001a6                pay
+ .text.bnc_emp  0x00000236       0x90 ./bnc/bnc.o
+                0x00000236                bnc_emp
+ .text.bnc_emp_pulse_time
+                0x000002c6       0xa0 ./bnc/bnc.o
+                0x000002c6                bnc_emp_pulse_time
+ .text.bnc_turn_on
+                0x00000366        0x4 ./bnc/bnc.o
+                0x00000366                bnc_turn_on
+ .text.bnc_turn_off
+                0x0000036a        0x4 ./bnc/bnc.o
+                0x0000036a                bnc_turn_off
+ .text.bnc_check
+                0x0000036e      0x27a ./bnc/bnc.o
+                0x0000036e                bnc_check
+ .text.main     0x000005e8       0x12 ./main.o
+                0x000005e8                main
+ .text.libgcc   0x000005fa       0x26 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_divmodhi4.o)
+                0x000005fa                __divmodhi4
+                0x000005fa                _div
+ .text.libgcc   0x00000620        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ .text.libgcc   0x00000620        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000620       0x28 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_udivmodhi4.o)
+                0x00000620                __udivmodhi4
+                0x00000648                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00000648        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+                0x00000648                exit
+                0x00000648                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00000648        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ *(.fini0)
+                0x0000064c                _etext = .
+
+.data           0x00800060        0x0 load address 0x0000064c
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+ .data          0x00800060        0x0 ./operator/operator.o
+ .data          0x00800060        0x0 ./meters/meters.o
+ .data          0x00800060        0x0 ./init/init.o
+ .data          0x00800060        0x0 ./hopper/hopper.o
+ .data          0x00800060        0x0 ./bnc/bnc.o
+ .data          0x00800060        0x0 ./main.o
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_divmodhi4.o)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+ .data          0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_udivmodhi4.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800060                . = ALIGN (0x2)
+                0x00800060                _edata = .
+                0x00800060                PROVIDE (__data_end, .)
+
+.bss            0x00800060       0x16
+                0x00800060                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr4/crtm8.o
+ .bss           0x00800060        0x0 ./operator/operator.o
+ .bss           0x00800060        0x0 ./meters/meters.o
+ .bss           0x00800060        0x0 ./init/init.o
+ .bss           0x00800060        0x0 ./hopper/hopper.o
+ .bss           0x00800060        0x0 ./bnc/bnc.o
+ .bss           0x00800060        0x0 ./main.o
+ .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_divmodhi4.o)
+ .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_exit.o)
+ .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_clear_bss.o)
+ .bss           0x00800060        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr4\libgcc.a(_udivmodhi4.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800060        0x4 ./operator/operator.o
+                0x00800060                tot_overflow
+                0x00800062                coins_to_pay
+ COMMON         0x00800064       0x12 ./hopper/hopper.o
+                0x00800064                b
+                0x00800066                d1
+                0x00800068                b1
+                0x0080006a                credits
+                0x0080006c                a1
+                0x0080006e                c1
+                0x00800070                c
+                0x00800072                d
+                0x00800074                a
+                0x00800076                PROVIDE (__bss_end, .)
+                0x0000064c                __data_load_start = LOADADDR (.data)
+                0x0000064c                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800076        0x0
+                0x00800076                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800076                PROVIDE (__noinit_end, .)
+                0x00800076                _end = .
+                0x00800076                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(rozmieniarka.elf elf32-avr)
+LOAD linker stubs
